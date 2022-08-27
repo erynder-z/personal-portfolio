@@ -1,0 +1,74 @@
+.panels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  flex: 1;
+  transition: all 0.5s ease-in-out;
+  background: yellow;
+  color: white;
+  font-size: 12px;
+  background-size: cover;
+  background-position: center;
+}
+.panel.open {
+  flex: 100 0 auto;
+  font-size: 20px;
+}
+
+.panel.closed {
+  cursor: pointer;
+}
+
+.panel > * {
+  transition: transform 0.5s;
+  width: 100%;
+}
+.panel > *:first-child {
+  transform: translateX(50%);
+}
+.panel.open > *:first-child {
+  transform: translateX(-100%);
+}
+
+.panel > *:last-child {
+  transform: translateX(100%);
+}
+.panel.open > *:last-child {
+  transform: translateX(-50%);
+}
+
+.panel p {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.intro {
+  color: var(--bright-text);
+  background-color: var(--intro);
+  background-position-y: 20%;
+}
+.portfolio {
+  color: var(--bright-text);
+  background-color: var(--portfolio);
+  align-items: flex-start;
+}
+.skills {
+  color: var(--bright-text);
+  background-color: var(--skills);
+  align-items: flex-start;
+}
+.contact {
+  color: var(--bright-text);
+  background-color: var(--contact);
+  align-items: flex-start;
+}
