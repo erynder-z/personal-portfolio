@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import Intro from '../Intro/Intro';
 import './Navigation.css';
 
 const Navigation: FC = () => {
@@ -15,8 +16,8 @@ const Navigation: FC = () => {
             setActivePanel('intro');
           }}
         >
-          <p>Intro</p>
-          <p>Hello</p>
+          <h1>Intro</h1>
+          <Intro active={activePanel === 'intro' ? true : false} />
         </div>
         <div
           className={`panel portfolio ${
@@ -26,7 +27,7 @@ const Navigation: FC = () => {
             setActivePanel('portfolio');
           }}
         >
-          <p>Portfolio</p>
+          <h1>Portfolio</h1>
           <p>My stuff</p>
         </div>
         <div
@@ -37,7 +38,7 @@ const Navigation: FC = () => {
             setActivePanel('skills');
           }}
         >
-          <p>Skills</p>
+          <h1>Skills</h1>
           <p>My skills</p>
         </div>
         <div
@@ -48,7 +49,7 @@ const Navigation: FC = () => {
             setActivePanel('contact');
           }}
         >
-          <p>Contact</p>
+          <h1>Contact</h1>
           <p>Contact me</p>
         </div>
       </div>
