@@ -20,13 +20,25 @@
   background-size: cover;
   background-position: center;
 }
+
 .panel.open {
   flex: 100 0 auto;
   font-size: 20px;
+  max-height: 85vh;
 }
 
 .panel.closed {
   cursor: pointer;
+  max-height: 5vh;
+}
+
+.panel.closed > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: scaleY(0.1) translateX(100%);
+  transition: all 0.5s;
+  height: 1rem;
 }
 
 .panel > * {
@@ -45,11 +57,6 @@
 }
 .panel.open > *:last-child {
   transform: translateX(-50%);
-}
-
-.panel.closed > div {
-  max-height: 1rem;
-  animation: fadeOut 0.5s;
 }
 
 .panel h1 {
@@ -76,50 +83,4 @@
   color: var(--bright-text);
   background-color: var(--contact);
   align-items: flex-start;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-@-moz-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-@-o-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-@-ms-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
 }

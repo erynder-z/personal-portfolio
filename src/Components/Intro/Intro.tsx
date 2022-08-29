@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import './Intro.css';
 
 interface Props {
   active: boolean;
@@ -44,15 +45,11 @@ const Intro: FC<Props> = ({ active }) => {
     return s;
   };
 
-  const fadeOutText = (): void => {
-    setText(' ');
-  };
-
   useEffect(() => {
     if (active) {
       let count: number = 0;
 
-      while (count <= 999) {
+      while (count <= 1499) {
         shuffleText();
         count++;
       }
@@ -63,23 +60,13 @@ const Intro: FC<Props> = ({ active }) => {
         );
       }, 1501);
     }
-
-    if (!active) {
-      fadeOutText();
-      setTimeout(() => {
-        setText(
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae ipsa sunt porro maxime magnam esse, magni harum velit numquam corporis molestias tempore quod, illo aliquid labore excepturi aperiam quidem ad ab nam culpa. Dignissimos deleniti quis et explicabo sequi voluptatum nesciunt reprehenderit nihil similique facilis molestias repellat ea ullam ducimus a iste, doloribus nam placeat? Necessitatibus expedita nobis quia consequatur fugiat animi veritatis in voluptatibus eveniet libero labore accusantium molestias hic voluptatem nesciunt praesentium neque doloribus, itaque, natus et veniam eligendi consectetur pariatur. Natus maxime sint, et quis id vero vitae deserunt qui assumenda consectetur est dicta eveniet fugit commodi corporis voluptas, dolores ratione fugiat laborum dolore officia quaerat provident nostrum. Doloremque voluptatum iusto vitae officia minus in doloribus corporis, quidem deleniti porro numquam accusantium fuga blanditiis at consectetur quisquam cupiditate minima rem non eum ducimus veritatis aspernatur explicabo eveniet! Provident laboriosam cum accusamus commodi eaque nobis fuga ut quis?'
-        );
-      }, 500);
-    }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   return (
     <div className="intro-wrapper">
-      <h2>hello</h2>
-      <p>{text}</p>
+      <h2 className="intro-heading">hello</h2>
+      <p className="content-wrapper">{text}</p>
     </div>
   );
 };
