@@ -6,23 +6,27 @@ interface Props {
 }
 
 const Intro: FC<Props> = ({ active }) => {
-  const [text, setText] = useState<string>(
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae ipsa sunt porro maxime magnam esse, magni harum velit numquam corporis molestias tempore quod, illo aliquid labore excepturi aperiam quidem ad ab nam culpa. Dignissimos deleniti quis et explicabo sequi voluptatum nesciunt reprehenderit nihil similique facilis molestias repellat ea ullam ducimus a iste, doloribus nam placeat? Necessitatibus expedita nobis quia consequatur fugiat animi veritatis in voluptatibus eveniet libero labore accusantium molestias hic voluptatem nesciunt praesentium neque doloribus, itaque, natus et veniam eligendi consectetur pariatur. Natus maxime sint, et quis id vero vitae deserunt qui assumenda consectetur est dicta eveniet fugit commodi corporis voluptas, dolores ratione fugiat laborum dolore officia quaerat provident nostrum. Doloremque voluptatum iusto vitae officia minus in doloribus corporis, quidem deleniti porro numquam accusantium fuga blanditiis at consectetur quisquam cupiditate minima rem non eum ducimus veritatis aspernatur explicabo eveniet! Provident laboriosam cum accusamus commodi eaque nobis fuga ut quis?'
+  const [heading, setHeading] = useState<string>(`e11o¡`);
+  const [paragraph1, setParagraph1] = useState<string>(
+    `i'm Stefan and i'm a frontend web developer.`
   );
+  const [paragraph2, setParagraph2] =
+    useState<string>(`Committed to never stop learning, I'm on my way to become a full-stack web developer.
+    I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`);
 
-  const randomIntFromInterval = (min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
-  const shuffleText = (): void => {
+  const shuffleText = (text: string, identifier: string): void => {
     const wordsArray: string[] = text.split(' ');
     const shuffledArray: string[] = wordsArray.map((word) => {
       return shuffleWord(word);
     });
 
-    setTimeout(() => {
-      setText(shuffledArray.join(' '));
-    }, randomIntFromInterval(500, 1500));
+    if (identifier === 'paragraph1') {
+      setParagraph1(shuffledArray.join(' '));
+    } else if (identifier === 'paragraph2') {
+      setParagraph2(shuffledArray.join(' '));
+    } else {
+      setHeading(shuffledArray.join(' '));
+    }
   };
 
   const shuffleWord = (s: string): string => {
@@ -45,28 +49,79 @@ const Intro: FC<Props> = ({ active }) => {
     return s;
   };
 
-  useEffect(() => {
-    if (active) {
-      let count: number = 0;
+  const firstShuffle = (): void => {
+    const shuffle = setInterval(() => {
+      shuffleText(heading, 'heading');
+      shuffleText(paragraph1, 'paragraph1');
+      shuffleText(paragraph2, 'paragraph2');
+    }, 50);
 
-      while (count <= 1499) {
-        shuffleText();
-        count++;
-      }
+    setTimeout(() => {
+      clearInterval(shuffle);
+      setHeading('he11o¡');
+      setParagraph1(`i'm Stefan and i'm a frontend web deve1oper.`);
+      setParagraph2(
+        `Committed to never stop 1earning, i'm on my way to become a fu11-stack web deve1oper.
+        i enjoy creating easy-to-use app1ications with JavaScript and React and i 1ove adding new too1s to my ski11set every day!`
+      );
+    }, 2000);
+  };
+
+  const secondShuffle = (): void => {
+    setTimeout(() => {
+      const shuffleAgain = setInterval(() => {
+        shuffleText(heading, 'heading');
+        shuffleText(paragraph1, 'paragraph1');
+        shuffleText(paragraph2, 'paragraph2');
+      }, 100);
 
       setTimeout(() => {
-        setText(
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae ipsa sunt porro maxime magnam esse, magni harum velit numquam corporis molestias tempore quod, illo aliquid labore excepturi aperiam quidem ad ab nam culpa. Dignissimos deleniti quis et explicabo sequi voluptatum nesciunt reprehenderit nihil similique facilis molestias repellat ea ullam ducimus a iste, doloribus nam placeat? Necessitatibus expedita nobis quia consequatur fugiat animi veritatis in voluptatibus eveniet libero labore accusantium molestias hic voluptatem nesciunt praesentium neque doloribus, itaque, natus et veniam eligendi consectetur pariatur. Natus maxime sint, et quis id vero vitae deserunt qui assumenda consectetur est dicta eveniet fugit commodi corporis voluptas, dolores ratione fugiat laborum dolore officia quaerat provident nostrum. Doloremque voluptatum iusto vitae officia minus in doloribus corporis, quidem deleniti porro numquam accusantium fuga blanditiis at consectetur quisquam cupiditate minima rem non eum ducimus veritatis aspernatur explicabo eveniet! Provident laboriosam cum accusamus commodi eaque nobis fuga ut quis?'
+        clearInterval(shuffleAgain);
+        setHeading('Hello!');
+        setParagraph1(`I'm Stefan and I'm a frontend web developer.`);
+        setParagraph2(
+          `Committed to never stop learning, I'm on my way to become a full-stack web developer.
+    I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
         );
-      }, 1501);
+      }, 500);
+    }, 3000);
+  };
+
+  const thirdShuffle = (): void => {
+    setTimeout(() => {
+      const finalshuffle = setInterval(() => {
+        shuffleText(heading, 'heading');
+        shuffleText(paragraph1, 'paragraph1');
+        shuffleText(paragraph2, 'paragraph2');
+      }, 50);
+
+      setTimeout(() => {
+        clearInterval(finalshuffle);
+        setHeading('Hello!');
+        setParagraph1(`I'm Stefan and I'm a frontend web developer.`);
+        setParagraph2(
+          `Committed to never stop learning, I'm on my way to become a full-stack web developer.
+      I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
+        );
+      }, 1000);
+    }, 7000);
+  };
+
+  useEffect(() => {
+    if (active) {
+      firstShuffle();
+      secondShuffle();
+      thirdShuffle();
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   return (
     <div className="intro-wrapper">
-      <h2 className="intro-heading">hello</h2>
-      <p className="content-wrapper">{text}</p>
+      <h2 className="intro-heading">{heading}</h2>
+      <p className="intro-content">{paragraph1}</p>
+      <p className="intro-content">{paragraph2}</p>
     </div>
   );
 };
