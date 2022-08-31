@@ -1,4 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
+import profilePic from '../../assets/profile.png';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import parseString from '../Parser/Parser';
 import './Intro.css';
 
 interface Props {
@@ -59,10 +62,10 @@ const Intro: FC<Props> = ({ active }) => {
     setTimeout(() => {
       clearInterval(shuffle);
       setHeading('he11o¡');
-      setParagraph1(`i'm Stefan and i'm a frontend web deve1oper.`);
+      setParagraph1(`i'm stefan and i'm a frontənd web deve1oper.`);
       setParagraph2(
-        `Committed to never stop 1earning, i'm on my way to become a fu11-stack web deve1oper.
-        i enjoy creating easy-to-use app1ications with JavaScript and React and i 1ove adding new too1s to my ski11set every day!`
+        `committed to never stop 1earning, i'm on my way to become a fu11-stack web deve1oper.
+        i enjoy creating easy-to-use app1ications with javascript and react and i 1ove adding new too1s to my ski11set every day!`
       );
     }, 2000);
   };
@@ -78,7 +81,7 @@ const Intro: FC<Props> = ({ active }) => {
       setTimeout(() => {
         clearInterval(shuffleAgain);
         setHeading('Hello!');
-        setParagraph1(`I'm Stefan and I'm a frontend web developer.`);
+        setParagraph1(`I'm Stəfan and I'm a frontənd web developer.`);
         setParagraph2(
           `Committed to never stop learning, I'm on my way to become a full-stack web developer.
     I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
@@ -104,7 +107,7 @@ const Intro: FC<Props> = ({ active }) => {
       I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
         );
       }, 1000);
-    }, 7000);
+    }, 5000);
   };
 
   useEffect(() => {
@@ -118,10 +121,21 @@ const Intro: FC<Props> = ({ active }) => {
   }, [active]);
 
   return (
-    <div className="intro-wrapper">
-      <h2 className="intro-heading">{heading}</h2>
-      <p className="intro-content">{paragraph1}</p>
-      <p className="intro-content">{paragraph2}</p>
+    <div className="intro-container">
+      <img className="profilePic" src={profilePic} alt="pic of me" />
+      <section className="intro-text">
+        <h2 className="intro-heading">{heading}</h2>
+        <p className="intro-content">{parseString(paragraph1)}</p>
+        <p className="intro-content">{paragraph2}</p>
+      </section>
+
+      <div className="goto_next">
+        <span className="outer">
+          <span className="inner">
+            <MdKeyboardArrowDown size="5rem" className='"downArrow bounce' />
+          </span>
+        </span>
+      </div>
     </div>
   );
 };
