@@ -17,7 +17,7 @@ interface Props {
 const Intro: FC<Props> = ({ active }) => {
   const [pic, setPic] = useState<string>(profilePic);
   const [downArrow, setDownArrow] = useState<JSX.Element>(
-    <MdKeyboardArrowDown size="5rem" className="downArrow bounce" />
+    <MdKeyboardArrowDown className="downArrow bounce" />
   );
   const [heading, setHeading] = useState<string>(`e11o¡`);
   const [paragraph1, setParagraph1] = useState<string>(
@@ -36,24 +36,16 @@ const Intro: FC<Props> = ({ active }) => {
 
     switch (random) {
       case 1:
-        setDownArrow(
-          <MdKeyboardArrowDown size="5rem" className="downArrow bounce" />
-        );
+        setDownArrow(<MdKeyboardArrowDown className="downArrow bounce" />);
         break;
       case 2:
-        setDownArrow(
-          <MdKeyboardArrowUp size="5rem" className="downArrow bounce" />
-        );
+        setDownArrow(<MdKeyboardArrowUp className="downArrow bounce" />);
         break;
       case 3:
-        setDownArrow(
-          <MdKeyboardArrowLeft size="5rem" className="downArrow bounce" />
-        );
+        setDownArrow(<MdKeyboardArrowLeft className="downArrow bounce" />);
         break;
       case 4:
-        setDownArrow(
-          <MdKeyboardArrowRight size="5rem" className="downArrow bounce" />
-        );
+        setDownArrow(<MdKeyboardArrowRight className="downArrow bounce" />);
         break;
 
       default:
@@ -151,9 +143,7 @@ const Intro: FC<Props> = ({ active }) => {
 
       setTimeout(() => {
         clearInterval(finalshuffle);
-        setDownArrow(
-          <MdKeyboardArrowDown size="5rem" className="downArrow bounce" />
-        );
+        setDownArrow(<MdKeyboardArrowDown className="downArrow bounce" />);
         setPic(profilePic);
         setHeading('Hello!');
         setParagraph1(`I'm Stefan and I'm a frontend web developer.`);
