@@ -1,6 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import profilePic from '../../assets/profile.png';
-import { MdKeyboardArrowDown } from 'react-icons/md';
+import {
+  MdKeyboardArrowDown,
+  MdKeyboardArrowUp,
+  MdKeyboardArrowLeft,
+  MdKeyboardArrowRight,
+} from 'react-icons/md';
 import parseString from '../Parser/Parser';
 import './Intro.css';
 import { PixelateImage } from '../PixelateImage/PixelateImage';
@@ -11,6 +16,9 @@ interface Props {
 
 const Intro: FC<Props> = ({ active }) => {
   const [pic, setPic] = useState<string>(profilePic);
+  const [downArrow, setDownArrow] = useState<JSX.Element>(
+    <MdKeyboardArrowDown size="5rem" className="downArrow bounce" />
+  );
   const [heading, setHeading] = useState<string>(`e11o¡`);
   const [paragraph1, setParagraph1] = useState<string>(
     `i'm Stefan and i'm a frontend web developer.`
@@ -21,6 +29,36 @@ const Intro: FC<Props> = ({ active }) => {
 
   const randomIntFromInterval = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  const shuffleArrow = () => {
+    const random = randomIntFromInterval(1, 4);
+
+    switch (random) {
+      case 1:
+        setDownArrow(
+          <MdKeyboardArrowDown size="5rem" className="downArrow bounce" />
+        );
+        break;
+      case 2:
+        setDownArrow(
+          <MdKeyboardArrowUp size="5rem" className="downArrow bounce" />
+        );
+        break;
+      case 3:
+        setDownArrow(
+          <MdKeyboardArrowLeft size="5rem" className="downArrow bounce" />
+        );
+        break;
+      case 4:
+        setDownArrow(
+          <MdKeyboardArrowRight size="5rem" className="downArrow bounce" />
+        );
+        break;
+
+      default:
+        break;
+    }
   };
 
   const shuffleText = (text: string, identifier: string): void => {
@@ -61,6 +99,7 @@ const Intro: FC<Props> = ({ active }) => {
   const firstShuffle = (): void => {
     const shuffle = setInterval(() => {
       setPic(PixelateImage(pic, randomIntFromInterval(15, 25)));
+      shuffleArrow();
       shuffleText(heading, 'heading');
       shuffleText(paragraph1, 'paragraph1');
       shuffleText(paragraph2, 'paragraph2');
@@ -80,6 +119,7 @@ const Intro: FC<Props> = ({ active }) => {
   const secondShuffle = (): void => {
     setTimeout(() => {
       const shuffleAgain = setInterval(() => {
+        shuffleArrow();
         setPic(PixelateImage(pic, randomIntFromInterval(12, 15)));
         shuffleText(heading, 'heading');
         shuffleText(paragraph1, 'paragraph1');
@@ -102,6 +142,7 @@ const Intro: FC<Props> = ({ active }) => {
   const thirdShuffle = (): void => {
     setTimeout(() => {
       const finalshuffle = setInterval(() => {
+        shuffleArrow();
         setPic(PixelateImage(pic, randomIntFromInterval(5, 10)));
         shuffleText(heading, 'heading');
         shuffleText(paragraph1, 'paragraph1');
@@ -110,6 +151,9 @@ const Intro: FC<Props> = ({ active }) => {
 
       setTimeout(() => {
         clearInterval(finalshuffle);
+        setDownArrow(
+          <MdKeyboardArrowDown size="5rem" className="downArrow bounce" />
+        );
         setPic(profilePic);
         setHeading('Hello!');
         setParagraph1(`I'm Stefan and I'm a frontend web developer.`);
@@ -145,7 +189,8 @@ const Intro: FC<Props> = ({ active }) => {
       <div className="goto_next">
         <span className="outer">
           <span className="inner">
-            <MdKeyboardArrowDown size="5rem" className="downArrow bounce" />
+            {downArrow}
+            {/*  <MdKeyboardArrowDown size="5rem" className="downArrow bounce" /> */}
           </span>
         </span>
       </div>
