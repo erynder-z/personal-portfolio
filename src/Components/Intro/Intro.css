@@ -119,6 +119,21 @@
   animation: bounce 5s infinite;
 }
 
+.tv-static {
+  margin: auto;
+  background-image: repeating-conic-gradient(#637b98, rgb(0, 0, 0) 0.00085%);
+  animation: wobble 25s linear infinite;
+}
+
+@keyframes wobble {
+  from {
+    background-size: 100% 100%;
+  }
+  to {
+    background-size: 10% 10%;
+  }
+}
+
 @keyframes bounce {
   0%,
   20%,
