@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import profilePic from '../../assets/profile1.png';
 import {
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
@@ -11,9 +10,10 @@ import './Intro.css';
 
 interface Props {
   active: boolean;
+  shuffleText: (text: string, identifier: string) => string;
 }
 
-const Intro: FC<Props> = ({ active }) => {
+const Intro: FC<Props> = ({ active, shuffleText }) => {
   const [isIntroFinished, setIsIntroFinished] = useState<boolean>(false);
   const [showStatic, setShowStatic] = useState<boolean>(false);
   const [downArrow, setDownArrow] = useState<JSX.Element>(
@@ -53,49 +53,14 @@ const Intro: FC<Props> = ({ active }) => {
     }
   };
 
-  const shuffleText = (text: string, identifier: string): void => {
-    const wordsArray: string[] = text.split(' ');
-    const shuffledArray: string[] = wordsArray.map((word) => {
-      return shuffleWord(word);
-    });
-
-    if (identifier === 'paragraph1') {
-      setParagraph1(shuffledArray.join(' '));
-    } else if (identifier === 'paragraph2') {
-      setParagraph2(shuffledArray.join(' '));
-    } else {
-      setHeading(shuffledArray.join(' '));
-    }
-  };
-
-  const shuffleWord = (s: string): string => {
-    const getRandomInt = (n: number): number => {
-      return Math.floor(Math.random() * n);
-    };
-
-    const arr: string[] = s.split('');
-    const n: number = arr.length;
-
-    for (let i = 0; i < n - 1; ++i) {
-      const j: number = getRandomInt(n);
-
-      let temp: string = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-    }
-
-    s = arr.join('');
-    return s;
-  };
-
   const firstShuffle = (): void => {
     const shuffle = setInterval(() => {
       setIsIntroFinished(false);
       setShowStatic(true);
       shuffleElements();
-      shuffleText(heading, 'heading');
-      shuffleText(paragraph1, 'paragraph1');
-      shuffleText(paragraph2, 'paragraph2');
+      setHeading(shuffleText(heading, 'heading'));
+      setParagraph1(shuffleText(paragraph1, 'paragraph1'));
+      setParagraph2(shuffleText(paragraph2, 'paragraph2'));
     }, 50);
 
     setTimeout(() => {
@@ -115,9 +80,9 @@ const Intro: FC<Props> = ({ active }) => {
       const shuffleAgain = setInterval(() => {
         setShowStatic(true);
         shuffleElements();
-        shuffleText(heading, 'heading');
-        shuffleText(paragraph1, 'paragraph1');
-        shuffleText(paragraph2, 'paragraph2');
+        setHeading(shuffleText(heading, 'heading'));
+        setParagraph1(shuffleText(paragraph1, 'paragraph1'));
+        setParagraph2(shuffleText(paragraph2, 'paragraph2'));
       }, 100);
 
       setTimeout(() => {
@@ -138,9 +103,9 @@ const Intro: FC<Props> = ({ active }) => {
       const finalshuffle = setInterval(() => {
         shuffleElements();
         setShowStatic(true);
-        shuffleText(heading, 'heading');
-        shuffleText(paragraph1, 'paragraph1');
-        shuffleText(paragraph2, 'paragraph2');
+        setHeading(shuffleText(heading, 'heading'));
+        setParagraph1(shuffleText(paragraph1, 'paragraph1'));
+        setParagraph2(shuffleText(paragraph2, 'paragraph2'));
       }, 50);
 
       setTimeout(() => {
