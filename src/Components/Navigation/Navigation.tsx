@@ -1,9 +1,71 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Intro from '../Intro/Intro';
 import './Navigation.css';
 
-const Navigation: FC = () => {
+interface Props {
+  shuffleText: (text: string, identifier: string) => string;
+  shuffleNav: (categories: string[]) => string[];
+}
+
+const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
   const [activePanel, setActivePanel] = useState<string>('intro');
+  const [doShuffle, setDoShuffle] = useState<boolean>(true);
+  const [categories, setCategories] = useState<string[]>([
+    'intro',
+    'portfolio',
+    'skills',
+    'contact',
+  ]);
+
+  const firstShuffle = (): void => {
+    const shuffle = setInterval(() => {
+      setCategories(shuffleNav(categories));
+    }, 50);
+
+    setTimeout(() => {
+      clearInterval(shuffle);
+
+      setCategories(['!ntro', 'portfol!o', 'sk!lls', 'contact']);
+    }, 2000);
+  };
+
+  const secondShuffle = (): void => {
+    setTimeout(() => {
+      const shuffleAgain = setInterval(() => {
+        setCategories(shuffleNav(categories));
+      }, 100);
+
+      setTimeout(() => {
+        clearInterval(shuffleAgain);
+
+        setCategories(['Intro', 'Portfo1io', 'Ski11s', 'Contact']);
+      }, 500);
+    }, 3000);
+  };
+
+  const thirdShuffle = (): void => {
+    setTimeout(() => {
+      const finalshuffle = setInterval(() => {
+        setCategories(shuffleNav(categories));
+      }, 50);
+
+      setTimeout(() => {
+        clearInterval(finalshuffle);
+        setCategories(['Intro', 'Portfolio', 'Skills', 'Contact']);
+        setDoShuffle(false);
+      }, 1000);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    if (doShuffle) {
+      firstShuffle();
+      secondShuffle();
+      thirdShuffle();
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [doShuffle]);
 
   return (
     <nav>
@@ -14,10 +76,14 @@ const Navigation: FC = () => {
           }`}
           onClick={() => {
             setActivePanel('intro');
+            setDoShuffle(true);
           }}
         >
-          <h1>Intro</h1>
-          <Intro active={activePanel === 'intro' ? true : false} />
+          <h1>{categories[0]}</h1>
+          <Intro
+            active={activePanel === 'intro' ? true : false}
+            shuffleText={shuffleText}
+          />
         </div>
         <div
           className={`panel portfolio ${
@@ -27,7 +93,7 @@ const Navigation: FC = () => {
             setActivePanel('portfolio');
           }}
         >
-          <h1>Portfolio</h1>
+          <h1>{categories[1]}</h1>
           <p>My stuff</p>
         </div>
         <div
@@ -38,7 +104,7 @@ const Navigation: FC = () => {
             setActivePanel('skills');
           }}
         >
-          <h1>Skills</h1>
+          <h1>{categories[2]}</h1>
           <p>My skills</p>
         </div>
         <div
@@ -49,7 +115,7 @@ const Navigation: FC = () => {
             setActivePanel('contact');
           }}
         >
-          <h1>Contact</h1>
+          <h1>{categories[3]}</h1>
           <p>Contact me</p>
         </div>
       </div>
