@@ -16,7 +16,7 @@ interface Props {
 
 const Intro: FC<Props> = ({ active }) => {
   const [pic, setPic] = useState<string>(profilePic);
-  const [picOutline, setPicOutline] = useState<string>('pos1');
+  const [showPicOutline, setShowPicOutline] = useState<boolean>(false);
   const [showStatic, setShowStatic] = useState<boolean>(false);
   const [downArrow, setDownArrow] = useState<JSX.Element>(
     <MdKeyboardArrowDown className="downArrow bounce" />
@@ -39,19 +39,18 @@ const Intro: FC<Props> = ({ active }) => {
     switch (random) {
       case 1:
         setDownArrow(<MdKeyboardArrowDown className="downArrow bounce" />);
-        setPicOutline('pos1');
         break;
       case 2:
         setDownArrow(<MdKeyboardArrowUp className="downArrow bounce" />);
-        setPicOutline('pos2');
+
         break;
       case 3:
         setDownArrow(<MdKeyboardArrowLeft className="downArrow bounce" />);
-        setPicOutline('pos3');
+
         break;
       case 4:
         setDownArrow(<MdKeyboardArrowRight className="downArrow bounce" />);
-        setPicOutline('pos4');
+
         break;
 
       default:
@@ -157,7 +156,7 @@ const Intro: FC<Props> = ({ active }) => {
         setShowStatic(false);
         setDownArrow(<MdKeyboardArrowDown className="downArrow bounce" />);
         setPic(profilePic);
-        setPicOutline('pos5');
+        setShowPicOutline(true);
         setHeading('Hello!');
         setParagraph1(`I'm Stefan and I'm a frontend web developer.`);
         setParagraph2(
@@ -181,7 +180,7 @@ const Intro: FC<Props> = ({ active }) => {
   return (
     <div className={`intro-container ${showStatic ? 'tv-static' : ''}`}>
       <div className="image-container">
-        <div className={`image-outline ${picOutline}`}>
+        <div className={`image-outline ${showPicOutline ? 'movePic' : ''}`}>
           <img className="profilePic" src={pic} alt="pic of me" />
         </div>
       </div>
