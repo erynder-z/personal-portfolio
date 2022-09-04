@@ -11,9 +11,10 @@ import './Intro.css';
 interface Props {
   active: boolean;
   shuffleText: (text: string, identifier: string) => string;
+  setActivePanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Intro: FC<Props> = ({ active, shuffleText }) => {
+const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   const [isIntroFinished, setIsIntroFinished] = useState<boolean>(false);
   const [showStatic, setShowStatic] = useState<boolean>(false);
   const [downArrow, setDownArrow] = useState<JSX.Element>(
@@ -142,7 +143,12 @@ const Intro: FC<Props> = ({ active, shuffleText }) => {
         <p className="intro-content">{parseString(paragraph1)}</p>
         <p className="intro-content">{paragraph2}</p>
       </section>
-      <div className="goto_next">
+      <div
+        className="goto_next"
+        onClick={() => {
+          setActivePanel('portfolio');
+        }}
+      >
         <span className="outer">
           <span className="inner">{downArrow}</span>
         </span>

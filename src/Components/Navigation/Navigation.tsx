@@ -75,14 +75,17 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
             activePanel === 'intro' ? 'open' : 'closed'
           }`}
           onClick={() => {
-            setActivePanel('intro');
-            setDoShuffle(true);
+            if (activePanel !== 'intro') {
+              setActivePanel('intro');
+              setDoShuffle(true);
+            }
           }}
         >
           <h1>{categories[0]}</h1>
           <Intro
             active={activePanel === 'intro' ? true : false}
             shuffleText={shuffleText}
+            setActivePanel={setActivePanel}
           />
         </div>
         <div
