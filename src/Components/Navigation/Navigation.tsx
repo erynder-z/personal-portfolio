@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import Intro from '../Intro/Intro';
+import Portfolio from '../Portfolio/Portfolio';
 import './Navigation.css';
 
 interface Props {
@@ -97,7 +98,11 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
           }}
         >
           <h1>{categories[1]}</h1>
-          <p>My stuff</p>
+          <Portfolio
+            active={activePanel === 'intro' ? true : false}
+            shuffleText={shuffleText}
+            setActivePanel={setActivePanel}
+          />
         </div>
         <div
           className={`panel skills ${
