@@ -10,12 +10,18 @@ const FadeInSection: FC<Props> = ({ children }) => {
   const domRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let currentRef: any = null;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => setVisible(entry.isIntersecting));
     });
     if (domRef.current) {
+      currentRef = domRef.current;
       observer.observe(domRef.current);
     }
+
+    return () => {
+      observer.unobserve(currentRef);
+    };
   }, []);
 
   return (
