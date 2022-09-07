@@ -26,6 +26,8 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
         description: string;
         githubLink: string;
         liveLink: string;
+        technologies: string;
+        year: number;
       }[]
     | null
   >(null);
@@ -37,7 +39,9 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   return (
     <div className="portfolio-container">
       <section>
-        <h1 className="portfolio-header">My Stuff</h1>
+        <FadeInSection>
+          <h1 className="portfolio-header">My Stuff</h1>
+        </FadeInSection>
         <div className="projects-wrapper">
           {projectList?.map((project) => (
             <FadeInSection key={project.id}>
