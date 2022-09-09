@@ -23,6 +23,8 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
         id: number;
         title: string;
         imageURL: string;
+        gifURL: string;
+        gifLength: number;
         description: string;
         githubLink: string;
         liveLink: string;
@@ -40,7 +42,7 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     <div className="portfolio-container">
       <section>
         <FadeInSection>
-          <h1 className="portfolio-header">My Stuff</h1>
+          <h2 className="portfolio-header">My Stuff</h2>
         </FadeInSection>
         <div className="projects-wrapper">
           {projectList?.map((project) => (
@@ -50,18 +52,28 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
           ))}
         </div>
       </section>
-      <div
-        className="goto_next"
-        onClick={() => {
-          setActivePanel('portfolio');
-        }}
-      >
-        <span className="outer">
-          <span className="inner">
-            <MdKeyboardArrowDown className="downArrow bounce" />
+      <FadeInSection>
+        <a
+          className="repo-link"
+          href="https://github.com/erynder-z?tab=repositories"
+        >
+          View More
+        </a>
+      </FadeInSection>
+      <FadeInSection>
+        <div
+          className="goto_next"
+          onClick={() => {
+            setActivePanel('portfolio');
+          }}
+        >
+          <span className="outer">
+            <span className="inner">
+              <MdKeyboardArrowDown className="downArrow bounce" />
+            </span>
           </span>
-        </span>
-      </div>
+        </div>
+      </FadeInSection>
     </div>
   );
 };
