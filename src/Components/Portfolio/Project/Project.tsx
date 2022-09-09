@@ -1,12 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { MdPlayArrow, MdPlayDisabled } from 'react-icons/md';
+import { MdPlayArrow, MdStop, MdMonitor, MdPhoneAndroid } from 'react-icons/md';
 import './Project.css';
 
 interface Props {
   project: {
     title: string;
     imageURL: string;
+    gifURL: string;
+    gifLength: number;
     description: string;
     githubLink: string;
     liveLink: string;
@@ -19,6 +21,8 @@ const Project: FC<Props> = ({ project }) => {
   const {
     title,
     imageURL,
+    gifURL,
+    gifLength,
     description,
     githubLink,
     liveLink,
@@ -26,21 +30,45 @@ const Project: FC<Props> = ({ project }) => {
     year,
   } = project;
 
+  const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
+
+  const handlePlayPreview = (): void => {
+    setPlayAnimatedGif(!playAnimatedGif);
+    setTimeout(() => {
+      setPlayAnimatedGif(false);
+    }, gifLength);
+  };
+
+  const getPlayButton = () => {
+    if (playAnimatedGif) {
+      return {
+        previewImageURL: gifURL,
+        playButton: <MdStop size="2rem" className="playBtn" />,
+      };
+    } else {
+      return {
+        previewImageURL: imageURL,
+        playButton: <MdPlayArrow size="2rem" className="playBtn" />,
+      };
+    }
+  };
+
   return (
     <div className="project-container">
-      <h2 className="project-title">{title}</h2>
+      <h4 className="project-title">{title}</h4>
       <div className="image-container">
-        <img src={imageURL} alt="Project Screenshot" />
-        <button className="previewBtn">
-          <MdPlayArrow size="2rem" className="playBtn" />
+        <img src={getPlayButton().previewImageURL} alt="Project Screenshot" />
+
+        <button className="previewBtn" onClick={handlePlayPreview}>
+          {getPlayButton().playButton}
         </button>
       </div>
       <div className="text-container">
-        <h3 className="project-description-heading">Summary</h3>
+        <h4 className="project-description-heading">Summary</h4>
         <p className="project-description">{description}</p>
-        <h3 className="project-technologies-heading">Technologies</h3>
+        <h4 className="project-technologies-heading">Technologies</h4>
         <p className="project-technologies">{technologies}</p>
-        <h3 className="project-year-header">Year</h3>
+        <h4 className="project-year-header">Year</h4>
         <p className="project-year">{year}</p>
         <div className="link-icons-container">
           <button className="github-link-button">
