@@ -1,9 +1,28 @@
-import projectImage1 from '../../assets/image.jpg';
+import imageRobin from '../../assets/images/robin.png';
+import gifRobin from '../../assets/gifs/robin_26760.gif';
+import imageChatpack from '../../assets/images/chatpack.png';
+import gifChatpack from '../../assets/gifs/chatpack_14500.gif';
+import imageFind from '../../assets/images/find.png';
+import gifFind from '../../assets/gifs/find_13130.gif';
+import imageJstodo from '../../assets/images/jstodo.png';
+import gifjstodo from '../../assets/gifs/jstodo_57040.gif';
+import imageBattleship from '../../assets/images/battleship.png';
+import gifBattleship from '../../assets/gifs/battleship_32010.gif';
+import imageEryngi from '../../assets/images/eryngi.png';
+import gifEryngi from '../../assets/gifs/eryngi_13060.gif';
+import imageLeshop from '../../assets/images/leshop.png';
+import gifLeshop from '../../assets/gifs/leshop_9000.gif';
+import imageCvcreator from '../../assets/images/cvcreator.png';
+import gifCvcreator from '../../assets/gifs/cvcreator_31350.gif';
+import imageJustweather from '../../assets/images/justweather.png';
+import gifJustweather from '../../assets/gifs/justweather_30350.gif';
 
 const ProjectList: {
   id: number;
   title: string;
   imageURL: string;
+  gifURL: string;
+  gifLength: number;
   description: string;
   githubLink: string;
   liveLink: string;
@@ -13,7 +32,9 @@ const ProjectList: {
   {
     id: 1,
     title: 'Robin Social Network',
-    imageURL: projectImage1,
+    imageURL: imageRobin,
+    gifURL: gifRobin,
+    gifLength: 26760,
     description: 'A fully featured, twitter-like social network.',
     githubLink: 'https://github.com/erynder-z/robin-sn',
     liveLink: 'https://erynder-z.github.io/robin-sn',
@@ -23,7 +44,9 @@ const ProjectList: {
   {
     id: 2,
     title: 'Chatpack',
-    imageURL: projectImage1,
+    imageURL: imageChatpack,
+    gifURL: gifChatpack,
+    gifLength: 14500,
     description: 'A realtime chatroom application.',
     githubLink: 'https://github.com/erynder-z/chatpack',
     liveLink: 'https://erynder-z.github.io/chatpack/',
@@ -33,7 +56,9 @@ const ProjectList: {
   {
     id: 3,
     title: '.find()',
-    imageURL: projectImage1,
+    imageURL: imageFind,
+    gifURL: gifFind,
+    gifLength: 13130,
     description: 'A hidden object game.',
     githubLink: 'https://github.com/erynder-z/image-tagging-app',
     liveLink: 'https://erynder-z.github.io/image-tagging-app/',
@@ -43,7 +68,9 @@ const ProjectList: {
   {
     id: 4,
     title: 'JS_Todo',
-    imageURL: projectImage1,
+    imageURL: imageJstodo,
+    gifURL: gifjstodo,
+    gifLength: 57040,
     description: 'A task-/organizer application.',
     githubLink: 'https://github.com/erynder-z/JS_Todo',
     liveLink: 'https://erynder-z.github.io/JS_Todo/',
@@ -53,7 +80,9 @@ const ProjectList: {
   {
     id: 5,
     title: 'Battleship',
-    imageURL: projectImage1,
+    imageURL: imageBattleship,
+    gifURL: gifBattleship,
+    gifLength: 32010,
     description: 'A battleship game build via test-driven development.',
     githubLink: 'https://github.com/erynder-z/battleship',
     liveLink: 'https://erynder-z.github.io/battleship/',
@@ -63,7 +92,9 @@ const ProjectList: {
   {
     id: 6,
     title: 'Eryngi-CSS',
-    imageURL: projectImage1,
+    imageURL: imageEryngi,
+    gifURL: gifEryngi,
+    gifLength: 13060,
     description: 'A bootstrap-like custom CSS-library build with SCSS.',
     githubLink: 'https://github.com/erynder-z/eryngi-css',
     liveLink: 'https://erynder-z.github.io/eryngi-css/',
@@ -73,7 +104,9 @@ const ProjectList: {
   {
     id: 7,
     title: 'Le-shop',
-    imageURL: projectImage1,
+    imageURL: imageLeshop,
+    gifURL: gifLeshop,
+    gifLength: 9000,
     description: 'Frontend for a fake online shop.',
     githubLink: 'https://github.com/erynder-z/le-shop',
     liveLink: 'https://erynder-z.github.io/le-shop/',
@@ -83,7 +116,9 @@ const ProjectList: {
   {
     id: 8,
     title: 'CV-Creator',
-    imageURL: projectImage1,
+    imageURL: imageCvcreator,
+    gifURL: gifCvcreator,
+    gifLength: 31350,
     description: 'Application to create and print your resumee/cv.',
     githubLink: 'https://github.com/erynder-z/cv-creator',
     liveLink: 'https://erynder-z.github.io/cv-creator/',
@@ -93,7 +128,9 @@ const ProjectList: {
   {
     id: 9,
     title: 'Just the weather',
-    imageURL: projectImage1,
+    imageURL: imageJustweather,
+    gifURL: gifJustweather,
+    gifLength: 30350,
     description:
       ' A weather application using the OpenWeatherMap One Call API.',
     githubLink: 'https://github.com/erynder-z/just-the-weather',
