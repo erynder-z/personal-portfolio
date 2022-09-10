@@ -4,7 +4,7 @@ import Portfolio from '../Portfolio/Portfolio';
 import './Navigation.css';
 
 interface Props {
-  shuffleText: (text: string, identifier: string) => string;
+  shuffleText: (text: string) => string;
   shuffleNav: (categories: string[]) => string[];
 }
 

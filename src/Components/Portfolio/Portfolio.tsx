@@ -13,7 +13,7 @@ import FadeInSection from '../FadeinSection/FadeinSection';
 
 interface Props {
   active: boolean;
-  shuffleText: (text: string, identifier: string) => string;
+  shuffleText: (text: string) => string;
   setActivePanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -37,7 +37,7 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
 
   const shuffle = (): void => {
     const shuffle = setInterval(() => {
-      setHeading(shuffleText(heading, 'heading'));
+      setHeading(shuffleText(heading));
     }, 50);
 
     setTimeout(() => {
@@ -66,7 +66,12 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
         <div className="projects-wrapper">
           {projectList?.map((project) => (
             <FadeInSection key={project.id}>
-              <Project key={project.id} project={project} />
+              <Project
+                key={project.id}
+                project={project}
+                active={active}
+                shuffleText={shuffleText}
+              />
             </FadeInSection>
           ))}
         </div>

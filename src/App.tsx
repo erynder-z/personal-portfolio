@@ -11,19 +11,13 @@ const App: FC = () => {
     return shuffledArray;
   };
 
-  const shuffleText = (text: string, identifier: string): string => {
+  const shuffleText = (text: string): string => {
     const wordsArray: string[] = text.split(' ');
     const shuffledArray: string[] = wordsArray.map((word) => {
       return shuffleWord(word);
     });
 
-    if (identifier === 'paragraph1') {
-      return shuffledArray.join(' ');
-    } else if (identifier === 'paragraph2') {
-      return shuffledArray.join(' ');
-    } else {
-      return shuffledArray.join(' ');
-    }
+    return shuffledArray.join(' ');
   };
 
   const shuffleWord = (s: string): string => {

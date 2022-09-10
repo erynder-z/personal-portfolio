@@ -10,7 +10,7 @@ import './Intro.css';
 
 interface Props {
   active: boolean;
-  shuffleText: (text: string, identifier: string) => string;
+  shuffleText: (text: string) => string;
   setActivePanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -59,9 +59,9 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
       setIsIntroFinished(false);
       setShowStatic(true);
       shuffleElements();
-      setHeading(shuffleText(heading, 'heading'));
-      setParagraph1(shuffleText(paragraph1, 'paragraph1'));
-      setParagraph2(shuffleText(paragraph2, 'paragraph2'));
+      setHeading(shuffleText(heading));
+      setParagraph1(shuffleText(paragraph1));
+      setParagraph2(shuffleText(paragraph2));
     }, 50);
 
     setTimeout(() => {
@@ -81,9 +81,9 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
       const shuffleAgain = setInterval(() => {
         setShowStatic(true);
         shuffleElements();
-        setHeading(shuffleText(heading, 'heading'));
-        setParagraph1(shuffleText(paragraph1, 'paragraph1'));
-        setParagraph2(shuffleText(paragraph2, 'paragraph2'));
+        setHeading(shuffleText(heading));
+        setParagraph1(shuffleText(paragraph1));
+        setParagraph2(shuffleText(paragraph2));
       }, 100);
 
       setTimeout(() => {
@@ -104,9 +104,9 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
       const finalshuffle = setInterval(() => {
         shuffleElements();
         setShowStatic(true);
-        setHeading(shuffleText(heading, 'heading'));
-        setParagraph1(shuffleText(paragraph1, 'paragraph1'));
-        setParagraph2(shuffleText(paragraph2, 'paragraph2'));
+        setHeading(shuffleText(heading));
+        setParagraph1(shuffleText(paragraph1));
+        setParagraph2(shuffleText(paragraph2));
       }, 50);
 
       setTimeout(() => {
