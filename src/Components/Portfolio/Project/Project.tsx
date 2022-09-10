@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { MdPlayArrow, MdStop, MdMonitor, MdPhoneAndroid } from 'react-icons/md';
+import { MdPlayArrow, MdStop } from 'react-icons/md';
 import './Project.css';
 
 interface Props {
@@ -31,7 +31,6 @@ const Project: FC<Props> = ({ project }) => {
   } = project;
 
   const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
-  const [showMobilePreview, setShowMobilePreview] = useState<boolean>(false);
 
   const handlePlayPreview = (): void => {
     setPlayAnimatedGif(!playAnimatedGif);
@@ -59,23 +58,7 @@ const Project: FC<Props> = ({ project }) => {
       <h4 className="project-title">{title}</h4>
       <div className="image-container">
         <img src={getPlayButton().previewImageURL} alt="Project Screenshot" />
-        <button
-          className="previewBtn"
-          onClick={() => {
-            setShowMobilePreview(!showMobilePreview);
-          }}
-        >
-          <div className="layoutBtn-container">
-            <MdPhoneAndroid
-              size="2rem"
-              className={`layoutBtn ${showMobilePreview ? 'active' : ''}`}
-            />
-            <MdMonitor
-              size="2rem"
-              className={`layoutBtn ${!showMobilePreview ? 'active' : ''}`}
-            />
-          </div>
-        </button>
+
         <button className="previewBtn" onClick={handlePlayPreview}>
           {getPlayButton().playButton}
         </button>
