@@ -99,7 +99,7 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
         >
           <h1>{categories[1]}</h1>
           <Portfolio
-            active={activePanel === 'intro' ? true : false}
+            active={activePanel === 'portfolio' ? true : false}
             shuffleText={shuffleText}
             setActivePanel={setActivePanel}
           />

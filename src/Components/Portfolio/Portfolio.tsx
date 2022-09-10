@@ -18,6 +18,7 @@ interface Props {
 }
 
 const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
+  const [heading, setHeading] = useState<string>(`projects`);
   const [projectList, setProjectList] = useState<
     | {
         id: number;
@@ -34,6 +35,24 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     | null
   >(null);
 
+  const shuffle = (): void => {
+    const shuffle = setInterval(() => {
+      setHeading(shuffleText(heading, 'heading'));
+    }, 50);
+
+    setTimeout(() => {
+      clearInterval(shuffle);
+      setHeading('Projects ');
+    }, 2000);
+  };
+
+  useEffect(() => {
+    if (active) {
+      shuffle();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
+
   useEffect(() => {
     setProjectList(ProjectList);
   }, []);
@@ -42,7 +61,7 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     <div className="portfolio-container">
       <section>
         <FadeInSection>
-          <h2 className="portfolio-header">My Stuff</h2>
+          <h2 className="portfolio-header">{heading}</h2>
         </FadeInSection>
         <div className="projects-wrapper">
           {projectList?.map((project) => (
