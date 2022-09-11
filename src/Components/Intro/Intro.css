@@ -7,17 +7,14 @@
   align-items: center;
 }
 
-.intro-heading {
-  text-decoration: underline 0.1rem rgba(255, 0, 0, 0);
-}
-
 .underlined {
+  text-underline-offset: 0.5rem;
   animation: underline 0.5s ease-in-out forwards;
   animation-delay: 1s;
 }
 
 .intro-text {
-  padding: 0 20rem;
+  padding: 0 30vw;
   font-size: 2rem;
   text-align: justify;
 }
@@ -43,18 +40,85 @@
   animation-delay: 1s;
 }
 
-.tv-static {
+/* .tv-static {
   margin: auto;
-  background-image: repeating-conic-gradient(#6089b7, rgb(0, 0, 0) 0.00085%);
+  background-image: repeating-conic-gradient(#44475a, rgba(0, 0, 0) 0.00085%);
   animation: wobble 25s linear infinite;
 }
 
 @keyframes wobble {
   from {
-    background-size: 100% 100%;
+    background-size: 50% 50%;
   }
   to {
     background-size: 10% 10%;
+  }
+} */
+
+.intro-bg {
+  animation: introTheme 21s linear infinite;
+  animation-delay: 7s;
+}
+.intro-bg:after,
+.intro-bg:before {
+  content: '';
+  display: block;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  animation: introBackground 90s linear infinite;
+}
+
+.intro-bg:after {
+  left: 15vw;
+}
+
+.intro-bg:before {
+  right: 15vw;
+  animation-delay: -30s;
+  animation-direction: reverse;
+}
+
+@keyframes introTheme {
+  0% {
+    background: rgba(40, 42, 54, 0.1);
+  }
+
+  16% {
+    background: rgba(82, 29, 138, 0.1);
+  }
+
+  33% {
+    background: rgba(131, 31, 144, 0.1);
+  }
+
+  50% {
+    background: rgba(171, 22, 22, 0.1);
+  }
+
+  66% {
+    background: rgba(44, 29, 174, 0.1);
+  }
+
+  83% {
+    background: rgba(31, 140, 51, 0.1);
+  }
+
+  100% {
+    background: rgba(40, 42, 54, 0.1);
+  }
+}
+
+@keyframes introBackground {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -79,7 +143,7 @@
     color: unset;
   }
   100% {
-    color: red;
+    color: var(--red);
   }
 }
 
@@ -88,7 +152,7 @@
     text-decoration: underline 0rem rgba(255, 0, 0, 0);
   }
   100% {
-    text-decoration: underline 0.75rem rgba(255, 0, 0, 1);
+    text-decoration: underline 0.75rem var(--red);
   }
 }
 
