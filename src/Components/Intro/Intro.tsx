@@ -5,6 +5,7 @@ import {
   MdKeyboardArrowLeft,
   MdKeyboardArrowRight,
 } from 'react-icons/md';
+import ColorizeText from '../ColorizeText/ColorizeText';
 import parseString from '../Parser/Parser';
 import './Intro.css';
 
@@ -142,10 +143,14 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     >
       <section className="intro-text">
         <h2 className={` intro-heading ${isIntroFinished ? 'underlined' : ''}`}>
-          {heading}
+          {isIntroFinished ? heading : ColorizeText(heading)}
         </h2>
-        <p className="intro-content">{parseString(paragraph1)}</p>
-        <p className="intro-content">{paragraph2}</p>
+        <p className="intro-content">
+          {isIntroFinished ? parseString(paragraph1) : ColorizeText(paragraph1)}
+        </p>
+        <p className="intro-content">
+          {isIntroFinished ? paragraph2 : ColorizeText(paragraph2)}
+        </p>
       </section>
       <div
         className="goto_next"
