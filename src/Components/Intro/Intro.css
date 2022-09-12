@@ -9,8 +9,14 @@
 
 .underlined {
   text-underline-offset: 0.5rem;
-  animation: underline 0.5s ease-in-out forwards;
+  animation: underline 1s ease-in-out forwards;
   animation-delay: 1s;
+}
+
+.revertColors > span {
+  color: var(--yellow);
+  transition: color 1s ease-in-out;
+  transition-delay: 1s;
 }
 
 .intro-text {
@@ -21,7 +27,7 @@
 
 .myName,
 .myTitle {
-  animation: color-change 0.5s ease-in-out forwards;
+  animation: color-change 1s ease-in-out forwards;
   animation-delay: 1s;
 }
 
@@ -38,6 +44,26 @@
   -webkit-animation: bounce 5s infinite;
   animation: bounce 5s infinite;
   animation-delay: 1s;
+}
+
+.red {
+  color: var(--red);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.green {
+  color: var(--green);
+}
+
+.pink {
+  color: var(--pink);
+}
+
+.yellow {
+  color: var(--yellow);
 }
 
 /* .tv-static {
@@ -139,9 +165,6 @@
 }
 
 @keyframes color-change {
-  0% {
-    color: unset;
-  }
   100% {
     color: var(--red);
   }
