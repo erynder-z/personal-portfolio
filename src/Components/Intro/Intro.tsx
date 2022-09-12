@@ -16,7 +16,6 @@ interface Props {
 
 const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   const [isIntroFinished, setIsIntroFinished] = useState<boolean>(false);
-  /* const [showStatic, setShowStatic] = useState<boolean>(false); */
   const [downArrow, setDownArrow] = useState<JSX.Element>(
     <MdKeyboardArrowDown className="downArrow bounce" />
   );
@@ -56,8 +55,7 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
 
   const firstShuffle = (): void => {
     const shuffle = setInterval(() => {
-      /*      setIsIntroFinished(false); */
-      /*setShowStatic(true) */
+      setIsIntroFinished(false);
       shuffleElements();
       setHeading(shuffleText(heading));
       setParagraph1(shuffleText(paragraph1));
@@ -66,7 +64,6 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
 
     setTimeout(() => {
       clearInterval(shuffle);
-      /*     setShowStatic(false); */
       setHeading('he11o¡');
       setParagraph1(`i'm stefan and i'm a frontənd web deve1oper.`);
       setParagraph2(
@@ -79,7 +76,6 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   const secondShuffle = (): void => {
     setTimeout(() => {
       const shuffleAgain = setInterval(() => {
-        /*     setShowStatic(true); */
         shuffleElements();
         setHeading(shuffleText(heading));
         setParagraph1(shuffleText(paragraph1));
@@ -88,7 +84,6 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
 
       setTimeout(() => {
         clearInterval(shuffleAgain);
-        /*       setShowStatic(false); */
         setHeading('Hello!');
         setParagraph1(`I'm Stəfan and I'm a frontənd web developer.`);
         setParagraph2(
@@ -103,7 +98,6 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     setTimeout(() => {
       const finalshuffle = setInterval(() => {
         shuffleElements();
-        /*    setShowStatic(true); */
         setHeading(shuffleText(heading));
         setParagraph1(shuffleText(paragraph1));
         setParagraph2(shuffleText(paragraph2));
@@ -111,7 +105,6 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
 
       setTimeout(() => {
         clearInterval(finalshuffle);
-        /*   setShowStatic(false); */
         setDownArrow(<MdKeyboardArrowDown className="downArrow bounce" />);
         setIsIntroFinished(true);
         setHeading('Hello!');
@@ -135,11 +128,7 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   }, [active]);
 
   return (
-    <div
-      className={`intro-container intro-bg ${
-        isIntroFinished ? 'tv-static' : ''
-      }`}
-    >
+    <div className="intro-container intro-bg">
       <section className="intro-text">
         <h2
           className={` intro-heading ${
