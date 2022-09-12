@@ -5,7 +5,7 @@ import {
   MdKeyboardArrowLeft,
   MdKeyboardArrowRight,
 } from 'react-icons/md';
-import ColorizeText from '../ColorizeText/ColorizeText';
+import parseString from '../Parser/Parser';
 import './Intro.css';
 
 interface Props {
@@ -56,7 +56,7 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
 
   const firstShuffle = (): void => {
     const shuffle = setInterval(() => {
-      setIsIntroFinished(false);
+      /*      setIsIntroFinished(false); */
       /*setShowStatic(true) */
       shuffleElements();
       setHeading(shuffleText(heading));
@@ -84,7 +84,7 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
         setHeading(shuffleText(heading));
         setParagraph1(shuffleText(paragraph1));
         setParagraph2(shuffleText(paragraph2));
-      }, 100);
+      }, 75);
 
       setTimeout(() => {
         clearInterval(shuffleAgain);
@@ -146,20 +146,10 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
             isIntroFinished ? 'revertColors underlined' : ''
           }`}
         >
-          {ColorizeText(heading, 'heading', false)}
+          {parseString(heading)}
         </h2>
-        <p
-          className={` intro-content ${isIntroFinished ? 'revertColors' : ''}`}
-        >
-          {isIntroFinished
-            ? ColorizeText(paragraph1, 'paragraph1', true)
-            : ColorizeText(paragraph1, 'paragraph1', false)}
-        </p>
-        <p
-          className={` intro-content ${isIntroFinished ? 'revertColors' : ''}`}
-        >
-          {ColorizeText(paragraph2, 'paragraph2', false)}
-        </p>
+        <p className={'intro-content'}>{parseString(paragraph1)}</p>
+        <p className={'intro-content'}>{parseString(paragraph2)}</p>
       </section>
       <div
         className="goto_next"
