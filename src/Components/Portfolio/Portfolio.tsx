@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import {
   MdKeyboardArrowDown,
@@ -18,6 +18,8 @@ interface Props {
 }
 
 const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState<number>(0);
   const [heading, setHeading] = useState<string>(`projects`);
   const [projectList, setProjectList] = useState<
     | {
@@ -46,6 +48,68 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     }, 2000);
   };
 
+  const onScrollPage = () => {
+    const anchor = document.querySelector('.portfolio-container');
+
+    console.log(scrolled);
+    setScrolled(anchor!.scrollTop);
+    const element = containerRef.current;
+    if (scrolled >= 0) {
+      if (element) {
+        element.style.backgroundColor = '#242631';
+        element.style.transition = 'background-color 1000ms';
+      }
+    }
+    if (scrolled >= 500) {
+      if (element) {
+        element.style.backgroundColor = '#0F282E';
+        element.style.transition = 'background-color 1000ms';
+      }
+    }
+    if (scrolled >= 1100) {
+      if (element) {
+        element.style.backgroundColor = '#0F1F2E';
+        element.style.transition = 'background-color 1000ms';
+      }
+    }
+    if (scrolled >= 1800) {
+      if (element) {
+        element.style.backgroundColor = '#110E2A';
+        element.style.transition = 'background-color 1000ms';
+      }
+    }
+    if (scrolled >= 2400) {
+      if (element) {
+        element.style.backgroundColor = '#2A1236';
+        element.style.transition = 'background-color 1000ms';
+      }
+    }
+    if (scrolled >= 3000) {
+      if (element) {
+        element.style.backgroundColor = '#172845';
+        element.style.transition = 'background-color 1000ms';
+      }
+    }
+    if (scrolled >= 3700) {
+      if (element) {
+        element.style.backgroundColor = '#3a0c2c';
+        element.style.transition = 'background-color 1000ms';
+      }
+    }
+    if (scrolled >= 4300) {
+      if (element) {
+        element.style.backgroundColor = '#131839';
+        element.style.transition = 'background-color 1000ms';
+      }
+    }
+    if (scrolled >= 5000) {
+      if (element) {
+        element.style.backgroundColor = '#11320c';
+        element.style.transition = 'background-color 1000ms';
+      }
+    }
+  };
+
   useEffect(() => {
     if (active) {
       shuffle();
@@ -58,7 +122,11 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   }, []);
 
   return (
-    <div className="portfolio-container">
+    <div
+      ref={containerRef}
+      className="portfolio-container"
+      onScroll={onScrollPage}
+    >
       <section>
         <FadeInSection>
           <h2 className="portfolio-header">{heading}</h2>
