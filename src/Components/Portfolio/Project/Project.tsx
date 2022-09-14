@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { MdPlayArrow, MdStop } from 'react-icons/md';
+import randomIntFromInterval from '../../RandomIntFromInverval/RandomIntFromInverval';
 import './Project.css';
 
 interface Props {
@@ -32,7 +33,10 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     year,
   } = project;
 
+  const [imageGlitch, setImageGlitch] = useState<string>('normal');
+  const [makeImageGlitch, setMakeImageGlitch] = useState<boolean>(false);
   const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
+  const [projectImageURL, setProjectImageURL] = useState<string>(imageURL);
   const [projectTitle, setProjectTitle] = useState<string>(title);
   const [projectDescription, setProjectDescription] =
     useState<string>(description);
@@ -47,7 +51,9 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
   const [previewLive, setPreviewLive] = useState<string>('Live');
 
   const shuffle = (): void => {
+    setMakeImageGlitch(true);
     const shuffle = setInterval(() => {
+      shufflePreviewImage();
       setProjectTitle(shuffleText(projectTitle));
       setProjectDescription(shuffleText(projectDescription));
       setProjectTechnologies(shuffleText(projectTechnologies));
@@ -60,7 +66,9 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     }, 50);
 
     setTimeout(() => {
+      setMakeImageGlitch(false);
       clearInterval(shuffle);
+      setImageGlitch('normal');
       setProjectTitle(projectTitle);
       setProjectDescription(projectDescription);
       setProjectTechnologies(projectTechnologies);
@@ -73,6 +81,30 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     }, 2000);
   };
 
+  const shufflePreviewImage = () => {
+    const random = randomIntFromInterval(1, 5);
+
+    switch (random) {
+      case 1:
+        setImageGlitch('normal');
+        break;
+      case 2:
+        setImageGlitch('glitchUp');
+        break;
+      case 3:
+        setImageGlitch('glitchDown');
+        break;
+      case 4:
+        setImageGlitch('glitchLeft');
+        break;
+      case 5:
+        setImageGlitch('glitchRight');
+        break;
+      default:
+        break;
+    }
+  };
+
   const handlePlayPreview = (): void => {
     setPlayAnimatedGif(!playAnimatedGif);
     setTimeout(() => {
@@ -83,16 +115,23 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
   const getPlayButton = () => {
     if (playAnimatedGif) {
       return {
-        previewImageURL: gifURL,
         playButton: <MdStop size="2rem" className="playBtn" />,
       };
     } else {
       return {
-        previewImageURL: imageURL,
         playButton: <MdPlayArrow size="2rem" className="playBtn" />,
       };
     }
   };
+
+  useEffect(() => {
+    if (playAnimatedGif) {
+      setProjectImageURL(gifURL);
+    } else {
+      setProjectImageURL(imageURL);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playAnimatedGif]);
 
   useEffect(() => {
     if (active) {
@@ -105,7 +144,11 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     <div className="project-container">
       <h4 className="project-title">{projectTitle}</h4>
       <div className="image-container">
-        <img src={getPlayButton().previewImageURL} alt="Project Screenshot" />
+        <img
+          src={projectImageURL}
+          alt="Project Screenshot"
+          className={`${makeImageGlitch ? imageGlitch : ''}`}
+        />
 
         <button className="previewBtn" onClick={handlePlayPreview}>
           {getPlayButton().playButton}
