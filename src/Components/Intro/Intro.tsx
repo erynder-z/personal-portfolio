@@ -6,6 +6,7 @@ import {
   MdKeyboardArrowRight,
 } from 'react-icons/md';
 import parseString from '../Parser/Parser';
+import randomIntFromInterval from '../RandomIntFromInverval/RandomIntFromInverval';
 import './Intro.css';
 
 interface Props {
@@ -26,10 +27,6 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   const [paragraph2, setParagraph2] =
     useState<string>(`Committed to never stop learning, I'm on my way to become a full-stack web developer.
     I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`);
-
-  const randomIntFromInterval = (min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
 
   const shuffleElements = () => {
     const random = randomIntFromInterval(1, 4);
