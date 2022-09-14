@@ -1,12 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import {
-  MdKeyboardArrowDown,
-  MdPlayArrow,
-  MdPlayDisabled,
-} from 'react-icons/md';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 import './Portfolio.css';
-
 import ProjectList from './ProjectList';
 import Project from './Project/Project';
 import FadeInSection from '../FadeinSection/FadeinSection';
@@ -20,7 +14,7 @@ interface Props {
 const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState<number>(0);
-  const [heading, setHeading] = useState<string>(`projects`);
+  const [heading, setHeading] = useState<string>(`[projects]`);
   const [projectList, setProjectList] = useState<
     | {
         id: number;
@@ -44,7 +38,7 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
 
     setTimeout(() => {
       clearInterval(shuffle);
-      setHeading('Projects ');
+      setHeading('[Projects] ');
     }, 2000);
   };
 
@@ -155,8 +149,9 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
       <FadeInSection>
         <div
           className="goto_next"
-          onClick={() => {
-            setActivePanel('portfolio');
+          onClick={(e) => {
+            setActivePanel('skills');
+            e.stopPropagation();
           }}
         >
           <span className="outer">

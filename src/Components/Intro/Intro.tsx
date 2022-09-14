@@ -139,8 +139,9 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
       </section>
       <div
         className="goto_next"
-        onClick={() => {
-          setActivePanel('portfolio');
+        onClick={(e) => {
+          setActivePanel('projects');
+          e.stopPropagation();
         }}
       >
         <span className="outer">
