@@ -17,6 +17,13 @@
 
 .portfolio-container > section {
   width: 100%;
+  margin-bottom: 5rem;
+}
+
+.portfolio-header {
+  font-size: 2.5rem;
+  margin: 5rem 0;
+  color: var(--green);
 }
 
 .portfolio-container > .goto_next {
@@ -33,7 +40,30 @@
   margin-bottom: 1rem;
 }
 
+.repo-link {
+  text-decoration: none;
+  font-size: 2rem;
+  color: var(--white);
+  padding-left: 5rem;
+}
+
+.repo-link:hover {
+  color: var(--green);
+}
+
 @media only screen and (max-width: 821px) {
+  .portfolio-header {
+    margin: 1rem 0;
+  }
+
+  .projects-wrapper {
+    gap: 0px;
+  }
+
+  .repo-link {
+    padding: 0;
+    margin: 2rem auto;
+  }
 }
 
 @media only screen and (max-width: 480px) {

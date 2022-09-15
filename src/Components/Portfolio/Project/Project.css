@@ -1,8 +1,6 @@
 .project-container {
   border-bottom: solid 1px grey;
   width: 85vw;
-  /* height: 60vh; */
-  padding: 0 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
@@ -162,4 +160,37 @@
 
 .link-icons-container > button:hover a {
   color: #2d3142;
+}
+
+@media only screen and (max-width: 821px) {
+  .project-container {
+    padding: 5rem 0;
+  }
+
+  .project-container > * {
+    padding: 0 1rem;
+  }
+
+  .project-container > .image-container {
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .project-container {
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'heading'
+      'image'
+      'text';
+  }
+
+  .image-container > img {
+    max-height: 100%;
+  }
+
+  .text-container {
+    padding: 0;
+  }
 }
