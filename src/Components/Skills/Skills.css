@@ -1,0 +1,200 @@
+.skills-container::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--scrollbar);
+}
+
+.skills-container::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px var(--scrollbar-thumb);
+}
+
+.skills-container {
+  width: 100%;
+  height: 85vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar) var(--scrollbar-thumb);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills-container > section {
+  color: var(--white);
+  width: 85%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 20% 5% 20% 5% 35%;
+  grid-template-rows: 6% 4% 20% 4% 4% 20% 4% 4% 25% 4% 4%;
+  grid-template-areas:
+    'skills curlyOpen . . .'
+    '. . langs bracketOpen1 .'
+    '. . . . langContainer'
+    '. . . bracketClose1 .'
+    '. . techs bracketOpen2 .'
+    '. . . . techContainer'
+    '. . . bracketClose2 .'
+    '. . tools bracketOpen3 .'
+    '. . . . toolsContainer'
+    '. . . bracketClose3 .'
+    '. curlyClose . . .';
+}
+
+.skills-container > section > * {
+  place-self: center left;
+}
+
+.skills-header {
+  grid-area: skills;
+  color: var(--blue);
+}
+
+.item-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.languages-header {
+  grid-area: langs;
+  width: 100%;
+}
+
+.languages-container {
+  grid-area: langContainer;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.technologies-container {
+  grid-area: techContainer;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tools-container {
+  grid-area: toolsContainer;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.curlyOpen-outer {
+  grid-area: curlyOpen;
+  font-size: 1.5rem;
+}
+
+.curlyClose-outer {
+  grid-area: curlyClose;
+  font-size: 1.5rem;
+}
+
+.bracketOpen1 {
+  grid-area: bracketOpen1;
+  font-size: 1.5rem;
+}
+
+.bracketOpen2 {
+  grid-area: bracketOpen2;
+  font-size: 1.5rem;
+}
+
+.bracketOpen3 {
+  grid-area: bracketOpen3;
+  font-size: 1.5rem;
+}
+
+.bracketClose1 {
+  grid-area: bracketClose1;
+  font-size: 1.5rem;
+}
+
+.bracketClose2 {
+  grid-area: bracketClose2;
+  font-size: 1.5rem;
+}
+
+.bracketClose3 {
+  grid-area: bracketClose3;
+  font-size: 1.5rem;
+}
+
+.technologies-header {
+  grid-area: techs;
+  width: 100%;
+}
+
+.tools-header {
+  grid-area: tools;
+  width: 100%;
+}
+
+@media only screen and (max-width: 821px) {
+  .skills-header,
+  .languages-header,
+  .technologies-header,
+  .tools-header,
+  .item-wrapper {
+    font-size: 1.2rem;
+  }
+
+  .skills-container > section {
+    grid-template-columns: 25% 15% 15% 45%;
+    grid-template-rows: 6% 4% 20% 4% 4% 20% 4% 4% 25% 4% 4%;
+    grid-template-areas:
+      'skills curlyOpen . . '
+      'langs bracketOpen1 . .'
+      '. . . langContainer'
+      '. bracketClose1 . .'
+      'techs bracketOpen2 . .'
+      '. . . techContainer'
+      '. bracketClose2 . .'
+      'tools bracketOpen3 . .'
+      '. . . toolsContainer'
+      '. bracketClose3 . .'
+      '. curlyClose . .';
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .skills-header,
+  .languages-header,
+  .technologies-header,
+  .tools-header,
+  .item-wrapper {
+    font-size: small;
+  }
+
+  .skills-container > section {
+    grid-template-columns: 35% 15% 55%;
+    grid-template-rows: 6% 4% 20% 4% 4% 20% 4% 4% 25% 4% 4%;
+    grid-template-areas:
+      'skills curlyOpen . '
+      'langs bracketOpen1 .'
+      '. . langContainer'
+      '. bracketClose1 .'
+      'techs bracketOpen2 .'
+      '. . techContainer'
+      '. bracketClose2 .'
+      'tools bracketOpen3 .'
+      '. . toolsContainer'
+      '. bracketClose3 .'
+      '. curlyClose .';
+  }
+
+  .item-wrapper > svg {
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .item-wrapper {
+    gap: 0.2rem;
+  }
+}
