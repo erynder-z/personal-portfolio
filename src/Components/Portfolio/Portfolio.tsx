@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { MdKeyboardArrowDown } from 'react-icons/md';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import './Portfolio.css';
 import ProjectList from './ProjectList';
@@ -9,10 +8,9 @@ import FadeInSection from '../FadeinSection/FadeinSection';
 interface Props {
   active: boolean;
   shuffleText: (text: string) => string;
-  setActivePanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
+const Portfolio: FC<Props> = ({ active, shuffleText }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState<number>(0);
   const [heading, setHeading] = useState<string>(`[projects]`);

@@ -14,16 +14,14 @@ import {
   SiWebpack,
   SiStackoverflow,
 } from 'react-icons/si';
-import { MdKeyboardArrowDown } from 'react-icons/md';
 import './Skills.css';
 
 interface Props {
   active: boolean;
   shuffleText: (text: string) => string;
-  setActivePanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
+const Skills: FC<Props> = ({ active, shuffleText }) => {
   const [chars, setChars] = useState({
     colon: ':',
     comma: ',',
@@ -262,7 +260,6 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
       <section>
         <h2 className="skills-header"> {heading}</h2>
         <div className="curlyOpen-outer">{chars.curlyBracesOpen}</div>
-
         <h3 className="languages-header">{languages.header}</h3>
         <div className="bracketOpen1">{chars.bracketsOpen}</div>
         <div className="languages-container">
@@ -350,7 +347,7 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
           </div>
           <div className="item-wrapper">
             <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
-            {tools.tool5Icon} {tools.tool5}
+            {tools.tool5Icon} {chars.colon} {tools.tool5}
             <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
           </div>
         </div>
