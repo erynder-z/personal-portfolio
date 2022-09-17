@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import './Portfolio.css';
 import ProjectList from './ProjectList';
 import Project from './Project/Project';
@@ -143,23 +144,8 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
           className="repo-link"
           href="https://github.com/erynder-z?tab=repositories"
         >
-          View More
+          View More <FaExternalLinkAlt size="1rem" />
         </a>
-      </FadeInSection>
-      <FadeInSection>
-        <div
-          className="goto_next"
-          onClick={(e) => {
-            setActivePanel('skills');
-            e.stopPropagation();
-          }}
-        >
-          <span className="outer">
-            <span className="inner">
-              <MdKeyboardArrowDown className="downArrow bounce" />
-            </span>
-          </span>
-        </div>
       </FadeInSection>
     </div>
   );

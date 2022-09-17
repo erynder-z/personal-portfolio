@@ -357,20 +357,6 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
         <div className="bracketClose3">{chars.bracketsClose}</div>
         <div className="curlyClose-outer">{chars.curlyBracesClose}</div>
       </section>
-
-      <div
-        className="goto_next"
-        onClick={(e) => {
-          setActivePanel('contact');
-          e.stopPropagation();
-        }}
-      >
-        <span className="outer">
-          <span className="inner">
-            <MdKeyboardArrowDown className="downArrow bounce" />
-          </span>
-        </span>
-      </div>
     </div>
   );
 };
