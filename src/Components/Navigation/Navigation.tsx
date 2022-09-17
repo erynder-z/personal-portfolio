@@ -1,6 +1,7 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import Intro from '../Intro/Intro';
 import Portfolio from '../Portfolio/Portfolio';
+import Skills from '../Skills/Skills';
 import './Navigation.css';
 
 interface Props {
@@ -12,10 +13,10 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
   const [activePanel, setActivePanel] = useState<string>('intro');
   const [doShuffle, setDoShuffle] = useState<boolean>(true);
   const [categories, setCategories] = useState<string[]>([
-    'intro',
-    'portfolio',
-    'skills',
-    'contact',
+    '[intro]',
+    '[projects]',
+    '[skills]',
+    '[contact]',
   ]);
 
   const firstShuffle = (): void => {
@@ -26,7 +27,7 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
     setTimeout(() => {
       clearInterval(shuffle);
 
-      setCategories(['!ntro', 'portfol!o', 'sk!lls', 'contact']);
+      setCategories(['[!ntro]', '[proJects]', '[sk!lls]', '[contact]']);
     }, 2000);
   };
 
@@ -39,7 +40,7 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
       setTimeout(() => {
         clearInterval(shuffleAgain);
 
-        setCategories(['Intro', 'Portfo1io', 'Ski11s', 'Contact']);
+        setCategories(['[Intro]', '[ProJects]', '[Ski11s]', '[Contact]']);
       }, 500);
     }, 3000);
   };
@@ -52,10 +53,21 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
 
       setTimeout(() => {
         clearInterval(finalshuffle);
-        setCategories(['Intro', 'Portfolio', 'Skills', 'Contact']);
+        setCategories(['[Intro]', '[Projects]', '[Skills]', '[Contact]']);
         setDoShuffle(false);
       }, 1000);
     }, 5000);
+  };
+
+  const categoryChangeShuffle = (): void => {
+    const shuffle = setInterval(() => {
+      setCategories(shuffleNav(categories));
+    }, 50);
+
+    setTimeout(() => {
+      clearInterval(shuffle);
+      setCategories(['[Intro]', '[Projects]', '[Skills]', '[Contact]']);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -82,7 +94,7 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
             }
           }}
         >
-          <h1>{categories[0]}</h1>
+          <h1 className="panel-heading-intro">{categories[0]}</h1>
           <Intro
             active={activePanel === 'intro' ? true : false}
             shuffleText={shuffleText}
@@ -90,18 +102,18 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
           />
         </div>
         <div
-          className={`panel portfolio ${
-            activePanel === 'portfolio' ? 'open' : 'closed'
+          className={`panel projects ${
+            activePanel === 'projects' ? 'open' : 'closed'
           }`}
           onClick={() => {
-            setActivePanel('portfolio');
+            setActivePanel('projects');
+            categoryChangeShuffle();
           }}
         >
-          <h1>{categories[1]}</h1>
+          <h1 className="panel-heading-projects">{categories[1]}</h1>
           <Portfolio
-            active={activePanel === 'portfolio' ? true : false}
+            active={activePanel === 'projects' ? true : false}
             shuffleText={shuffleText}
-            setActivePanel={setActivePanel}
           />
         </div>
         <div
@@ -110,10 +122,14 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
           }`}
           onClick={() => {
             setActivePanel('skills');
+            categoryChangeShuffle();
           }}
         >
-          <h1>{categories[2]}</h1>
-          <p>My skills</p>
+          <h1 className="panel-heading-skills">{categories[2]}</h1>
+          <Skills
+            active={activePanel === 'skills' ? true : false}
+            shuffleText={shuffleText}
+          />
         </div>
         <div
           className={`panel contact ${
@@ -121,9 +137,10 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
           }`}
           onClick={() => {
             setActivePanel('contact');
+            categoryChangeShuffle();
           }}
         >
-          <h1>{categories[3]}</h1>
+          <h1 className="panel-heading-contact">{categories[3]}</h1>
           <p>Contact me</p>
         </div>
       </div>
