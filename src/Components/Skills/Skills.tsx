@@ -24,6 +24,15 @@ interface Props {
 }
 
 const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
+  const [chars, setChars] = useState({
+    colon: ':',
+    comma: ',',
+    curlyBracesOpen: '{',
+    curlyBracesClose: '}',
+    bracketsOpen: '[',
+    bracketsClose: ']',
+  });
+
   const [heading, setHeading] = useState<string>(`let skills = `);
   const [languages, setLanguages] = useState<{
     header: string;
@@ -31,12 +40,20 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     language2: string;
     language3: string;
     language4: string;
+    language1Icon: JSX.Element;
+    language2Icon: JSX.Element;
+    language3Icon: JSX.Element;
+    language4Icon: JSX.Element;
   }>({
     header: 'Languages:',
     language1: 'HTML',
     language2: 'CSS',
     language3: 'JavaScript',
     language4: 'TypeScript',
+    language1Icon: <SiHtml5 size="2rem" color="#e34f26" />,
+    language2Icon: <SiCss3 size="2rem" color="#264de4" />,
+    language3Icon: <SiJavascript size="2rem" color="#f7df1e" />,
+    language4Icon: <SiTypescript size="2rem" color="#3178c6" />,
   });
 
   const [technologies, setTechnologies] = useState<{
@@ -45,12 +62,20 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     tech2: string;
     tech3: string;
     tech4: string;
+    tech1Icon: JSX.Element;
+    tech2Icon: JSX.Element;
+    tech3Icon: JSX.Element;
+    tech4Icon: JSX.Element;
   }>({
     header: 'Technologies:',
     tech1: 'React',
     tech2: 'Firebase',
     tech3: 'Sass',
     tech4: 'NodeJS',
+    tech1Icon: <SiReact size="2rem" color="#61dbfb" />,
+    tech2Icon: <SiFirebase size="2rem" color="#FFCB2B" />,
+    tech3Icon: <SiSass size="2rem" color="#cd669a" />,
+    tech4Icon: <SiNodedotjs size="2rem" color="#68a063" />,
   });
 
   const [tools, setTools] = useState<{
@@ -60,6 +85,11 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     tool3: string;
     tool4: string;
     tool5: string;
+    tool1Icon: JSX.Element;
+    tool2Icon: JSX.Element;
+    tool3Icon: JSX.Element;
+    tool4Icon: JSX.Element;
+    tool5Icon: JSX.Element;
   }>({
     header: 'Tools:',
     tool1: 'Git',
@@ -67,18 +97,78 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     tool3: 'Jest',
     tool4: 'Webpack',
     tool5: 'StackOverflow',
+    tool1Icon: <SiGit size="2rem" color="#f1502f" />,
+    tool2Icon: <SiGithub size="2rem" color="#fffff" />,
+    tool3Icon: <SiJest size="2rem" color="#18df16" />,
+    tool4Icon: <SiWebpack size="2rem" color="#84c6e8" />,
+    tool5Icon: <SiStackoverflow size="2rem" color="#f2740d" />,
   });
+
+  const shuffleChars = (): void => {
+    const caracterArray = [
+      ',',
+      ':',
+      '{',
+      '}',
+      '[',
+      ']',
+      '#',
+      '&',
+      '$',
+      '!',
+      '"',
+      '§',
+      '+',
+    ];
+    const getRandomChar = (): string => {
+      return caracterArray[Math.floor(Math.random() * caracterArray.length)];
+    };
+
+    setChars({
+      colon: getRandomChar(),
+      comma: getRandomChar(),
+      curlyBracesOpen: getRandomChar(),
+      curlyBracesClose: getRandomChar(),
+      bracketsOpen: getRandomChar(),
+      bracketsClose: getRandomChar(),
+    });
+  };
+
+  const getRandomIcon = (): JSX.Element => {
+    const iconsArray = [
+      <SiHtml5 size="2rem" color="#e34f26" />,
+      <SiCss3 size="2rem" color="#264de4" />,
+      <SiJavascript size="2rem" color="#f7df1e" />,
+      <SiTypescript size="2rem" color="#3178c6" />,
+      <SiReact size="2rem" color="#61dbfb" />,
+      <SiFirebase size="2rem" color="#FFCB2B" />,
+      <SiSass size="2rem" color="#cd669a" />,
+      <SiNodedotjs size="2rem" color="#68a063" />,
+      <SiGit size="2rem" color="#f1502f" />,
+      <SiGithub size="2rem" color="#fffff" />,
+      <SiJest size="2rem" color="#18df16" />,
+      <SiWebpack size="2rem" color="#84c6e8" />,
+      <SiStackoverflow size="2rem" color="#f2740d" />,
+    ];
+
+    return iconsArray[Math.floor(Math.random() * iconsArray.length)];
+  };
 
   useEffect(() => {
     const shuffle = (): void => {
       const shuffle = setInterval(() => {
         setHeading(shuffleText(heading));
+        shuffleChars();
         setLanguages({
           header: shuffleText('Languages:'),
           language1: shuffleText('HTML'),
           language2: shuffleText('CSS'),
           language3: shuffleText('JavaScript'),
           language4: shuffleText('TypeScript'),
+          language1Icon: getRandomIcon(),
+          language2Icon: getRandomIcon(),
+          language3Icon: getRandomIcon(),
+          language4Icon: getRandomIcon(),
         });
         setTechnologies({
           header: shuffleText('Technologies:'),
@@ -86,6 +176,10 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
           tech2: shuffleText('Firebase'),
           tech3: shuffleText('Sass'),
           tech4: shuffleText('NodeJS'),
+          tech1Icon: getRandomIcon(),
+          tech2Icon: getRandomIcon(),
+          tech3Icon: getRandomIcon(),
+          tech4Icon: getRandomIcon(),
         });
 
         setTools({
@@ -95,25 +189,50 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
           tool3: shuffleText('Jest'),
           tool4: shuffleText('Webpack'),
           tool5: shuffleText('StackOverflow'),
+          tool1Icon: getRandomIcon(),
+          tool2Icon: getRandomIcon(),
+          tool3Icon: getRandomIcon(),
+          tool4Icon: getRandomIcon(),
+          tool5Icon: getRandomIcon(),
         });
       }, 50);
 
       setTimeout(() => {
         clearInterval(shuffle);
+
         setHeading('let skills = ');
+
+        setChars({
+          colon: ':',
+          comma: ',',
+          curlyBracesOpen: '{',
+          curlyBracesClose: '}',
+          bracketsOpen: '[',
+          bracketsClose: ']',
+        });
+
         setLanguages({
           header: 'Languages:',
           language1: 'HTML',
           language2: 'CSS',
           language3: 'JavaScript',
           language4: 'TypeScript',
+          language1Icon: <SiHtml5 size="2rem" color="#e34f26" />,
+          language2Icon: <SiCss3 size="2rem" color="#264de4" />,
+          language3Icon: <SiJavascript size="2rem" color="#f7df1e" />,
+          language4Icon: <SiTypescript size="2rem" color="#3178c6" />,
         });
+
         setTechnologies({
           header: 'Technologies:',
           tech1: 'React',
           tech2: 'Firebase',
           tech3: 'Sass',
           tech4: 'NodeJS',
+          tech1Icon: <SiReact size="2rem" color="#61dbfb" />,
+          tech2Icon: <SiFirebase size="2rem" color="#FFCB2B" />,
+          tech3Icon: <SiSass size="2rem" color="#cd669a" />,
+          tech4Icon: <SiNodedotjs size="2rem" color="#68a063" />,
         });
 
         setTools({
@@ -123,6 +242,11 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
           tool3: 'Jest',
           tool4: 'Webpack',
           tool5: 'StackOverflow',
+          tool1Icon: <SiGit size="2rem" color="#f1502f" />,
+          tool2Icon: <SiGithub size="2rem" color="#fffff" />,
+          tool3Icon: <SiJest size="2rem" color="#18df16" />,
+          tool4Icon: <SiWebpack size="2rem" color="#84c6e8" />,
+          tool5Icon: <SiStackoverflow size="2rem" color="#f2740d" />,
         });
       }, 2000);
     };
@@ -137,102 +261,101 @@ const Skills: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     <div className="skills-container">
       <section>
         <h2 className="skills-header"> {heading}</h2>
-        <div className="curlyOpen-outer">&#123;</div>
+        <div className="curlyOpen-outer">{chars.curlyBracesOpen}</div>
 
         <h3 className="languages-header">{languages.header}</h3>
-        <div className="bracketOpen1">&#91;</div>
+        <div className="bracketOpen1">{chars.bracketsOpen}</div>
         <div className="languages-container">
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiHtml5 size="2rem" />
-            {languages.language1}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {languages.language1Icon} {chars.colon} {languages.language1}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiCss3 size="2rem" />
-            {languages.language2}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {languages.language2Icon} {chars.colon} {languages.language2}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiJavascript size="2rem" />
-            {languages.language3}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {languages.language3Icon} {chars.colon} {languages.language3}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiTypescript size="2rem" />
-            {languages.language4}
-            <div className="curlyClose-inner">&#125;</div>
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {languages.language4Icon} {chars.colon} {languages.language4}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
           </div>
         </div>
-        <div className="bracketClose1">&#93; ,</div>
+        <div className="bracketClose1">{chars.bracketsClose} ,</div>
         <h3 className="technologies-header">{technologies.header}</h3>
-        <div className="bracketOpen2">&#91;</div>
+        <div className="bracketOpen2">{chars.bracketsOpen}</div>
         <div className="technologies-container">
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiReact size="2rem" />
-            {technologies.tech1}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {technologies.tech1Icon} {chars.colon} {technologies.tech1}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiFirebase size="2rem" />
-            {technologies.tech2}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {technologies.tech2Icon} {chars.colon} {technologies.tech2}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiSass size="2rem" />
-            {technologies.tech3}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {technologies.tech3Icon} {chars.colon} {technologies.tech3}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiNodedotjs size="2rem" />
-            {technologies.tech4}
-            <div className="curlyClose-inner">&#125;</div>
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {technologies.tech4Icon} {chars.colon} {technologies.tech4}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
           </div>
         </div>
-        <div className="bracketClose2">&#93; ,</div>
+        <div className="bracketClose2">
+          {chars.bracketsClose} {chars.comma}
+        </div>
         <h3 className="tools-header">{tools.header}</h3>
-        <div className="bracketOpen3">&#91;</div>
+        <div className="bracketOpen3">{chars.bracketsOpen}</div>
         <div className="tools-container">
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiGit size="2rem" />
-            {tools.tool1}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {tools.tool1Icon} {chars.colon} {tools.tool1}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiGithub size="2rem" />
-            {tools.tool2}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {tools.tool2Icon} {chars.colon} {tools.tool2}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiJest size="2rem" />
-            {tools.tool3}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {tools.tool3Icon} {chars.colon} {tools.tool3}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiWebpack size="2rem" />
-            {tools.tool4}
-            <div className="curlyClose-inner">&#125;</div>,
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {tools.tool4Icon} {chars.colon} {tools.tool4}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+            {chars.comma}
           </div>
           <div className="item-wrapper">
-            <div className="curlyOpen-inner">&#123;</div>
-            <SiStackoverflow size="2rem" />
-            {tools.tool5}
-            <div className="curlyClose-inner">&#125;</div>
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {tools.tool5Icon} {tools.tool5}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
           </div>
         </div>
-        <div className="bracketClose3">&#93;</div>
-        <div className="curlyClose-outer">&#125;</div>
+        <div className="bracketClose3">{chars.bracketsClose}</div>
+        <div className="curlyClose-outer">{chars.curlyBracesClose}</div>
       </section>
 
       <div
