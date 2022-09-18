@@ -35,7 +35,8 @@ const ProjectList: {
     imageURL: imageRobin,
     gifURL: gifRobin,
     gifLength: 26760,
-    description: 'A fully featured, twitter-like social network.',
+    description:
+      'A fully featured, twitter-like social network. Users can post, follow other users and customize their profile. The app uses Firebase as the backend.',
     githubLink: 'https://github.com/erynder-z/robin-sn',
     liveLink: 'https://erynder-z.github.io/robin-sn',
     technologies: 'React, JavaScript, Firebase',
@@ -47,7 +48,8 @@ const ProjectList: {
     imageURL: imageChatpack,
     gifURL: gifChatpack,
     gifLength: 14500,
-    description: 'A realtime chatroom application.',
+    description:
+      'A realtime chatroom application with a simple interface. Users can log on using a Google, GitHub, Twitter or Microsoft account.',
     githubLink: 'https://github.com/erynder-z/chatpack',
     liveLink: 'https://erynder-z.github.io/chatpack/',
     technologies: 'React, Typescript, Firebase',
@@ -59,7 +61,8 @@ const ProjectList: {
     imageURL: imageFind,
     gifURL: gifFind,
     gifLength: 13130,
-    description: 'A hidden object game.',
+    description:
+      'A hidden object game where users have to find certain characters in a huge image. The app features an online leaderboard for the 10 fastest players. ',
     githubLink: 'https://github.com/erynder-z/image-tagging-app',
     liveLink: 'https://erynder-z.github.io/image-tagging-app/',
     technologies: 'React, JavaScript, Firebase',
@@ -71,7 +74,8 @@ const ProjectList: {
     imageURL: imageJstodo,
     gifURL: gifjstodo,
     gifLength: 57040,
-    description: 'A task-/organizer application.',
+    description:
+      'A task-/organizer application. Users can search, create and modify tasks, set priorities and deadlines. Tasks can be categorized in predefined or custom categories. Tasks can be stored locally or online via a Firebase backend.',
     githubLink: 'https://github.com/erynder-z/JS_Todo',
     liveLink: 'https://erynder-z.github.io/JS_Todo/',
     technologies: 'JavaScript, Firebase',
@@ -83,7 +87,8 @@ const ProjectList: {
     imageURL: imageBattleship,
     gifURL: gifBattleship,
     gifLength: 32010,
-    description: 'A battleship game build via test-driven development.',
+    description:
+      'A battleship game build via test-driven development. Game logic is tested using the Jest testing framework.',
     githubLink: 'https://github.com/erynder-z/battleship',
     liveLink: 'https://erynder-z.github.io/battleship/',
     technologies: 'JavaScript, Jest',
@@ -95,7 +100,8 @@ const ProjectList: {
     imageURL: imageEryngi,
     gifURL: gifEryngi,
     gifLength: 13060,
-    description: 'A bootstrap-like custom CSS-library build with SCSS.',
+    description:
+      'A bootstrap-like custom CSS-library build with SCSS. Library can be used to quickly style a simple webpage.',
     githubLink: 'https://github.com/erynder-z/eryngi-css',
     liveLink: 'https://erynder-z.github.io/eryngi-css/',
     technologies: 'SASS',
@@ -107,7 +113,8 @@ const ProjectList: {
     imageURL: imageLeshop,
     gifURL: gifLeshop,
     gifLength: 9000,
-    description: 'Frontend for a fake online shop.',
+    description:
+      'Frontend for a fake online shop. Users can browse different product categories and add/remove items to/from the shopping cart. Shop items are fetched via an online API.',
     githubLink: 'https://github.com/erynder-z/le-shop',
     liveLink: 'https://erynder-z.github.io/le-shop/',
     technologies: 'React, JavaScript, Jest, Fake Store API',
@@ -119,7 +126,8 @@ const ProjectList: {
     imageURL: imageCvcreator,
     gifURL: gifCvcreator,
     gifLength: 31350,
-    description: 'Application to create and print your resumee/cv.',
+    description:
+      'WYSIWYG-editor to create and print your resumee/cv. Users can add/remove sections of the cv as needed and the final document is updated in real-time.',
     githubLink: 'https://github.com/erynder-z/cv-creator',
     liveLink: 'https://erynder-z.github.io/cv-creator/',
     technologies: 'React, JavaScript',
@@ -132,7 +140,7 @@ const ProjectList: {
     gifURL: gifJustweather,
     gifLength: 30350,
     description:
-      ' A weather application using the OpenWeatherMap One Call API.',
+      'A weather application using the OpenWeatherMap One Call API. Users can search for different cities and the app displays the current weather and optionally a 7-day forecast. Units can be shown in celsius or fahrenheit.',
     githubLink: 'https://github.com/erynder-z/just-the-weather',
     liveLink: 'https://erynder-z.github.io/just-the-weather/',
     technologies: 'JavaScript, OpenWeatherMap One Call API',
