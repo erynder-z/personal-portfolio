@@ -47,12 +47,15 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
   const [headingTechnologies, setHeadingTechnologies] =
     useState<string>('Technologies');
   const [headingYear, setheadingYear] = useState<string>('Year');
+  const [previewPlay, setPreviewPlay] = useState<string>('Preview');
   const [previewSource, setPreviewSource] = useState<string>('Source');
   const [previewLive, setPreviewLive] = useState<string>('Live');
+  const [currentIndex, setCurrentIndex] = useState<number[]>([0, 1, 2]);
 
   const shuffle = (): void => {
     setMakeImageGlitch(true);
     const shuffle = setInterval(() => {
+      setCurrentIndex(getRandomIndex());
       shufflePreviewImage();
       setProjectTitle(shuffleText(projectTitle));
       setProjectDescription(shuffleText(projectDescription));
@@ -61,6 +64,7 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
       setHeadingTitle(shuffleText(headingTitle));
       setHeadingTechnologies(shuffleText(headingTechnologies));
       setheadingYear(shuffleText(headingYear));
+      setPreviewPlay(shuffleText(previewPlay));
       setPreviewSource(shuffleText(previewSource));
       setPreviewLive(shuffleText(previewLive));
     }, 50);
@@ -68,6 +72,7 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     setTimeout(() => {
       setMakeImageGlitch(false);
       clearInterval(shuffle);
+      setCurrentIndex([0, 1, 2]);
       setImageGlitch('normal');
       setProjectTitle(projectTitle);
       setProjectDescription(projectDescription);
@@ -76,6 +81,7 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
       setHeadingTitle(headingTitle);
       setHeadingTechnologies(headingTechnologies);
       setheadingYear(headingYear);
+      setPreviewPlay(previewPlay);
       setPreviewSource(previewSource);
       setPreviewLive(previewLive);
     }, 2000);
@@ -105,14 +111,14 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     }
   };
 
-  const handlePlayPreview = (): void => {
+  function handlePlayPreview(): void {
     setPlayAnimatedGif(!playAnimatedGif);
     setTimeout(() => {
       setPlayAnimatedGif(false);
     }, gifLength);
-  };
+  }
 
-  const getPlayButton = () => {
+  function getPlayButton() {
     if (playAnimatedGif) {
       return {
         playButton: <MdStop size="2rem" className="playBtn" />,
@@ -122,7 +128,51 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
         playButton: <MdPlayArrow size="2rem" className="playBtn" />,
       };
     }
+  }
+
+  const getRandomIndex = () => {
+    let unshuffled = [0, 1, 2];
+
+    let shuffled = unshuffled
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+
+    return shuffled;
   };
+
+  const buttons = [
+    <button className="previewBtn" onClick={handlePlayPreview}>
+      {<div className="circle"></div>}
+      <div className="previewWrapper">
+        {previewPlay} {getPlayButton().playButton}
+      </div>
+    </button>,
+    <button className="github-link-button">
+      <div className="circle"></div>
+      <a
+        href={githubLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="github-link"
+      >
+        {previewSource}
+        <FaGithub size="1.5rem" />
+      </a>
+    </button>,
+    <button className="live-link-button">
+      <div className="circle"></div>
+      <a
+        href={liveLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="live-link"
+      >
+        {previewLive}
+        <FaExternalLinkAlt size="1.5rem" />
+      </a>
+    </button>,
+  ];
 
   useEffect(() => {
     if (playAnimatedGif) {
@@ -150,9 +200,11 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
           className={`${makeImageGlitch ? imageGlitch : ''}`}
         />
 
-        <button className="previewBtn" onClick={handlePlayPreview}>
-          {getPlayButton().playButton}
-        </button>
+        <div className="project-icons-container">
+          {buttons[currentIndex[0]]}
+          {buttons[currentIndex[1]]}
+          {buttons[currentIndex[2]]}
+        </div>
       </div>
       <div className="text-container">
         <h4 className="project-description-heading">{headingTitle}</h4>
@@ -161,32 +213,6 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
         <p className="project-technologies">{projectTechnologies}</p>
         <h4 className="project-year-header">{headingYear}</h4>
         <p className="project-year">{projectYear}</p>
-        <div className="link-icons-container">
-          <button className="github-link-button">
-            <div className="circle"></div>
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="github-link"
-            >
-              {previewSource}
-              <FaGithub size="1.5rem" />
-            </a>
-          </button>
-          <button className="live-link-button">
-            <div className="circle"></div>
-            <a
-              href={liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="live-link"
-            >
-              {previewLive}
-              <FaExternalLinkAlt size="1.5rem" />
-            </a>
-          </button>
-        </div>
       </div>
     </div>
   );
