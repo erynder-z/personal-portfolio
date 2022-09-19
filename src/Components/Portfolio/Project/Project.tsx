@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { MdPlayArrow, MdStop } from 'react-icons/md';
-import randomIntFromInterval from '../../RandomIntFromInverval/RandomIntFromInverval';
 import './Project.css';
 
 interface Props {
@@ -33,8 +32,7 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     year,
   } = project;
 
-  const [imageGlitch, setImageGlitch] = useState<string>('normal');
-  const [makeImageGlitch, setMakeImageGlitch] = useState<boolean>(false);
+  const [reavealImage, setRevealImage] = useState<boolean>(false);
   const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
   const [projectImageURL, setProjectImageURL] = useState<string>(imageURL);
   const [projectTitle, setProjectTitle] = useState<string>(title);
@@ -53,10 +51,9 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
   const [currentIndex, setCurrentIndex] = useState<number[]>([0, 1, 2]);
 
   const shuffle = (): void => {
-    setMakeImageGlitch(true);
+    setRevealImage(true);
     const shuffle = setInterval(() => {
       setCurrentIndex(getRandomIndex());
-      shufflePreviewImage();
       setProjectTitle(shuffleText(projectTitle));
       setProjectDescription(shuffleText(projectDescription));
       setProjectTechnologies(shuffleText(projectTechnologies));
@@ -70,10 +67,9 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     }, 50);
 
     setTimeout(() => {
-      setMakeImageGlitch(false);
+      setRevealImage(false);
       clearInterval(shuffle);
       setCurrentIndex([0, 1, 2]);
-      setImageGlitch('normal');
       setProjectTitle(projectTitle);
       setProjectDescription(projectDescription);
       setProjectTechnologies(projectTechnologies);
@@ -85,30 +81,6 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
       setPreviewSource(previewSource);
       setPreviewLive(previewLive);
     }, 2000);
-  };
-
-  const shufflePreviewImage = () => {
-    const random = randomIntFromInterval(1, 5);
-
-    switch (random) {
-      case 1:
-        setImageGlitch('normal');
-        break;
-      case 2:
-        setImageGlitch('glitchUp');
-        break;
-      case 3:
-        setImageGlitch('glitchDown');
-        break;
-      case 4:
-        setImageGlitch('glitchLeft');
-        break;
-      case 5:
-        setImageGlitch('glitchRight');
-        break;
-      default:
-        break;
-    }
   };
 
   function handlePlayPreview(): void {
@@ -193,13 +165,18 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
   return (
     <div className="project-container">
       <h4 className="project-title">{projectTitle}</h4>
-      <div className="image-container">
-        <img
-          src={projectImageURL}
-          alt="Project Screenshot"
-          className={`${makeImageGlitch ? imageGlitch : ''}`}
-        />
-
+      <div className="preview-container">
+        <div className="image-container">
+          <img
+            src={projectImageURL}
+            alt="Project Screenshot"
+            className={`${reavealImage ? 'animate' : ''}`}
+          />
+          <div
+            className={`border-overlay ${reavealImage ? 'animate' : ''}`}
+          ></div>
+          <div className={`overlay ${reavealImage ? 'animate' : ''}`}></div>
+        </div>
         <div className="project-icons-container">
           {buttons[currentIndex[0]]}
           {buttons[currentIndex[1]]}
