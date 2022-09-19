@@ -107,7 +107,9 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
           }`}
           onClick={() => {
             setActivePanel('projects');
-            categoryChangeShuffle();
+            if (activePanel !== 'projects') {
+              categoryChangeShuffle();
+            }
           }}
         >
           <h1 className="panel-heading-projects">{categories[1]}</h1>
@@ -122,7 +124,9 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
           }`}
           onClick={() => {
             setActivePanel('skills');
-            categoryChangeShuffle();
+            if (activePanel !== 'skills') {
+              categoryChangeShuffle();
+            }
           }}
         >
           <h1 className="panel-heading-skills">{categories[2]}</h1>
@@ -137,7 +141,9 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
           }`}
           onClick={() => {
             setActivePanel('contact');
-            categoryChangeShuffle();
+            if (activePanel !== 'contact') {
+              categoryChangeShuffle();
+            }
           }}
         >
           <h1 className="panel-heading-contact">{categories[3]}</h1>
