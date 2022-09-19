@@ -1,6 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { MdPlayArrow, MdStop } from 'react-icons/md';
 import './Project.css';
 
 interface Props {
@@ -45,15 +43,13 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
   const [headingTechnologies, setHeadingTechnologies] =
     useState<string>('Technologies');
   const [headingYear, setheadingYear] = useState<string>('Year');
-  const [previewPlay, setPreviewPlay] = useState<string>('Preview');
-  const [previewSource, setPreviewSource] = useState<string>('Source');
-  const [previewLive, setPreviewLive] = useState<string>('Live');
-  const [currentIndex, setCurrentIndex] = useState<number[]>([0, 1, 2]);
+  const [previewPlay, setPreviewPlay] = useState<string>('[Preview]');
+  const [previewSource, setPreviewSource] = useState<string>('[Source]');
+  const [previewLive, setPreviewLive] = useState<string>('[Live]');
 
   const shuffle = (): void => {
     setRevealImage(true);
     const shuffle = setInterval(() => {
-      setCurrentIndex(getRandomIndex());
       setProjectTitle(shuffleText(projectTitle));
       setProjectDescription(shuffleText(projectDescription));
       setProjectTechnologies(shuffleText(projectTechnologies));
@@ -69,7 +65,6 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     setTimeout(() => {
       setRevealImage(false);
       clearInterval(shuffle);
-      setCurrentIndex([0, 1, 2]);
       setProjectTitle(projectTitle);
       setProjectDescription(projectDescription);
       setProjectTechnologies(projectTechnologies);
@@ -83,74 +78,34 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     }, 2000);
   };
 
-  function handlePlayPreview(): void {
+  const handlePlayPreview = (): void => {
     setPlayAnimatedGif(!playAnimatedGif);
     setTimeout(() => {
       setPlayAnimatedGif(false);
     }, gifLength);
-  }
-
-  function getPlayButton() {
-    if (playAnimatedGif) {
-      return {
-        playButton: <MdStop size="2rem" className="playBtn" />,
-      };
-    } else {
-      return {
-        playButton: <MdPlayArrow size="2rem" className="playBtn" />,
-      };
-    }
-  }
-
-  const getRandomIndex = () => {
-    let unshuffled = [0, 1, 2];
-
-    let shuffled = unshuffled
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
-
-    return shuffled;
   };
-
-  const buttons = [
-    <button className="previewBtn" onClick={handlePlayPreview}>
-      {<div className="circle"></div>}
-      <div className="previewWrapper">
-        {previewPlay} {getPlayButton().playButton}
-      </div>
-    </button>,
-    <button className="github-link-button">
-      <div className="circle"></div>
-      <a
-        href={githubLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="github-link"
-      >
-        {previewSource}
-        <FaGithub size="1.5rem" />
-      </a>
-    </button>,
-    <button className="live-link-button">
-      <div className="circle"></div>
-      <a
-        href={liveLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="live-link"
-      >
-        {previewLive}
-        <FaExternalLinkAlt size="1.5rem" />
-      </a>
-    </button>,
-  ];
 
   useEffect(() => {
     if (playAnimatedGif) {
       setProjectImageURL(gifURL);
+      const shuffle = setInterval(() => {
+        setPreviewPlay(shuffleText('[Stop]'));
+      }, 50);
+
+      setTimeout(() => {
+        clearInterval(shuffle);
+        setPreviewPlay('[Stop]');
+      }, 500);
     } else {
       setProjectImageURL(imageURL);
+      const shuffle = setInterval(() => {
+        setPreviewPlay(shuffleText('[Preview]'));
+      }, 50);
+
+      setTimeout(() => {
+        clearInterval(shuffle);
+        setPreviewPlay('[Preview]');
+      }, 500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playAnimatedGif]);
@@ -178,9 +133,31 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
           <div className={`overlay ${reavealImage ? 'animate' : ''}`}></div>
         </div>
         <div className="project-icons-container">
-          {buttons[currentIndex[0]]}
-          {buttons[currentIndex[1]]}
-          {buttons[currentIndex[2]]}
+          <button className="previewBtn" onClick={handlePlayPreview}>
+            <div className="previewBtn-wrapper">{previewPlay}</div>
+          </button>
+
+          <button className="github-link-button">
+            <a
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="github-link"
+            >
+              {previewSource}
+            </a>
+          </button>
+
+          <button className="live-link-button">
+            <a
+              href={liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="live-link"
+            >
+              {previewLive}
+            </a>
+          </button>
         </div>
       </div>
       <div className="text-container">
