@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
-import './FadeinSection.css';
+import './VisibleSectionEffect.css';
 
 interface Props {
   children: JSX.Element;
 }
 
-const FadeInSection: FC<Props> = ({ children }) => {
+const VisibleSectionEffect: FC<Props> = ({ children }) => {
   const [isVisible, setVisible] = useState<boolean>(false);
   const domRef = useRef<HTMLDivElement>(null);
 
@@ -24,14 +24,18 @@ const FadeInSection: FC<Props> = ({ children }) => {
     };
   }, []);
 
+  // if the child is a Project component: pass modified child. Else pass the unmodified child.
+  const originalChild = children;
+  const modifiedChild = React.cloneElement(children, { isVisible });
+
   return (
     <div
       ref={domRef}
       className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
     >
-      {children}
+      {children.type.name === 'Project' ? modifiedChild : originalChild}
     </div>
   );
 };
 
-export default FadeInSection;
+export default VisibleSectionEffect;
