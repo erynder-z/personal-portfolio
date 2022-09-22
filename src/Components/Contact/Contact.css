@@ -16,23 +16,45 @@
   scrollbar-color: var(--scrollbar) var(--scrollbar-thumb);
   display: flex;
   justify-content: center;
-  align-items: center;
+  /*  align-items: center; */
 }
 
-.contact-header {
+.contact-container > section {
+  width: 90%;
   color: var(--white);
+}
+
+.scrolling-text-container {
+  margin-right: auto;
+}
+
+.scrolling-text-content {
+  height: 1.2em;
+  line-height: 1.2em;
+  position: relative;
+  overflow: hidden;
+  width: 15em;
+}
+.scrolling-text-content > span {
+  position: relative;
+  left: 10%;
+  animation: slide 5s infinite;
+  font-weight: bold;
+}
+
+.contact-hoverElement {
   width: 100%;
   position: relative;
   cursor: pointer;
   font-size: 4rem;
+  text-align: center;
 }
 
-.contact-header:hover .contact-header-title {
+.contact-hoverElement:hover .contact-hoverElement-title {
   -webkit-text-stroke: none;
-  color: var(--white);
 }
 
-.contact-header-title::after {
+.contact-hoverElement-title::after {
   content: attr(data-menu-item-text);
   position: absolute;
   top: 0;
@@ -58,25 +80,42 @@
   opacity: 0;
   transition: opacity 0.3s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
   margin: -115px 0 0 -99px;
-
   overflow: hidden;
   pointer-events: none;
   z-index: 2;
 }
 
-.contact-header:hover .menu-item-hover-image {
+.contact-hoverElement:hover .menu-item-hover-image {
   opacity: 1;
 }
-.contact-header:hover .contact-header-title::after {
+.contact-hoverElement:hover .contact-hoverElement-title::after {
   opacity: 1;
   z-index: 3;
+}
+
+@keyframes slide {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -1.2em;
+  }
+  50% {
+    top: -2.4em;
+  }
+  75% {
+    top: -3.6em;
+  }
+  100% {
+    top: -4.8em;
+  }
 }
 
 @media only screen and (max-width: 821px) {
 }
 
 @media only screen and (max-width: 480px) {
-  .contact-header {
+  .contact-hoverElement {
     font-size: 2rem;
   }
 }

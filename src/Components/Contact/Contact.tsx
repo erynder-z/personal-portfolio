@@ -46,14 +46,34 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
   return (
     <div className="contact-container">
       <section>
+        <h2 className="scrolling-text-container">
+          Always
+          <div className="scrolling-text-content">
+            <span>
+              <span className="item1 pink">create</span>
+              <br />
+              <span className="item2 red">learn</span>
+              <br />
+              <span className="item3 orange">code</span>
+              <br />
+              <span className="item4 blue">grow</span>
+              <br />
+              <span className="item5 pink">create</span>
+            </span>
+          </div>
+        </h2>
+
         <h2
           ref={domRef}
-          className="contact-header"
+          className="contact-hoverElement"
           onMouseMove={(e) => {
             followImageCursor(e, domRef.current);
           }}
         >
-          <span data-menu-item-text={heading} className="contact-header-title">
+          <span
+            data-menu-item-text={heading}
+            className="contact-hoverElement-title"
+          >
             {heading}
           </span>
           <span
