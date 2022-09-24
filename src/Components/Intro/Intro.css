@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: Poppins, sans-serif;
 }
 
 .underlined {
@@ -13,12 +14,12 @@
   animation-delay: 1s;
 }
 
-.revertColors > span {
+/* .revertColors > span {
   color: var(--yellow);
   transition: color 1s ease-in-out;
   transition-delay: 1s;
 }
-
+ */
 .intro-text {
   padding: 0 30vw;
   font-size: 2rem;

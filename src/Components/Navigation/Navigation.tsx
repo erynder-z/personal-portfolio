@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
+import Contact from '../Contact/Contact';
 import Intro from '../Intro/Intro';
 import Portfolio from '../Portfolio/Portfolio';
 import Skills from '../Skills/Skills';
@@ -147,7 +148,10 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
           }}
         >
           <h1 className="panel-heading-contact">{categories[3]}</h1>
-          <p>Contact me</p>
+          <Contact
+            active={activePanel === 'contact' ? true : false}
+            shuffleText={shuffleText}
+          ></Contact>
         </div>
       </div>
     </nav>

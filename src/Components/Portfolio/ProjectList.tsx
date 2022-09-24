@@ -36,7 +36,7 @@ const ProjectList: {
     gifURL: gifRobin,
     gifLength: 26760,
     description:
-      'A fully featured, twitter-like social network. Users can post, follow other users and customize their profile. The app uses Firebase as the backend.',
+      'A fully-featured, twitter-like social network. Users can post, follow other users and customize their profile. The app uses Firebase as the backend.',
     githubLink: 'https://github.com/erynder-z/robin-sn',
     liveLink: 'https://erynder-z.github.io/robin-sn',
     technologies: 'React, JavaScript, Firebase',

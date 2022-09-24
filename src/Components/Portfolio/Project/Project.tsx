@@ -14,10 +14,11 @@ interface Props {
     year: number;
   };
   active: boolean;
+  isVisible?: boolean;
   shuffleText: (text: string) => string;
 }
 
-const Project: FC<Props> = ({ project, active, shuffleText }) => {
+const Project: FC<Props> = ({ project, active, isVisible, shuffleText }) => {
   const {
     title,
     imageURL,
@@ -30,6 +31,7 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     year,
   } = project;
 
+  const [shuffling, setShuffling] = useState<boolean>(false);
   const [reavealImage, setRevealImage] = useState<boolean>(false);
   const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
   const [projectImageURL, setProjectImageURL] = useState<string>(imageURL);
@@ -43,11 +45,12 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
   const [headingTechnologies, setHeadingTechnologies] =
     useState<string>('Technologies');
   const [headingYear, setheadingYear] = useState<string>('Year');
-  const [previewPlay, setPreviewPlay] = useState<string>('[Preview]');
+  const [previewPlay, setPreviewPlay] = useState<string>('[Play preview]');
   const [previewSource, setPreviewSource] = useState<string>('[Source]');
   const [previewLive, setPreviewLive] = useState<string>('[Live]');
 
   const shuffle = (): void => {
+    setShuffling(true);
     setRevealImage(true);
     const shuffle = setInterval(() => {
       setProjectTitle(shuffleText(projectTitle));
@@ -63,6 +66,7 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     }, 50);
 
     setTimeout(() => {
+      setShuffling(false);
       setRevealImage(false);
       clearInterval(shuffle);
       setProjectTitle(projectTitle);
@@ -89,33 +93,41 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
     if (playAnimatedGif) {
       setProjectImageURL(gifURL);
       const shuffle = setInterval(() => {
-        setPreviewPlay(shuffleText('[Stop]'));
+        setPreviewPlay(shuffleText('[Stop preview]'));
       }, 50);
 
       setTimeout(() => {
         clearInterval(shuffle);
-        setPreviewPlay('[Stop]');
+        setPreviewPlay('[Stop preview]');
       }, 500);
     } else {
       setProjectImageURL(imageURL);
       const shuffle = setInterval(() => {
-        setPreviewPlay(shuffleText('[Preview]'));
+        setPreviewPlay(shuffleText('[Play preview]'));
       }, 50);
 
       setTimeout(() => {
         clearInterval(shuffle);
-        setPreviewPlay('[Preview]');
+        setPreviewPlay('[Play preview]');
       }, 500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playAnimatedGif]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (active) {
       shuffle();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active]);
+  }, [active]); */
+
+  useEffect(() => {
+    if (!shuffling) {
+      shuffle();
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible]);
 
   return (
     <div className="project-container">
@@ -165,7 +177,7 @@ const Project: FC<Props> = ({ project, active, shuffleText }) => {
         <p className="project-description">{projectDescription}</p>
         <h4 className="project-technologies-heading">{headingTechnologies}</h4>
         <p className="project-technologies">{projectTechnologies}</p>
-        <h4 className="project-year-header">{headingYear}</h4>
+        <h4 className="project-year-heading">{headingYear}</h4>
         <p className="project-year">{projectYear}</p>
       </div>
     </div>

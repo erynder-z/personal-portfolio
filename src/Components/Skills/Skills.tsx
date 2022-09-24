@@ -287,7 +287,9 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
             <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
           </div>
         </div>
-        <div className="bracketClose1">{chars.bracketsClose} ,</div>
+        <div className="bracketClose1">
+          {chars.bracketsClose} {chars.comma}
+        </div>
         <h3 className="technologies-header">{technologies.header}</h3>
         <div className="bracketOpen2">{chars.bracketsOpen}</div>
         <div className="technologies-container">

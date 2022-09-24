@@ -3,7 +3,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 import './Portfolio.css';
 import ProjectList from './ProjectList';
 import Project from './Project/Project';
-import FadeInSection from '../FadeinSection/FadeinSection';
+import VisibleSectionEffect from '../VisibleSectionEffect/VisibleSectionEffect';
 
 interface Props {
   active: boolean;
@@ -121,30 +121,32 @@ const Portfolio: FC<Props> = ({ active, shuffleText }) => {
       onScroll={onScrollPage}
     >
       <section>
-        <FadeInSection>
+        <VisibleSectionEffect>
           <h2 className="portfolio-header">{heading}</h2>
-        </FadeInSection>
+        </VisibleSectionEffect>
         <div className="projects-wrapper">
           {projectList?.map((project) => (
-            <FadeInSection key={project.id}>
+            <VisibleSectionEffect key={project.id}>
               <Project
                 key={project.id}
                 project={project}
                 active={active}
                 shuffleText={shuffleText}
               />
-            </FadeInSection>
+            </VisibleSectionEffect>
           ))}
         </div>
       </section>
-      <FadeInSection>
-        <a
-          className="repo-link"
-          href="https://github.com/erynder-z?tab=repositories"
-        >
-          View More <FaExternalLinkAlt size="1rem" />
-        </a>
-      </FadeInSection>
+      {
+        <VisibleSectionEffect>
+          <a
+            className="repo-link"
+            href="https://github.com/erynder-z?tab=repositories"
+          >
+            View More <FaExternalLinkAlt size="1rem" />
+          </a>
+        </VisibleSectionEffect>
+      }
     </div>
   );
 };

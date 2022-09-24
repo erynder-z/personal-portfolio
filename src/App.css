@@ -1,8 +1,48 @@
 :root {
-  --intro: #33465c;
-  --portfolio: #393e6f;
-  --skills: #3d2e4f;
-  --contact: #321d2f;
-  --bright-text: #ffe5ae;
+  --intro: #282a36;
+  --projects: #242631;
+  --skills: #20222b;
+  --contact: #1c1d26;
+  --black: #282c34;
+  --white: #dcdfe4;
+  --blue: #61afef;
+  --cyan: #56b6c2;
+  --green: #98c379;
+  --pink: #c678dd;
+  --red: #e06c75;
+  --yellow: #e5c07b;
+  --orange: #ffb86c;
   --dark-text: #000000;
+  --scrollbar: #33465c;
+  --scrollbar-thumb: #c4c9d0;
+  --foreground: #dcdfe4;
+  --background: #282c34;
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.cyan {
+  color: var(--cyan);
+}
+
+.green {
+  color: var(--green);
+}
+
+.pink {
+  color: var(--pink);
+}
+
+.red {
+  color: var(--red);
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.orange {
+  color: var(--orange);
 }

@@ -5,6 +5,8 @@
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
+  font-family: IBM Plex Mono, monospace;
+  font-weight: 500;
 }
 
 .panel {
@@ -19,6 +21,7 @@
   font-size: 12px;
   background-size: cover;
   background-position: center;
+  z-index: 1;
 }
 
 .panel.open {
@@ -35,10 +38,7 @@
 }
 
 .panel.closed > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transform: scaleY(0.1) translateX(100%);
+  transform: translateX(100%);
   transition: all 0.5s;
   height: 1rem;
 }
@@ -66,23 +66,46 @@
   font-size: 1.5em;
 }
 
+.panel-heading-intro {
+  color: var(--yellow);
+}
+
+.panel-heading-projects {
+  color: var(--green);
+}
+
+.panel-heading-skills {
+  color: var(--blue);
+}
+
+.panel-heading-contact {
+  color: var(--pink);
+}
+
 .intro {
-  color: var(--bright-text);
+  color: var(--yellow);
   background-color: var(--intro);
   background-position-y: 20%;
+  transition: color 100ms;
 }
-.portfolio {
-  color: var(--bright-text);
-  background-color: var(--portfolio);
+
+.projects {
+  color: var(--white);
+  background-color: var(--projects);
   align-items: flex-start;
+  transition: color 100ms;
 }
+
 .skills {
-  color: var(--bright-text);
+  color: var(--blue);
   background-color: var(--skills);
   align-items: flex-start;
+  transition: color 100ms;
 }
+
 .contact {
-  color: var(--bright-text);
+  color: var(--pink);
   background-color: var(--contact);
   align-items: flex-start;
+  transition: color 100ms;
 }
