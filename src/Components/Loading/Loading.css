@@ -1,7 +1,13 @@
 .loading-container {
-  background-color: var(--black);
+  background-color: var(--background-dark);
   height: 100vh;
   width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  animation: scrollUp 500ms linear;
+  animation-delay: 2.5s;
 }
 
 .loading {
@@ -51,6 +57,15 @@
   margin: auto;
   opacity: 0.5;
   animation: loadingAfter 2s infinite ease-in-out;
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
 }
 
 @keyframes loadingBefore {

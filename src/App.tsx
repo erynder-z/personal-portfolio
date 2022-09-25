@@ -6,6 +6,7 @@ import Navigation from './Components/Navigation/Navigation';
 
 const App: FC = () => {
   const [showLoading, setShowLoading] = useState<boolean>(true);
+  const [isInitial, setIsInitial] = useState<boolean>(true);
   const shuffleNav = (categories: string[]): string[] => {
     const shuffledArray: string[] = categories.map((word) => {
       return shuffleWord(word);
@@ -46,15 +47,19 @@ const App: FC = () => {
     setTimeout(() => {
       setShowLoading(false);
     }, 3000);
+    setTimeout(() => {
+      setIsInitial(false);
+    }, 8000);
   }, []);
 
   return (
     <div className="App">
-      {showLoading ? (
-        <Loading shuffleText={shuffleText} />
-      ) : (
-        <Navigation shuffleText={shuffleText} shuffleNav={shuffleNav} />
-      )}
+      <Navigation
+        shuffleText={shuffleText}
+        shuffleNav={shuffleNav}
+        isInitial={isInitial}
+      />
+      {showLoading && <Loading shuffleText={shuffleText} />}
     </div>
   );
 };
