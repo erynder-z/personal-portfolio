@@ -8,9 +8,16 @@ import VisibleSectionEffect from '../VisibleSectionEffect/VisibleSectionEffect';
 interface Props {
   active: boolean;
   shuffleText: (text: string) => string;
+  setActivePanel: React.Dispatch<React.SetStateAction<string>>;
+  onScroll: (ref: React.RefObject<HTMLDivElement>) => void;
 }
 
-const Portfolio: FC<Props> = ({ active, shuffleText }) => {
+const Portfolio: FC<Props> = ({
+  active,
+  shuffleText,
+  setActivePanel,
+  onScroll,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState<number>(0);
   const [heading, setHeading] = useState<string>(`[projects]`);
@@ -44,12 +51,12 @@ const Portfolio: FC<Props> = ({ active, shuffleText }) => {
   const onScrollPage = () => {
     const anchor = document.querySelector('.portfolio-container');
 
-    console.log(scrolled);
+    /*    console.log(scrolled); */
     setScrolled(anchor!.scrollTop);
     const element = containerRef.current;
     if (scrolled >= 0) {
       if (element) {
-        element.style.backgroundColor = '#242631';
+        element.style.backgroundColor = 'var(--projects)';
         element.style.transition = 'background-color 1000ms';
       }
     }
@@ -102,7 +109,6 @@ const Portfolio: FC<Props> = ({ active, shuffleText }) => {
       }
     }
   };
-
   useEffect(() => {
     if (active) {
       shuffle();
@@ -118,7 +124,10 @@ const Portfolio: FC<Props> = ({ active, shuffleText }) => {
     <div
       ref={containerRef}
       className="portfolio-container"
-      onScroll={onScrollPage}
+      onScroll={() => {
+        onScrollPage();
+        onScroll(containerRef);
+      }}
     >
       <section>
         <VisibleSectionEffect>

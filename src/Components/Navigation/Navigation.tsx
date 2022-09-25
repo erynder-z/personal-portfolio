@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Contact from '../Contact/Contact';
 import Intro from '../Intro/Intro';
 import Portfolio from '../Portfolio/Portfolio';
@@ -8,66 +8,99 @@ import './Navigation.css';
 interface Props {
   shuffleText: (text: string) => string;
   shuffleNav: (categories: string[]) => string[];
+  isInitial: boolean;
 }
 
-const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
-  const [activePanel, setActivePanel] = useState<string>('intro');
+const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
+  const categories = ['intro', 'projects', 'skills', 'contact'];
+  const [activePanel, setActivePanel] = useState<string>(categories[0]);
   const [doShuffle, setDoShuffle] = useState<boolean>(true);
-  const [categories, setCategories] = useState<string[]>([
+  const [categoriesText, setCategoriesText] = useState<string[]>([
     '[intro]',
     '[projects]',
     '[skills]',
     '[contact]',
   ]);
 
+  const onScroll = (ref: React.RefObject<HTMLDivElement>): void => {
+    if (ref.current) {
+      const { scrollTop, scrollHeight, clientHeight } = ref.current;
+      if (Math.ceil(scrollTop + clientHeight) === scrollHeight) {
+        console.log('reached bottom');
+        if (categories.indexOf(activePanel) < 3) {
+          setActivePanel(categories[categories.indexOf(activePanel) + 1]);
+        } else {
+          setActivePanel(categories[0]);
+        }
+      }
+      if (scrollTop === 0) {
+        console.log('reached top');
+        if (categories.indexOf(activePanel) >= 0) {
+          setActivePanel(categories[categories.indexOf(activePanel) - 1]);
+        } else {
+          setActivePanel(categories[3]);
+        }
+      }
+    }
+  };
+
   const firstShuffle = (): void => {
+    const timeout = () => {
+      return isInitial ? 5000 : 2000;
+    };
     const shuffle = setInterval(() => {
-      setCategories(shuffleNav(categories));
+      setCategoriesText(shuffleNav(categoriesText));
     }, 50);
 
     setTimeout(() => {
       clearInterval(shuffle);
 
-      setCategories(['[!ntro]', '[proJects]', '[sk!lls]', '[contact]']);
-    }, 2000);
+      setCategoriesText(['[!ntro]', '[proJects]', '[sk!lls]', '[contact]']);
+    }, timeout());
   };
 
   const secondShuffle = (): void => {
+    const timeout = () => {
+      return isInitial ? 6000 : 3000;
+    };
     setTimeout(() => {
       const shuffleAgain = setInterval(() => {
-        setCategories(shuffleNav(categories));
+        setCategoriesText(shuffleNav(categoriesText));
       }, 100);
 
       setTimeout(() => {
         clearInterval(shuffleAgain);
 
-        setCategories(['[Intro]', '[ProJects]', '[Ski11s]', '[Contact]']);
+        setCategoriesText(['[Intro]', '[ProJects]', '[Ski11s]', '[Contact]']);
       }, 500);
-    }, 3000);
+    }, timeout());
   };
 
   const thirdShuffle = (): void => {
+    const timeout = () => {
+      return isInitial ? 8000 : 5000;
+    };
     setTimeout(() => {
       const finalshuffle = setInterval(() => {
-        setCategories(shuffleNav(categories));
+        setCategoriesText(shuffleNav(categoriesText));
       }, 50);
 
       setTimeout(() => {
         clearInterval(finalshuffle);
-        setCategories(['[Intro]', '[Projects]', '[Skills]', '[Contact]']);
+        setCategoriesText(['[Intro]', '[Projects]', '[Skills]', '[Contact]']);
         setDoShuffle(false);
       }, 1000);
-    }, 5000);
+    }, timeout());
   };
 
   const categoryChangeShuffle = (): void => {
     const shuffle = setInterval(() => {
-      setCategories(shuffleNav(categories));
+      setCategoriesText(shuffleNav(categoriesText));
     }, 50);
 
     setTimeout(() => {
       clearInterval(shuffle);
-      setCategories(['[Intro]', '[Projects]', '[Skills]', '[Contact]']);
+      setCategoriesText(['[Intro]', '[Projects]', '[Skills]', '[Contact]']);
     }, 2000);
   };
 
@@ -86,71 +119,79 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav }) => {
       <div className="panels">
         <div
           className={`panel intro ${
-            activePanel === 'intro' ? 'open' : 'closed'
+            activePanel === categories[0] ? 'open' : 'closed'
           }`}
           onClick={() => {
-            if (activePanel !== 'intro') {
-              setActivePanel('intro');
+            if (activePanel !== categories[0]) {
+              setActivePanel(categories[0]);
               setDoShuffle(true);
             }
           }}
         >
-          <h1 className="panel-heading-intro">{categories[0]}</h1>
+          <h1 className="panel-heading-intro">{categoriesText[0]}</h1>
           <Intro
-            active={activePanel === 'intro' ? true : false}
+            active={activePanel === categories[0] ? true : false}
             shuffleText={shuffleText}
             setActivePanel={setActivePanel}
+            onScroll={onScroll}
+            isInitial={isInitial}
           />
         </div>
         <div
           className={`panel projects ${
-            activePanel === 'projects' ? 'open' : 'closed'
+            activePanel === categories[1] ? 'open' : 'closed'
           }`}
           onClick={() => {
-            setActivePanel('projects');
-            if (activePanel !== 'projects') {
+            setActivePanel(categories[1]);
+            if (activePanel !== categories[1]) {
               categoryChangeShuffle();
             }
           }}
         >
-          <h1 className="panel-heading-projects">{categories[1]}</h1>
+          <h1 className="panel-heading-projects">{categoriesText[1]}</h1>
           <Portfolio
-            active={activePanel === 'projects' ? true : false}
+            active={activePanel === categories[1] ? true : false}
             shuffleText={shuffleText}
+            setActivePanel={setActivePanel}
+            onScroll={onScroll}
           />
         </div>
         <div
           className={`panel skills ${
-            activePanel === 'skills' ? 'open' : 'closed'
+            activePanel === categories[2] ? 'open' : 'closed'
           }`}
           onClick={() => {
-            setActivePanel('skills');
-            if (activePanel !== 'skills') {
+            setActivePanel(categories[2]);
+            if (activePanel !== categories[2]) {
               categoryChangeShuffle();
             }
           }}
         >
-          <h1 className="panel-heading-skills">{categories[2]}</h1>
+          <h1 className="panel-heading-skills">{categoriesText[2]}</h1>
           <Skills
-            active={activePanel === 'skills' ? true : false}
+            active={activePanel === categories[2] ? true : false}
             shuffleText={shuffleText}
+            setActivePanel={setActivePanel}
+            onScroll={onScroll}
           />
         </div>
         <div
           className={`panel contact ${
-            activePanel === 'contact' ? 'open' : 'closed'
+            activePanel === categories[3] ? 'open' : 'closed'
           }`}
           onClick={() => {
-            setActivePanel('contact');
-            if (activePanel !== 'contact') {
+            setActivePanel(categories[3]);
+            if (activePanel !== categories[3]) {
               categoryChangeShuffle();
             }
           }}
         >
-          <h1 className="panel-heading-contact">{categories[3]}</h1>
+          <h1 className="panel-heading-contact">{categoriesText[3]}</h1>
           <Contact
-            active={activePanel === 'contact' ? true : false}
+            active={activePanel === categories[3] ? true : false}
             shuffleText={shuffleText}
+            setActivePanel={setActivePanel}
+            onScroll={onScroll}
           ></Contact>
         </div>
       </div>
