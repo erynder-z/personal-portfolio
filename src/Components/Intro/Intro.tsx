@@ -13,9 +13,15 @@ interface Props {
   active: boolean;
   shuffleText: (text: string) => string;
   setActivePanel: React.Dispatch<React.SetStateAction<string>>;
+  isInitial: boolean;
 }
 
-const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
+const Intro: FC<Props> = ({
+  active,
+  shuffleText,
+  setActivePanel,
+  isInitial,
+}) => {
   const [isIntroFinished, setIsIntroFinished] = useState<boolean>(false);
   const [downArrow, setDownArrow] = useState<JSX.Element>(
     <MdKeyboardArrowDown className="downArrow bounce" />
@@ -51,6 +57,9 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   };
 
   const firstShuffle = (): void => {
+    const timeout = () => {
+      return isInitial ? 5000 : 2000;
+    };
     const shuffle = setInterval(() => {
       setIsIntroFinished(false);
       shuffleElements();
@@ -67,10 +76,13 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
         `committed to never stop 1earning, i'm on my way to become a fu11-stack web deve1oper.
         i enjoy creating easy-to-use app1ications with javascript and react and i 1ove adding new too1s to my ski11set every day!`
       );
-    }, 2000);
+    }, timeout());
   };
 
   const secondShuffle = (): void => {
+    const timeout = () => {
+      return isInitial ? 6000 : 3000;
+    };
     setTimeout(() => {
       const shuffleAgain = setInterval(() => {
         shuffleElements();
@@ -88,10 +100,13 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
         );
       }, 500);
-    }, 3000);
+    }, timeout());
   };
 
   const thirdShuffle = (): void => {
+    const timeout = () => {
+      return isInitial ? 8000 : 5000;
+    };
     setTimeout(() => {
       const finalshuffle = setInterval(() => {
         shuffleElements();
@@ -111,7 +126,7 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
       I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
         );
       }, 1000);
-    }, 5000);
+    }, timeout());
   };
 
   useEffect(() => {
@@ -120,7 +135,6 @@ const Intro: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
       secondShuffle();
       thirdShuffle();
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
