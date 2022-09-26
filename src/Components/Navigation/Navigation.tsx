@@ -13,7 +13,11 @@ interface Props {
 
 const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
   const categories = ['intro', 'projects', 'skills', 'contact'];
-
+  const [currentBgColor, setCurrentBgColor] = useState<string | null>(null);
+  const navRefIntro = useRef<HTMLDivElement>(null);
+  const navRefprojects = useRef<HTMLDivElement>(null);
+  const navRefSkills = useRef<HTMLDivElement>(null);
+  const navRefContact = useRef<HTMLDivElement>(null);
   const [activePanel, setActivePanel] = useState<string>(categories[0]);
   const [doShuffle, setDoShuffle] = useState<boolean>(true);
   const [categoriesText, setCategoriesText] = useState<string[]>([
@@ -97,6 +101,15 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
     <nav>
       <div className="panels">
         <div
+          ref={navRefIntro}
+          style={
+            activePanel === categories[1]
+              ? {
+                  backgroundColor: currentBgColor!,
+                  transition: 'background-color 1000ms',
+                }
+              : {}
+          }
           className={`panel intro ${
             activePanel === categories[0] ? 'open' : 'closed'
           }`}
@@ -116,6 +129,15 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
           />
         </div>
         <div
+          ref={navRefprojects}
+          style={
+            activePanel === categories[1]
+              ? {
+                  backgroundColor: currentBgColor!,
+                  transition: 'background-color 1000ms',
+                }
+              : {}
+          }
           className={`panel projects ${
             activePanel === categories[1] ? 'open' : 'closed'
           }`}
@@ -131,9 +153,19 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
             active={activePanel === categories[1] ? true : false}
             shuffleText={shuffleText}
             setActivePanel={setActivePanel}
+            setCurrentBgColor={setCurrentBgColor}
           />
         </div>
         <div
+          ref={navRefSkills}
+          style={
+            activePanel === categories[1]
+              ? {
+                  backgroundColor: currentBgColor!,
+                  transition: 'background-color 1000ms',
+                }
+              : {}
+          }
           className={`panel skills ${
             activePanel === categories[2] ? 'open' : 'closed'
           }`}
@@ -152,6 +184,15 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
           />
         </div>
         <div
+          ref={navRefContact}
+          style={
+            activePanel === categories[1]
+              ? {
+                  backgroundColor: currentBgColor!,
+                  transition: 'background-color 1000ms',
+                }
+              : {}
+          }
           className={`panel contact ${
             activePanel === categories[3] ? 'open' : 'closed'
           }`}

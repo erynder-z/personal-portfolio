@@ -9,10 +9,17 @@ interface Props {
   active: boolean;
   shuffleText: (text: string) => string;
   setActivePanel: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentBgColor: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
+const Portfolio: FC<Props> = ({
+  active,
+  shuffleText,
+  setActivePanel,
+  setCurrentBgColor,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
+
   const [scrolled, setScrolled] = useState<number>(0);
   const [heading, setHeading] = useState<string>(`[projects]`);
   const [projectList, setProjectList] = useState<
@@ -20,8 +27,8 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
         id: number;
         title: string;
         imageURL: string;
-        gifURL: string;
-        gifLength: number;
+        animationURL: string;
+        animationLength: number;
         description: string;
         githubLink: string;
         liveLink: string;
@@ -50,56 +57,65 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
     const element = containerRef.current;
     if (scrolled >= 0) {
       if (element) {
-        element.style.backgroundColor = 'var(--projects)';
+        element.style.backgroundColor = 'var(--project1)';
         element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project1)');
       }
     }
     if (scrolled >= 500) {
       if (element) {
-        element.style.backgroundColor = '#0F282E';
+        element.style.backgroundColor = 'var(--project2)';
         element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project2)');
       }
     }
     if (scrolled >= 1100) {
       if (element) {
-        element.style.backgroundColor = '#0F1F2E';
+        element.style.backgroundColor = 'var(--project3)';
         element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project3)');
       }
     }
     if (scrolled >= 1800) {
       if (element) {
-        element.style.backgroundColor = '#110E2A';
+        element.style.backgroundColor = 'var(--project4)';
         element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project4)');
       }
     }
     if (scrolled >= 2400) {
       if (element) {
-        element.style.backgroundColor = '#2A1236';
+        element.style.backgroundColor = 'var(--project5)';
         element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project5)');
       }
     }
     if (scrolled >= 3000) {
       if (element) {
-        element.style.backgroundColor = '#172845';
+        element.style.backgroundColor = 'var(--project6)';
         element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project6)');
       }
     }
     if (scrolled >= 3700) {
       if (element) {
-        element.style.backgroundColor = '#3a0c2c';
+        element.style.backgroundColor = 'var(--project7)';
         element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project7)');
       }
     }
     if (scrolled >= 4300) {
       if (element) {
-        element.style.backgroundColor = '#131839';
+        element.style.backgroundColor = 'var(--project8)';
         element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project8)');
       }
     }
     if (scrolled >= 5000) {
       if (element) {
-        element.style.backgroundColor = '#11320c';
+        element.style.backgroundColor = 'var(--project9)';
         element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project9)');
       }
     }
   };
