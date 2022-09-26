@@ -7,10 +7,9 @@ import './Contact.css';
 interface Props {
   active: boolean;
   shuffleText: (text: string) => string;
-  setActivePanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Contact: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
+const Contact: FC<Props> = ({ active, shuffleText }) => {
   const hoverElementRef = useRef<HTMLHeadingElement>(null);
   const [currentIndex, setCurrentIndex] = useState<number[]>([0, 1, 2]);
   const [heading, setHeading] = useState<string>(`[contact]`);

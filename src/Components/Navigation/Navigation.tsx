@@ -152,7 +152,6 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
           <Portfolio
             active={activePanel === categories[1] ? true : false}
             shuffleText={shuffleText}
-            setActivePanel={setActivePanel}
             setCurrentBgColor={setCurrentBgColor}
           />
         </div>
@@ -180,7 +179,6 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
           <Skills
             active={activePanel === categories[2] ? true : false}
             shuffleText={shuffleText}
-            setActivePanel={setActivePanel}
           />
         </div>
         <div
@@ -207,7 +205,6 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
           <Contact
             active={activePanel === categories[3] ? true : false}
             shuffleText={shuffleText}
-            setActivePanel={setActivePanel}
           ></Contact>
         </div>
       </div>

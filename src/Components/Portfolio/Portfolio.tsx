@@ -8,16 +8,10 @@ import VisibleSectionEffect from '../VisibleSectionEffect/VisibleSectionEffect';
 interface Props {
   active: boolean;
   shuffleText: (text: string) => string;
-  setActivePanel: React.Dispatch<React.SetStateAction<string>>;
   setCurrentBgColor: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const Portfolio: FC<Props> = ({
-  active,
-  shuffleText,
-  setActivePanel,
-  setCurrentBgColor,
-}) => {
+const Portfolio: FC<Props> = ({ active, shuffleText, setCurrentBgColor }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [scrolled, setScrolled] = useState<number>(0);
