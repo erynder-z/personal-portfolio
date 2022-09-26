@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import Contact from '../Contact/Contact';
 import Intro from '../Intro/Intro';
 import Portfolio from '../Portfolio/Portfolio';
@@ -13,6 +13,7 @@ interface Props {
 
 const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
   const categories = ['intro', 'projects', 'skills', 'contact'];
+
   const [activePanel, setActivePanel] = useState<string>(categories[0]);
   const [doShuffle, setDoShuffle] = useState<boolean>(true);
   const [categoriesText, setCategoriesText] = useState<string[]>([
@@ -21,28 +22,6 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
     '[skills]',
     '[contact]',
   ]);
-
-  const onScroll = (ref: React.RefObject<HTMLDivElement>): void => {
-    if (ref.current) {
-      const { scrollTop, scrollHeight, clientHeight } = ref.current;
-      if (Math.ceil(scrollTop + clientHeight) === scrollHeight) {
-        console.log('reached bottom');
-        if (categories.indexOf(activePanel) < 3) {
-          setActivePanel(categories[categories.indexOf(activePanel) + 1]);
-        } else {
-          setActivePanel(categories[0]);
-        }
-      }
-      if (scrollTop === 0) {
-        console.log('reached top');
-        if (categories.indexOf(activePanel) >= 0) {
-          setActivePanel(categories[categories.indexOf(activePanel) - 1]);
-        } else {
-          setActivePanel(categories[3]);
-        }
-      }
-    }
-  };
 
   const firstShuffle = (): void => {
     const timeout = () => {
@@ -133,7 +112,6 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
             active={activePanel === categories[0] ? true : false}
             shuffleText={shuffleText}
             setActivePanel={setActivePanel}
-            onScroll={onScroll}
             isInitial={isInitial}
           />
         </div>
@@ -153,7 +131,6 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
             active={activePanel === categories[1] ? true : false}
             shuffleText={shuffleText}
             setActivePanel={setActivePanel}
-            onScroll={onScroll}
           />
         </div>
         <div
@@ -172,7 +149,6 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
             active={activePanel === categories[2] ? true : false}
             shuffleText={shuffleText}
             setActivePanel={setActivePanel}
-            onScroll={onScroll}
           />
         </div>
         <div
@@ -191,7 +167,6 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
             active={activePanel === categories[3] ? true : false}
             shuffleText={shuffleText}
             setActivePanel={setActivePanel}
-            onScroll={onScroll}
           ></Contact>
         </div>
       </div>

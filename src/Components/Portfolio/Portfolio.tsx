@@ -9,15 +9,9 @@ interface Props {
   active: boolean;
   shuffleText: (text: string) => string;
   setActivePanel: React.Dispatch<React.SetStateAction<string>>;
-  onScroll: (ref: React.RefObject<HTMLDivElement>) => void;
 }
 
-const Portfolio: FC<Props> = ({
-  active,
-  shuffleText,
-  setActivePanel,
-  onScroll,
-}) => {
+const Portfolio: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState<number>(0);
   const [heading, setHeading] = useState<string>(`[projects]`);
@@ -109,6 +103,7 @@ const Portfolio: FC<Props> = ({
       }
     }
   };
+
   useEffect(() => {
     if (active) {
       shuffle();
@@ -126,7 +121,6 @@ const Portfolio: FC<Props> = ({
       className="portfolio-container"
       onScroll={() => {
         onScrollPage();
-        onScroll(containerRef);
       }}
     >
       <section>
