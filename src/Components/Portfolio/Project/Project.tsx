@@ -5,8 +5,8 @@ interface Props {
   project: {
     title: string;
     imageURL: string;
-    gifURL: string;
-    gifLength: number;
+    animationURL: string;
+    animationLength: number;
     description: string;
     githubLink: string;
     liveLink: string;
@@ -22,8 +22,8 @@ const Project: FC<Props> = ({ project, active, isVisible, shuffleText }) => {
   const {
     title,
     imageURL,
-    gifURL,
-    gifLength,
+    animationURL,
+    animationLength,
     description,
     githubLink,
     liveLink,
@@ -86,12 +86,12 @@ const Project: FC<Props> = ({ project, active, isVisible, shuffleText }) => {
     setPlayAnimatedGif(!playAnimatedGif);
     setTimeout(() => {
       setPlayAnimatedGif(false);
-    }, gifLength);
+    }, animationLength);
   };
 
   useEffect(() => {
     if (playAnimatedGif) {
-      setProjectImageURL(gifURL);
+      setProjectImageURL(animationURL);
       const shuffle = setInterval(() => {
         setPreviewPlay(shuffleText('[Stop preview]'));
       }, 50);

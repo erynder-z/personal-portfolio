@@ -7,10 +7,11 @@ import './Contact.css';
 interface Props {
   active: boolean;
   shuffleText: (text: string) => string;
+  setActivePanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Contact: FC<Props> = ({ active, shuffleText }) => {
-  const domRef = useRef<HTMLHeadingElement>(null);
+const Contact: FC<Props> = ({ active, shuffleText, setActivePanel }) => {
+  const hoverElementRef = useRef<HTMLHeadingElement>(null);
   const [currentIndex, setCurrentIndex] = useState<number[]>([0, 1, 2]);
   const [heading, setHeading] = useState<string>(`[contact]`);
   const [text, setText] = useState<string>(`Want to get in touch?`);
@@ -159,10 +160,10 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
         </div>
         <div className="lower-container">
           <h2
-            ref={domRef}
+            ref={hoverElementRef}
             className="contact-hoverElement"
             onMouseMove={(e) => {
-              followImageCursor(e, domRef.current);
+              followImageCursor(e, hoverElementRef.current);
             }}
           >
             <span

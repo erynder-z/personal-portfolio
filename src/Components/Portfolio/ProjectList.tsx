@@ -1,28 +1,28 @@
 import imageRobin from '../../assets/images/robin.png';
-import gifRobin from '../../assets/gifs/robin_26760.gif';
+import animationRobin from '../../assets/webps/robin_58538.webp';
 import imageChatpack from '../../assets/images/chatpack.png';
-import gifChatpack from '../../assets/gifs/chatpack_14500.gif';
+import animationChatpack from '../../assets/webps/chatpack_27031.webp';
 import imageFind from '../../assets/images/find.png';
-import gifFind from '../../assets/gifs/find_13130.gif';
+import animationFind from '../../assets/webps/find_32885.webp';
 import imageJstodo from '../../assets/images/jstodo.png';
-import gifjstodo from '../../assets/gifs/jstodo_57040.gif';
+import animationjstodo from '../../assets/webps/jstodo_103976.webp';
 import imageBattleship from '../../assets/images/battleship.png';
-import gifBattleship from '../../assets/gifs/battleship_32010.gif';
+import animationBattleship from '../../assets/webps/battleship_58348.webp';
 import imageEryngi from '../../assets/images/eryngi.png';
-import gifEryngi from '../../assets/gifs/eryngi_13060.gif';
+import animationEryngi from '../../assets/webps/eryngi_21048.webp';
 import imageLeshop from '../../assets/images/leshop.png';
-import gifLeshop from '../../assets/gifs/leshop_9000.gif';
+import animationLeshop from '../../assets/webps/leshop_37315.webp';
 import imageCvcreator from '../../assets/images/cvcreator.png';
-import gifCvcreator from '../../assets/gifs/cvcreator_31350.gif';
+import animationCvcreator from '../../assets/webps/cvcreator_49531.webp';
 import imageJustweather from '../../assets/images/justweather.png';
-import gifJustweather from '../../assets/gifs/justweather_30350.gif';
+import animationJustweather from '../../assets/webps/justweather_29467.webp';
 
 const ProjectList: {
   id: number;
   title: string;
   imageURL: string;
-  gifURL: string;
-  gifLength: number;
+  animationURL: string;
+  animationLength: number;
   description: string;
   githubLink: string;
   liveLink: string;
@@ -33,8 +33,8 @@ const ProjectList: {
     id: 1,
     title: 'Robin Social Network',
     imageURL: imageRobin,
-    gifURL: gifRobin,
-    gifLength: 26760,
+    animationURL: animationRobin,
+    animationLength: 58538,
     description:
       'A fully-featured, twitter-like social network. Users can post, follow other users and customize their profile. The app uses Firebase as the backend.',
     githubLink: 'https://github.com/erynder-z/robin-sn',
@@ -46,8 +46,8 @@ const ProjectList: {
     id: 2,
     title: 'Chatpack',
     imageURL: imageChatpack,
-    gifURL: gifChatpack,
-    gifLength: 14500,
+    animationURL: animationChatpack,
+    animationLength: 27031,
     description:
       'A realtime chatroom application with a simple interface. Users can log on using a Google, GitHub, Twitter or Microsoft account.',
     githubLink: 'https://github.com/erynder-z/chatpack',
@@ -59,8 +59,8 @@ const ProjectList: {
     id: 3,
     title: '.find()',
     imageURL: imageFind,
-    gifURL: gifFind,
-    gifLength: 13130,
+    animationURL: animationFind,
+    animationLength: 32885,
     description:
       'A hidden object game where users have to find certain characters in a huge image. The app features an online leaderboard for the 10 fastest players. ',
     githubLink: 'https://github.com/erynder-z/image-tagging-app',
@@ -72,8 +72,8 @@ const ProjectList: {
     id: 4,
     title: 'JS_Todo',
     imageURL: imageJstodo,
-    gifURL: gifjstodo,
-    gifLength: 57040,
+    animationURL: animationjstodo,
+    animationLength: 103976,
     description:
       'A task-/organizer application. Users can search, create and modify tasks, set priorities and deadlines. Tasks can be categorized in predefined or custom categories. Tasks can be stored locally or online via a Firebase backend.',
     githubLink: 'https://github.com/erynder-z/JS_Todo',
@@ -85,8 +85,8 @@ const ProjectList: {
     id: 5,
     title: 'Battleship',
     imageURL: imageBattleship,
-    gifURL: gifBattleship,
-    gifLength: 32010,
+    animationURL: animationBattleship,
+    animationLength: 58348,
     description:
       'A battleship game build via test-driven development. Game logic is tested using the Jest testing framework.',
     githubLink: 'https://github.com/erynder-z/battleship',
@@ -98,8 +98,8 @@ const ProjectList: {
     id: 6,
     title: 'Eryngi-CSS',
     imageURL: imageEryngi,
-    gifURL: gifEryngi,
-    gifLength: 13060,
+    animationURL: animationEryngi,
+    animationLength: 21048,
     description:
       'A bootstrap-like custom CSS-library build with SCSS. Library can be used to quickly style a simple webpage.',
     githubLink: 'https://github.com/erynder-z/eryngi-css',
@@ -111,8 +111,8 @@ const ProjectList: {
     id: 7,
     title: 'Le-shop',
     imageURL: imageLeshop,
-    gifURL: gifLeshop,
-    gifLength: 9000,
+    animationURL: animationLeshop,
+    animationLength: 37315,
     description:
       'Frontend for a fake online shop. Users can browse different product categories and add/remove items to/from the shopping cart. Shop items are fetched via an online API.',
     githubLink: 'https://github.com/erynder-z/le-shop',
@@ -124,8 +124,8 @@ const ProjectList: {
     id: 8,
     title: 'CV-Creator',
     imageURL: imageCvcreator,
-    gifURL: gifCvcreator,
-    gifLength: 31350,
+    animationURL: animationCvcreator,
+    animationLength: 49531,
     description:
       'WYSIWYG-editor to create and print your resumee/cv. Users can add/remove sections of the cv as needed and the final document is updated in real-time.',
     githubLink: 'https://github.com/erynder-z/cv-creator',
@@ -137,8 +137,8 @@ const ProjectList: {
     id: 9,
     title: 'Just the weather',
     imageURL: imageJustweather,
-    gifURL: gifJustweather,
-    gifLength: 30350,
+    animationURL: animationJustweather,
+    animationLength: 29467,
     description:
       'A weather application using the OpenWeatherMap One Call API. Users can search for different cities and the app displays the current weather and optionally a 7-day forecast. Units can be shown in celsius or fahrenheit.',
     githubLink: 'https://github.com/erynder-z/just-the-weather',
