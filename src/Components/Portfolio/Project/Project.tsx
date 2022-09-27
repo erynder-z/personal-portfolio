@@ -13,12 +13,11 @@ interface Props {
     technologies: string;
     year: number;
   };
-  active: boolean;
   isVisible?: boolean;
   shuffleText: (text: string) => string;
 }
 
-const Project: FC<Props> = ({ project, active, isVisible, shuffleText }) => {
+const Project: FC<Props> = ({ project, isVisible, shuffleText }) => {
   const {
     title,
     imageURL,
@@ -33,6 +32,7 @@ const Project: FC<Props> = ({ project, active, isVisible, shuffleText }) => {
 
   const [shuffling, setShuffling] = useState<boolean>(false);
   const [reavealImage, setRevealImage] = useState<boolean>(false);
+  const [showImageEffect, setShowImageEffect] = useState<boolean>(false);
   const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
   const [projectImageURL, setProjectImageURL] = useState<string>(imageURL);
   const [projectTitle, setProjectTitle] = useState<string>(title);
@@ -129,6 +129,15 @@ const Project: FC<Props> = ({ project, active, isVisible, shuffleText }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible]);
 
+  useEffect(() => {
+    setShowImageEffect(true);
+    setTimeout(() => {
+      setShowImageEffect(false);
+    }, 500);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playAnimatedGif]);
+
   return (
     <div className="project-container">
       <h4 className="project-title">{projectTitle}</h4>
@@ -137,7 +146,9 @@ const Project: FC<Props> = ({ project, active, isVisible, shuffleText }) => {
           <img
             src={projectImageURL}
             alt="Project Screenshot"
-            className={`${reavealImage ? 'animate' : ''}`}
+            className={`${reavealImage ? 'animate' : ''} ${
+              showImageEffect ? 'showFilter' : ''
+            }`}
           />
           <div
             className={`border-overlay ${reavealImage ? 'animate' : ''}`}
