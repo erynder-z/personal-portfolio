@@ -46,8 +46,10 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setCurrentBgColor }) => {
   const onScrollPage = () => {
     const anchor = document.querySelector('.portfolio-container');
 
-    /*    console.log(scrolled); */
-    setScrolled(anchor!.scrollTop);
+    const scrolledPerecentage =
+      (anchor?.scrollTop! / anchor?.scrollHeight!) * 100;
+
+    setScrolled(scrolledPerecentage);
     const element = containerRef.current;
     if (scrolled >= 0) {
       if (element) {
@@ -56,56 +58,56 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setCurrentBgColor }) => {
         setCurrentBgColor('var(--project1)');
       }
     }
-    if (scrolled >= 500) {
+    if (scrolled >= 10) {
       if (element) {
         element.style.backgroundColor = 'var(--project2)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project2)');
       }
     }
-    if (scrolled >= 1100) {
+    if (scrolled >= 20) {
       if (element) {
         element.style.backgroundColor = 'var(--project3)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project3)');
       }
     }
-    if (scrolled >= 1800) {
+    if (scrolled >= 30) {
       if (element) {
         element.style.backgroundColor = 'var(--project4)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project4)');
       }
     }
-    if (scrolled >= 2400) {
+    if (scrolled >= 40) {
       if (element) {
         element.style.backgroundColor = 'var(--project5)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project5)');
       }
     }
-    if (scrolled >= 3000) {
+    if (scrolled >= 50) {
       if (element) {
         element.style.backgroundColor = 'var(--project6)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project6)');
       }
     }
-    if (scrolled >= 3700) {
+    if (scrolled >= 60) {
       if (element) {
         element.style.backgroundColor = 'var(--project7)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project7)');
       }
     }
-    if (scrolled >= 4300) {
+    if (scrolled >= 70) {
       if (element) {
         element.style.backgroundColor = 'var(--project8)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project8)');
       }
     }
-    if (scrolled >= 5000) {
+    if (scrolled >= 80) {
       if (element) {
         element.style.backgroundColor = 'var(--project9)';
         element.style.transition = 'background-color 1000ms';
@@ -143,7 +145,6 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setCurrentBgColor }) => {
               <Project
                 key={project.id}
                 project={project}
-                active={active}
                 shuffleText={shuffleText}
               />
             </VisibleSectionEffect>
