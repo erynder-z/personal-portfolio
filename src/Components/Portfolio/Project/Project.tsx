@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import VisibleSectionEffect from '../../VisibleSectionEffect/VisibleSectionEffect';
 import './Project.css';
 
 interface Props {
@@ -13,11 +14,10 @@ interface Props {
     technologies: string;
     year: number;
   };
-  isVisible?: boolean;
   shuffleText: (text: string) => string;
 }
 
-const Project: FC<Props> = ({ project, isVisible, shuffleText }) => {
+const Project: FC<Props> = ({ project, shuffleText }) => {
   const {
     title,
     imageURL,
@@ -48,6 +48,7 @@ const Project: FC<Props> = ({ project, isVisible, shuffleText }) => {
   const [previewPlay, setPreviewPlay] = useState<string>('[Play preview]');
   const [previewSource, setPreviewSource] = useState<string>('[Source]');
   const [previewLive, setPreviewLive] = useState<string>('[Live]');
+  const [currentlyVisible, setCurrentlyVisible] = useState<boolean>(false);
 
   const shuffle = (): void => {
     setShuffling(true);
@@ -120,7 +121,7 @@ const Project: FC<Props> = ({ project, isVisible, shuffleText }) => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isVisible]);
+  }, [currentlyVisible]);
 
   useEffect(() => {
     setShowImageEffect(true);
@@ -132,59 +133,63 @@ const Project: FC<Props> = ({ project, isVisible, shuffleText }) => {
   }, [playAnimatedGif]);
 
   return (
-    <div className="project-container">
-      <h4 className="project-title">{projectTitle}</h4>
-      <div className="preview-container">
-        <div className="image-container">
-          <img
-            src={projectImageURL}
-            alt="Project Screenshot"
-            className={`${reavealImage ? 'animate' : ''} ${
-              showImageEffect ? 'showFilter' : ''
-            }`}
-          />
-          <div
-            className={`border-overlay ${reavealImage ? 'animate' : ''}`}
-          ></div>
-          <div className={`overlay ${reavealImage ? 'animate' : ''}`}></div>
+    <VisibleSectionEffect setCurrentlyVisible={setCurrentlyVisible}>
+      <div className="project-container">
+        <h4 className="project-title">{projectTitle}</h4>
+        <div className="preview-container">
+          <div className="image-container">
+            <img
+              src={projectImageURL}
+              alt="Project Screenshot"
+              className={`${reavealImage ? 'animate' : ''} ${
+                showImageEffect ? 'showFilter' : ''
+              }`}
+            />
+            <div
+              className={`border-overlay ${reavealImage ? 'animate' : ''}`}
+            ></div>
+            <div className={`overlay ${reavealImage ? 'animate' : ''}`}></div>
+          </div>
+          <div className="project-icons-container">
+            <button className="previewBtn" onClick={handlePlayPreview}>
+              <div className="previewBtn-wrapper">{previewPlay}</div>
+            </button>
+
+            <button className="github-link-button">
+              <a
+                href={githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github-link"
+              >
+                {previewSource}
+              </a>
+            </button>
+
+            <button className="live-link-button">
+              <a
+                href={liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="live-link"
+              >
+                {previewLive}
+              </a>
+            </button>
+          </div>
         </div>
-        <div className="project-icons-container">
-          <button className="previewBtn" onClick={handlePlayPreview}>
-            <div className="previewBtn-wrapper">{previewPlay}</div>
-          </button>
-
-          <button className="github-link-button">
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="github-link"
-            >
-              {previewSource}
-            </a>
-          </button>
-
-          <button className="live-link-button">
-            <a
-              href={liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="live-link"
-            >
-              {previewLive}
-            </a>
-          </button>
+        <div className="text-container">
+          <h4 className="project-description-heading">{headingTitle}</h4>
+          <p className="project-description">{projectDescription}</p>
+          <h4 className="project-technologies-heading">
+            {headingTechnologies}
+          </h4>
+          <p className="project-technologies">{projectTechnologies}</p>
+          <h4 className="project-year-heading">{headingYear}</h4>
+          <p className="project-year">{projectYear}</p>
         </div>
       </div>
-      <div className="text-container">
-        <h4 className="project-description-heading">{headingTitle}</h4>
-        <p className="project-description">{projectDescription}</p>
-        <h4 className="project-technologies-heading">{headingTechnologies}</h4>
-        <p className="project-technologies">{projectTechnologies}</p>
-        <h4 className="project-year-heading">{headingYear}</h4>
-        <p className="project-year">{projectYear}</p>
-      </div>
-    </div>
+    </VisibleSectionEffect>
   );
 };
 

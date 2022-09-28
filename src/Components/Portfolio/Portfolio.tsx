@@ -139,13 +139,11 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setCurrentBgColor }) => {
       <section>
         <div className={`projects-wrapper ${!active ? 'hide' : ''}`}>
           {projectList?.map((project) => (
-            <VisibleSectionEffect key={project.id}>
-              <Project
-                key={project.id}
-                project={project}
-                shuffleText={shuffleText}
-              />
-            </VisibleSectionEffect>
+            <Project
+              key={project.id.toString()}
+              project={project}
+              shuffleText={shuffleText}
+            />
           ))}
         </div>
       </section>

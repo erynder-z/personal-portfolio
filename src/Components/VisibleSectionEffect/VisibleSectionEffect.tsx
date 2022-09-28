@@ -3,9 +3,10 @@ import './VisibleSectionEffect.css';
 
 interface Props {
   children: JSX.Element;
+  setCurrentlyVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const VisibleSectionEffect: FC<Props> = ({ children }) => {
+const VisibleSectionEffect: FC<Props> = ({ children, setCurrentlyVisible }) => {
   const [isVisible, setVisible] = useState<boolean>(false);
   const domRef = useRef<HTMLDivElement>(null);
 
@@ -24,16 +25,23 @@ const VisibleSectionEffect: FC<Props> = ({ children }) => {
     };
   }, []);
 
-  // if the child is a Project component: pass modified child. Else pass the unmodified child.
-  const originalChild = children;
-  const modifiedChild = React.cloneElement(children, { isVisible });
+  useEffect(() => {
+    if (isVisible && setCurrentlyVisible) {
+      setCurrentlyVisible(true);
+    } else {
+      if (setCurrentlyVisible) {
+        setCurrentlyVisible!(false);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible]);
 
   return (
     <div
       ref={domRef}
       className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
     >
-      {children.type.name === 'Project' ? modifiedChild : originalChild}
+      {children}
     </div>
   );
 };
