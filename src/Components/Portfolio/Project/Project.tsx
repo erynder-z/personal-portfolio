@@ -114,13 +114,6 @@ const Project: FC<Props> = ({ project, isVisible, shuffleText }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playAnimatedGif]);
 
-  /*   useEffect(() => {
-    if (active) {
-      shuffle();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active]); */
-
   useEffect(() => {
     if (!shuffling) {
       shuffle();
