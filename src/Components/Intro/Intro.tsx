@@ -22,11 +22,15 @@ const Intro: FC<Props> = ({
   setActivePanel,
   isInitial,
 }) => {
+  const [isFirstShuffleFinished, setIsFirstShuffleFinished] =
+    useState<boolean>(false);
+  const [isSecondShuffleFinished, setIsSecondShuffleFinished] =
+    useState<boolean>(false);
   const [isIntroFinished, setIsIntroFinished] = useState<boolean>(false);
   const [downArrow, setDownArrow] = useState<JSX.Element>(
     <MdKeyboardArrowDown className="downArrow bounce" />
   );
-  const [heading, setHeading] = useState<string>(`e11o¡`);
+  const [heading, setHeading] = useState<string>(`he11o¡`);
   const [paragraph1, setParagraph1] = useState<string>(
     `i'm Stefan and i'm a frontend web developer.`
   );
@@ -76,13 +80,11 @@ const Intro: FC<Props> = ({
         `committed to never stop 1earning, i'm on my way to become a fu11-stack web deve1oper.
         i enjoy creating easy-to-use app1ications with javascript and react and i 1ove adding new too1s to my ski11set every day!`
       );
+      setIsFirstShuffleFinished(true);
     }, timeout());
   };
 
   const secondShuffle = (): void => {
-    const timeout = () => {
-      return isInitial ? 6000 : 3000;
-    };
     setTimeout(() => {
       const shuffleAgain = setInterval(() => {
         shuffleElements();
@@ -99,14 +101,12 @@ const Intro: FC<Props> = ({
           `Committed to never stop learning, I'm on my way to become a full-stack web developer.
     I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
         );
+        setIsSecondShuffleFinished(true);
       }, 500);
-    }, timeout());
+    }, 1000);
   };
 
   const thirdShuffle = (): void => {
-    const timeout = () => {
-      return isInitial ? 8000 : 5000;
-    };
     setTimeout(() => {
       const finalshuffle = setInterval(() => {
         shuffleElements();
@@ -126,17 +126,32 @@ const Intro: FC<Props> = ({
       I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
         );
       }, 1000);
-    }, timeout());
+    }, 1500);
   };
 
   useEffect(() => {
     if (active) {
       firstShuffle();
-      secondShuffle();
-      thirdShuffle();
+    } else {
+      setIsFirstShuffleFinished(false);
+      setIsSecondShuffleFinished(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
+
+  useEffect(() => {
+    if (isFirstShuffleFinished) {
+      secondShuffle();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFirstShuffleFinished]);
+
+  useEffect(() => {
+    if (isSecondShuffleFinished) {
+      thirdShuffle();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSecondShuffleFinished]);
 
   return (
     <div className="intro-container intro-bg">
