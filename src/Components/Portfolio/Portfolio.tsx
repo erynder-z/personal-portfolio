@@ -135,11 +135,9 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setCurrentBgColor }) => {
         onScrollPage();
       }}
     >
+      <h2 className="portfolio-header">{heading}</h2>
       <section>
-        <VisibleSectionEffect>
-          <h2 className="portfolio-header">{heading}</h2>
-        </VisibleSectionEffect>
-        <div className="projects-wrapper">
+        <div className={`projects-wrapper ${!active ? 'hide' : ''}`}>
           {projectList?.map((project) => (
             <VisibleSectionEffect key={project.id}>
               <Project

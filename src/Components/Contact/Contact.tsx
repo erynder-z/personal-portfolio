@@ -122,7 +122,7 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
 
   return (
     <div className="contact-container">
-      <section>
+      <section className={!active ? 'hide' : ''}>
         <h2 className="scrolling-text-container">
           {scrollingText}
           <div

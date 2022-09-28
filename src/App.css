@@ -14,6 +14,15 @@
   --dark-text: #000000;
   --scrollbar: #33465c;
   --scrollbar-thumb: #c4c9d0;
+  --project1: var(--background-dark);
+  --project2: #1a375e;
+  --project3: #0d433b;
+  --project4: #5b3a2a;
+  --project5: #363c5f;
+  --project6: #172845;
+  --project7: #3a0c2c;
+  --project8: #512938;
+  --project9: var(--background-dark);
 }
 
 .blue {
@@ -42,4 +51,8 @@
 
 .orange {
   color: var(--orange);
+}
+
+.hide {
+  opacity: 0;
 }

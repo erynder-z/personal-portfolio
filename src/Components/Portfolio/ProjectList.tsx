@@ -7,7 +7,7 @@ import animationFind from '../../assets/webps/find_32885.webp';
 import imageJstodo from '../../assets/images/jstodo.png';
 import animationjstodo from '../../assets/webps/jstodo_103976.webp';
 import imageBattleship from '../../assets/images/battleship.png';
-import animationBattleship from '../../assets/webps/battleship_58348.webp';
+import animationBattleship from '../../assets/webps/battleship_59534.webp';
 import imageEryngi from '../../assets/images/eryngi.png';
 import animationEryngi from '../../assets/webps/eryngi_21048.webp';
 import imageLeshop from '../../assets/images/leshop.png';
@@ -86,12 +86,12 @@ const ProjectList: {
     title: 'Battleship',
     imageURL: imageBattleship,
     animationURL: animationBattleship,
-    animationLength: 58348,
+    animationLength: 59534,
     description:
       'A battleship game build via test-driven development. Game logic is tested using the Jest testing framework.',
     githubLink: 'https://github.com/erynder-z/battleship',
     liveLink: 'https://erynder-z.github.io/battleship/',
-    technologies: 'JavaScript, Jest',
+    technologies: 'JavaScript, Jest, SASS',
     year: 2022,
   },
   {

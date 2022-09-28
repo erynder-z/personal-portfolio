@@ -31,7 +31,7 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
     bracketsClose: ']',
   });
 
-  const [heading, setHeading] = useState<string>(`let skills = `);
+  const [heading, setHeading] = useState<string>(`skills = `);
   const [languages, setLanguages] = useState<{
     header: string;
     language1: string;
@@ -198,7 +198,7 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
       setTimeout(() => {
         clearInterval(shuffle);
 
-        setHeading('let skills = ');
+        setHeading('skills = ');
 
         setChars({
           colon: ':',
@@ -257,7 +257,7 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
 
   return (
     <div className="skills-container">
-      <section>
+      <section className={!active ? 'hide' : ''}>
         <h2 className="skills-header"> {heading}</h2>
         <div className="curlyOpen-outer">{chars.curlyBracesOpen}</div>
         <h3 className="languages-header">{languages.header}</h3>

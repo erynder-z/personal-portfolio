@@ -155,27 +155,29 @@ const Intro: FC<Props> = ({
 
   return (
     <div className="intro-container intro-bg">
-      <section className="intro-text">
-        <h2
-          className={` intro-heading ${
-            isIntroFinished ? 'revertColors underlined' : ''
-          }`}
+      <div className={`intro-wrapper ${!active ? 'hide' : ''}`}>
+        <section className="intro-text">
+          <h2
+            className={` intro-heading ${
+              isIntroFinished ? 'revertColors underlined' : ''
+            }`}
+          >
+            {parseString(heading)}
+          </h2>
+          <p className={'intro-content'}>{parseString(paragraph1)}</p>
+          <p className={'intro-content'}>{parseString(paragraph2)}</p>
+        </section>
+        <div
+          className="goto_next"
+          onClick={(e) => {
+            setActivePanel('projects');
+            e.stopPropagation();
+          }}
         >
-          {parseString(heading)}
-        </h2>
-        <p className={'intro-content'}>{parseString(paragraph1)}</p>
-        <p className={'intro-content'}>{parseString(paragraph2)}</p>
-      </section>
-      <div
-        className="goto_next"
-        onClick={(e) => {
-          setActivePanel('projects');
-          e.stopPropagation();
-        }}
-      >
-        <span className="outer">
-          <span className="inner">{downArrow}</span>
-        </span>
+          <span className="outer">
+            <span className="inner">{downArrow}</span>
+          </span>
+        </div>
       </div>
     </div>
   );

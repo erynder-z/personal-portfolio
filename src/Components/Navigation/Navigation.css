@@ -7,6 +7,7 @@
   overflow: hidden;
   font-family: IBM Plex Mono, monospace;
   font-weight: 500;
+  background-color: var(--background-dark);
 }
 
 .panel {
@@ -14,11 +15,10 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  flex: 1;
+  /*   flex: 1; */
   transition: all 0.5s ease-in-out;
-  background: yellow;
   color: white;
-  font-size: 12px;
+  font-size: 0.8rem;
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -34,7 +34,7 @@
 
 .panel.closed {
   cursor: pointer;
-  max-height: 5vh;
+  height: 5vh;
 }
 
 .panel.closed > div {
@@ -68,6 +68,9 @@
 
 .panel-heading-intro {
   color: var(--yellow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .panel-heading-projects {
@@ -84,28 +87,30 @@
 
 .intro {
   color: var(--yellow);
-  background-color: var(--intro);
-  background-position-y: 20%;
+  /*   background-position-y: 20%; */
   transition: color 100ms;
 }
 
 .projects {
   color: var(--white);
-  background-color: var(--projects);
-  align-items: flex-start;
   transition: color 100ms;
 }
 
 .skills {
   color: var(--blue);
-  background-color: var(--skills);
-  align-items: flex-start;
   transition: color 100ms;
 }
 
 .contact {
   color: var(--pink);
-  background-color: var(--contact);
-  align-items: flex-start;
   transition: color 100ms;
+}
+
+@media only screen and (max-width: 821px) {
+}
+
+@media only screen and (max-width: 480px) {
+  .panel {
+    font-size: 0.7rem;
+  }
 }
