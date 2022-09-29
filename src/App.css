@@ -15,13 +15,13 @@
   --scrollbar: #33465c;
   --scrollbar-thumb: #c4c9d0;
   --project1: var(--background-dark);
-  --project2: #1a375e;
-  --project3: #0d433b;
-  --project4: #5b3a2a;
-  --project5: #363c5f;
-  --project6: #172845;
-  --project7: #3a0c2c;
-  --project8: #512938;
+  --project2: #173255;
+  --project3: #0c3630;
+  --project4: #363530;
+  --project5: #2f3452;
+  --project6: #15243e;
+  --project7: #2a0820;
+  --project8: #3f1f2b;
   --project9: var(--background-dark);
 }
 
