@@ -62,7 +62,7 @@ const Intro: FC<Props> = ({
 
   const firstShuffle = (): void => {
     const timeout = () => {
-      return isInitial ? 5000 : 2000;
+      return isInitial ? 4000 : 1000;
     };
     const shuffle = setInterval(() => {
       setIsIntroFinished(false);
@@ -91,7 +91,7 @@ const Intro: FC<Props> = ({
         setHeading(shuffleText(heading));
         setParagraph1(shuffleText(paragraph1));
         setParagraph2(shuffleText(paragraph2));
-      }, 75);
+      }, 100);
 
       setTimeout(() => {
         clearInterval(shuffleAgain);
@@ -102,8 +102,8 @@ const Intro: FC<Props> = ({
     I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
         );
         setIsSecondShuffleFinished(true);
-      }, 500);
-    }, 1000);
+      }, 250);
+    }, 500);
   };
 
   const thirdShuffle = (): void => {
@@ -113,7 +113,7 @@ const Intro: FC<Props> = ({
         setHeading(shuffleText(heading));
         setParagraph1(shuffleText(paragraph1));
         setParagraph2(shuffleText(paragraph2));
-      }, 50);
+      }, 100);
 
       setTimeout(() => {
         clearInterval(finalshuffle);
@@ -125,8 +125,8 @@ const Intro: FC<Props> = ({
           `Committed to never stop learning, I'm on my way to become a full-stack web developer.
       I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
         );
-      }, 1000);
-    }, 1500);
+      }, 500);
+    }, 750);
   };
 
   useEffect(() => {
