@@ -189,4 +189,12 @@
   .contact-hoverElement {
     font-size: 2rem;
   }
+
+  .contact-icons {
+    gap: unset;
+  }
+
+  .contact-btn {
+    height: 4rem;
+  }
 }

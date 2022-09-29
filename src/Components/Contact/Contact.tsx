@@ -96,24 +96,24 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
 
   const buttons = [
     <Mailto email="stfn.bgr@gmail.com" subject="Contact from website" body="">
-      <FaEnvelope size="5rem" />
+      <FaEnvelope className="contact-btn" size="5rem" />
     </Mailto>,
     <a
       href="https://github.com/erynder-z"
       target="_blank"
       rel="noopener noreferrer"
     >
-      <FaGithub size="5rem" />
+      <FaGithub className="contact-btn" size="5rem" />
     </a>,
     <a
       href="https://www.linkedin.com"
       target="_blank"
       rel="noopener noreferrer"
     >
-      <FaLinkedin size="5rem" />
+      <FaLinkedin className="contact-btn" size="5rem" />
     </a>,
     <a href={resumee} target="_blank" rel="noreferrer">
-      <FaFilePdf size="5rem" />
+      <FaFilePdf className="contact-btn" size="5rem" />
     </a>,
   ];
 
