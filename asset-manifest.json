@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/personal-portfolio/static/css/main.a4c70ccb.css",
-    "main.js": "/personal-portfolio/static/js/main.0f2acbe6.js",
+    "main.css": "/personal-portfolio/static/css/main.d562fc38.css",
+    "main.js": "/personal-portfolio/static/js/main.e455655e.js",
     "static/media/find_32885.webp": "/personal-portfolio/static/media/find_32885.dd51ab54e89fdba54be0.webp",
     "static/media/battleship_59534.webp": "/personal-portfolio/static/media/battleship_59534.6bc49abe49b1adcfce4b.webp",
     "static/media/eryngi_21048.webp": "/personal-portfolio/static/media/eryngi_21048.d06529dea00579bbc94e.webp",
     "static/media/leshop_37315.webp": "/personal-portfolio/static/media/leshop_37315.966e6fda7fd3f9040474.webp",
     "static/media/robin_58538.webp": "/personal-portfolio/static/media/robin_58538.3c16f4584e61356cc4fc.webp",
     "static/media/cvcreator_49531.webp": "/personal-portfolio/static/media/cvcreator_49531.8eee726d7715cd8a9ddf.webp",
-    "static/media/profile1.png": "/personal-portfolio/static/media/profile1.48f4fb08adf213ad9965.png",
+    "static/media/profile.png": "/personal-portfolio/static/media/profile.48f4fb08adf213ad9965.png",
     "static/media/jstodo_103976.webp": "/personal-portfolio/static/media/jstodo_103976.70a7826cf2717105bbd2.webp",
     "static/media/justweather_29467.webp": "/personal-portfolio/static/media/justweather_29467.de107a83a98904d56a6b.webp",
     "static/media/find.png": "/personal-portfolio/static/media/find.d3ed7ef46f93830ab836.png",
@@ -21,12 +21,13 @@
     "static/media/justweather.png": "/personal-portfolio/static/media/justweather.d677574e6c873c56d07e.png",
     "static/media/battleship.png": "/personal-portfolio/static/media/battleship.c5684943fb4465b25106.png",
     "static/media/chatpack.png": "/personal-portfolio/static/media/chatpack.6b102af26b22cd5d437c.png",
+    "static/media/resumee.pdf": "/personal-portfolio/static/media/resumee.48418c63e8e52930a55b.pdf",
     "index.html": "/personal-portfolio/index.html",
-    "main.a4c70ccb.css.map": "/personal-portfolio/static/css/main.a4c70ccb.css.map",
-    "main.0f2acbe6.js.map": "/personal-portfolio/static/js/main.0f2acbe6.js.map"
+    "main.d562fc38.css.map": "/personal-portfolio/static/css/main.d562fc38.css.map",
+    "main.e455655e.js.map": "/personal-portfolio/static/js/main.e455655e.js.map"
   },
   "entrypoints": [
-    "static/css/main.a4c70ccb.css",
-    "static/js/main.0f2acbe6.js"
+    "static/css/main.d562fc38.css",
+    "static/js/main.e455655e.js"
   ]
 }
