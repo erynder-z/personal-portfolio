@@ -88,7 +88,7 @@ const ProjectList: {
     animationURL: animationBattleship,
     animationLength: 59534,
     description:
-      'A battleship game build via test-driven development. Game logic is tested using the Jest testing framework.',
+      'A battleship game built via test-driven development. Game logic is tested using the Jest testing framework.',
     githubLink: 'https://github.com/erynder-z/battleship',
     liveLink: 'https://erynder-z.github.io/battleship/',
     technologies: 'JavaScript, Jest, SASS',
