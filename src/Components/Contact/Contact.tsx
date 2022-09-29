@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
-import profilePic from '../../assets/profile1.png';
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import profilePic from '../../assets/profile.png';
+import resumee from '../../assets/resumee.pdf';
+import { FaEnvelope, FaGithub, FaLinkedin, FaFilePdf } from 'react-icons/fa';
 import Mailto from '../Mailto/Mailto';
 import './Contact.css';
 
@@ -64,7 +65,7 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
       });
       setFooterText('© 2022 | Stefan Bamberger');
       setHideScrollingText(false);
-      setCurrentIndex([0, 1, 2]);
+      setCurrentIndex([0, 1, 2, 3]);
     }, 2000);
   };
 
@@ -83,7 +84,7 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
   };
 
   const getRandomIndex = () => {
-    let unshuffled = [0, 1, 2];
+    let unshuffled = [0, 1, 2, 3];
 
     let shuffled = unshuffled
       .map((value) => ({ value, sort: Math.random() }))
@@ -110,6 +111,9 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
       rel="noopener noreferrer"
     >
       <FaLinkedin size="5rem" />
+    </a>,
+    <a href={resumee} target="_blank" rel="noreferrer">
+      <FaFilePdf size="5rem" />
     </a>,
   ];
 
@@ -182,6 +186,7 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
             {buttons[currentIndex[0]]}
             {buttons[currentIndex[1]]}
             {buttons[currentIndex[2]]}
+            {buttons[currentIndex[3]]}
           </div>
         </div>
         <h3 className="contact-footer">{footerText}</h3>
