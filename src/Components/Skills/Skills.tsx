@@ -246,7 +246,7 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           tool4Icon: <SiWebpack size="2rem" color="#84c6e8" />,
           tool5Icon: <SiStackoverflow size="2rem" color="#f2740d" />,
         });
-      }, 2000);
+      }, 1000);
     };
 
     if (active) {

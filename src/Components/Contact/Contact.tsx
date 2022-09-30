@@ -66,7 +66,7 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
       setFooterText('© 2022 | Stefan Bamberger');
       setHideScrollingText(false);
       setCurrentIndex([0, 1, 2, 3]);
-    }, 2000);
+    }, 1000);
   };
 
   const followImageCursor = (

@@ -62,7 +62,7 @@ const Intro: FC<Props> = ({
 
   const firstShuffle = (): void => {
     const timeout = () => {
-      return isInitial ? 4000 : 1000;
+      return isInitial ? 3250 : 1000;
     };
     const shuffle = setInterval(() => {
       setIsIntroFinished(false);
@@ -103,7 +103,7 @@ const Intro: FC<Props> = ({
         );
         setIsSecondShuffleFinished(true);
       }, 250);
-    }, 500);
+    }, 250);
   };
 
   const thirdShuffle = (): void => {
@@ -126,7 +126,7 @@ const Intro: FC<Props> = ({
       I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
         );
       }, 500);
-    }, 750);
+    }, 500);
   };
 
   useEffect(() => {

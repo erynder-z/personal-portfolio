@@ -80,7 +80,7 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
       setPreviewPlay(previewPlay);
       setPreviewSource(previewSource);
       setPreviewLive(previewLive);
-    }, 2000);
+    }, 1000);
   };
 
   const handlePlayPreview = (): void => {

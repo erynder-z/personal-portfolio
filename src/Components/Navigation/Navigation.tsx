@@ -29,7 +29,7 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
 
   const firstShuffle = (): void => {
     const timeout = () => {
-      return isInitial ? 4000 : 1000;
+      return isInitial ? 3250 : 1000;
     };
     const shuffle = setInterval(() => {
       setCategoriesText(shuffleNav(categoriesText));
@@ -44,7 +44,7 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
 
   const secondShuffle = (): void => {
     const timeout = () => {
-      return isInitial ? 4500 : 1500;
+      return isInitial ? 3500 : 1250;
     };
     setTimeout(() => {
       const shuffleAgain = setInterval(() => {
@@ -61,7 +61,7 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
 
   const thirdShuffle = (): void => {
     const timeout = () => {
-      return isInitial ? 5500 : 2500;
+      return isInitial ? 4250 : 2000;
     };
     setTimeout(() => {
       const finalshuffle = setInterval(() => {
@@ -84,7 +84,7 @@ const Navigation: FC<Props> = ({ shuffleText, shuffleNav, isInitial }) => {
     setTimeout(() => {
       clearInterval(shuffle);
       setCategoriesText(['[Intro]', '[Projects]', '[Skills]', '[Contact]']);
-    }, 2000);
+    }, 1000);
   };
 
   useEffect(() => {
