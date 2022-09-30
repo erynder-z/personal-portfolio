@@ -145,9 +145,13 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
                 showImageEffect ? 'showFilter' : ''
               }`}
             />
-            <div
-              className={`border-overlay ${reavealImage ? 'animate' : ''}`}
-            ></div>
+            {
+              <div
+                className={`placeholder-overlay ${
+                  reavealImage ? 'animate' : ''
+                }`}
+              ></div>
+            }
             <div className={`overlay ${reavealImage ? 'animate' : ''}`}></div>
           </div>
           <div className="project-icons-container">
