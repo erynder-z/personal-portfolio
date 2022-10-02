@@ -164,20 +164,20 @@ const Intro: FC<Props> = ({
           >
             {parseString(heading)}
           </h2>
-          <p className={'intro-content'}>{parseString(paragraph1)}</p>
-          <p className={'intro-content'}>{parseString(paragraph2)}</p>
+          <p className={'intro-content-upper'}>{parseString(paragraph1)}</p>
+          <p className={'intro-content-lower'}>{parseString(paragraph2)}</p>
+          <div
+            className="goto_next"
+            onClick={(e) => {
+              setActivePanel('projects');
+              e.stopPropagation();
+            }}
+          >
+            <span className="outer">
+              <span className="inner">{downArrow}</span>
+            </span>
+          </div>
         </section>
-        <div
-          className="goto_next"
-          onClick={(e) => {
-            setActivePanel('projects');
-            e.stopPropagation();
-          }}
-        >
-          <span className="outer">
-            <span className="inner">{downArrow}</span>
-          </span>
-        </div>
       </div>
     </div>
   );
