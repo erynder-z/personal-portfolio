@@ -8,6 +8,7 @@ import {
   SiFirebase,
   SiSass,
   SiNodedotjs,
+  SiMongodb,
   SiGit,
   SiGithub,
   SiJest,
@@ -48,10 +49,10 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
     language2: 'CSS',
     language3: 'JavaScript',
     language4: 'TypeScript',
-    language1Icon: <SiHtml5 size="2rem" color="#e34f26" />,
-    language2Icon: <SiCss3 size="2rem" color="#264de4" />,
-    language3Icon: <SiJavascript size="2rem" color="#f7df1e" />,
-    language4Icon: <SiTypescript size="2rem" color="#3178c6" />,
+    language1Icon: <SiHtml5 size="1.5rem" color="#e34f26" />,
+    language2Icon: <SiCss3 size="1.5rem" color="#264de4" />,
+    language3Icon: <SiJavascript size="1.5rem" color="#f7df1e" />,
+    language4Icon: <SiTypescript size="1.5rem" color="#3178c6" />,
   });
 
   const [technologies, setTechnologies] = useState<{
@@ -60,20 +61,24 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
     tech2: string;
     tech3: string;
     tech4: string;
+    tech5: string;
     tech1Icon: JSX.Element;
     tech2Icon: JSX.Element;
     tech3Icon: JSX.Element;
     tech4Icon: JSX.Element;
+    tech5Icon: JSX.Element;
   }>({
     header: 'Technologies:',
     tech1: 'React',
     tech2: 'Firebase',
     tech3: 'Sass',
     tech4: 'NodeJS',
-    tech1Icon: <SiReact size="2rem" color="#61dbfb" />,
-    tech2Icon: <SiFirebase size="2rem" color="#FFCB2B" />,
-    tech3Icon: <SiSass size="2rem" color="#cd669a" />,
-    tech4Icon: <SiNodedotjs size="2rem" color="#68a063" />,
+    tech5: 'MongoDB',
+    tech1Icon: <SiReact size="1.5rem" color="#61dbfb" />,
+    tech2Icon: <SiFirebase size="1.5rem" color="#FFCB2B" />,
+    tech3Icon: <SiSass size="1.5rem" color="#cd669a" />,
+    tech4Icon: <SiNodedotjs size="1.5rem" color="#68a063" />,
+    tech5Icon: <SiMongodb size="1.5rem" color="#589636" />,
   });
 
   const [tools, setTools] = useState<{
@@ -95,11 +100,11 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
     tool3: 'Jest',
     tool4: 'Webpack',
     tool5: 'StackOverflow',
-    tool1Icon: <SiGit size="2rem" color="#f1502f" />,
-    tool2Icon: <SiGithub size="2rem" color="#fffff" />,
-    tool3Icon: <SiJest size="2rem" color="#18df16" />,
-    tool4Icon: <SiWebpack size="2rem" color="#84c6e8" />,
-    tool5Icon: <SiStackoverflow size="2rem" color="#f2740d" />,
+    tool1Icon: <SiGit size="1.5rem" color="#f1502f" />,
+    tool2Icon: <SiGithub size="1.5rem" color="#fffff" />,
+    tool3Icon: <SiJest size="1.5rem" color="#18df16" />,
+    tool4Icon: <SiWebpack size="1.5rem" color="#84c6e8" />,
+    tool5Icon: <SiStackoverflow size="1.5rem" color="#f2740d" />,
   });
 
   const shuffleChars = (): void => {
@@ -134,19 +139,20 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
 
   const getRandomIcon = (): JSX.Element => {
     const iconsArray = [
-      <SiHtml5 size="2rem" color="#e34f26" />,
-      <SiCss3 size="2rem" color="#264de4" />,
-      <SiJavascript size="2rem" color="#f7df1e" />,
-      <SiTypescript size="2rem" color="#3178c6" />,
-      <SiReact size="2rem" color="#61dbfb" />,
-      <SiFirebase size="2rem" color="#FFCB2B" />,
-      <SiSass size="2rem" color="#cd669a" />,
-      <SiNodedotjs size="2rem" color="#68a063" />,
-      <SiGit size="2rem" color="#f1502f" />,
-      <SiGithub size="2rem" color="#fffff" />,
-      <SiJest size="2rem" color="#18df16" />,
-      <SiWebpack size="2rem" color="#84c6e8" />,
-      <SiStackoverflow size="2rem" color="#f2740d" />,
+      <SiHtml5 size="1.5rem" color="#e34f26" />,
+      <SiCss3 size="1.5rem" color="#264de4" />,
+      <SiJavascript size="1.5rem" color="#f7df1e" />,
+      <SiTypescript size="1.5rem" color="#3178c6" />,
+      <SiReact size="1.5rem" color="#61dbfb" />,
+      <SiFirebase size="1.5rem" color="#FFCB2B" />,
+      <SiSass size="1.5rem" color="#cd669a" />,
+      <SiNodedotjs size="1.5rem" color="#68a063" />,
+      <SiMongodb size="1.5rem" color="#589636" />,
+      <SiGit size="1.5rem" color="#f1502f" />,
+      <SiGithub size="1.5rem" color="#fffff" />,
+      <SiJest size="1.5rem" color="#18df16" />,
+      <SiWebpack size="1.5rem" color="#84c6e8" />,
+      <SiStackoverflow size="1.5rem" color="#f2740d" />,
     ];
 
     return iconsArray[Math.floor(Math.random() * iconsArray.length)];
@@ -174,10 +180,12 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           tech2: shuffleText('Firebase'),
           tech3: shuffleText('Sass'),
           tech4: shuffleText('NodeJS'),
+          tech5: shuffleText('mongoDB'),
           tech1Icon: getRandomIcon(),
           tech2Icon: getRandomIcon(),
           tech3Icon: getRandomIcon(),
           tech4Icon: getRandomIcon(),
+          tech5Icon: getRandomIcon(),
         });
 
         setTools({
@@ -215,10 +223,10 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           language2: 'CSS',
           language3: 'JavaScript',
           language4: 'TypeScript',
-          language1Icon: <SiHtml5 size="2rem" color="#e34f26" />,
-          language2Icon: <SiCss3 size="2rem" color="#264de4" />,
-          language3Icon: <SiJavascript size="2rem" color="#f7df1e" />,
-          language4Icon: <SiTypescript size="2rem" color="#3178c6" />,
+          language1Icon: <SiHtml5 size="1.5rem" color="#e34f26" />,
+          language2Icon: <SiCss3 size="1.5rem" color="#264de4" />,
+          language3Icon: <SiJavascript size="1.5rem" color="#f7df1e" />,
+          language4Icon: <SiTypescript size="1.5rem" color="#3178c6" />,
         });
 
         setTechnologies({
@@ -227,10 +235,12 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           tech2: 'Firebase',
           tech3: 'Sass',
           tech4: 'NodeJS',
-          tech1Icon: <SiReact size="2rem" color="#61dbfb" />,
-          tech2Icon: <SiFirebase size="2rem" color="#FFCB2B" />,
-          tech3Icon: <SiSass size="2rem" color="#cd669a" />,
-          tech4Icon: <SiNodedotjs size="2rem" color="#68a063" />,
+          tech5: 'MongoDB',
+          tech1Icon: <SiReact size="1.5rem" color="#61dbfb" />,
+          tech2Icon: <SiFirebase size="1.5rem" color="#FFCB2B" />,
+          tech3Icon: <SiSass size="1.5rem" color="#cd669a" />,
+          tech4Icon: <SiNodedotjs size="1.5rem" color="#68a063" />,
+          tech5Icon: <SiMongodb size="1.5rem" color="#589636" />,
         });
 
         setTools({
@@ -240,11 +250,11 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           tool3: 'Jest',
           tool4: 'Webpack',
           tool5: 'StackOverflow',
-          tool1Icon: <SiGit size="2rem" color="#f1502f" />,
-          tool2Icon: <SiGithub size="2rem" color="#fffff" />,
-          tool3Icon: <SiJest size="2rem" color="#18df16" />,
-          tool4Icon: <SiWebpack size="2rem" color="#84c6e8" />,
-          tool5Icon: <SiStackoverflow size="2rem" color="#f2740d" />,
+          tool1Icon: <SiGit size="1.5rem" color="#f1502f" />,
+          tool2Icon: <SiGithub size="1.5rem" color="#fffff" />,
+          tool3Icon: <SiJest size="1.5rem" color="#18df16" />,
+          tool4Icon: <SiWebpack size="1.5rem" color="#84c6e8" />,
+          tool5Icon: <SiStackoverflow size="1.5rem" color="#f2740d" />,
         });
       }, 1000);
     };
@@ -314,6 +324,11 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           <div className="item-wrapper">
             <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
             {technologies.tech4Icon} {chars.colon} {technologies.tech4}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+          </div>
+          <div className="item-wrapper">
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {technologies.tech5Icon} {chars.colon} {technologies.tech5}
             <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
           </div>
         </div>
