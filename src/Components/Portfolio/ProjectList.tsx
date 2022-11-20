@@ -1,7 +1,7 @@
 import imageRobin from '../../assets/images/robin.png';
 import animationRobin from '../../assets/webps/robin_58538.webp';
 import imageZ64 from '../../assets/images/z64.png';
-import animationZ64 from '../../assets/webps/z64_101014.webp';
+import animationZ64 from '../../assets/webps/z64_61020.webp';
 import imageChatpack from '../../assets/images/chatpack.png';
 import animationChatpack from '../../assets/webps/chatpack_27031.webp';
 import imageFind from '../../assets/images/find.png';
@@ -49,7 +49,7 @@ const ProjectList: {
     title: 'Z64',
     imageURL: imageZ64,
     animationURL: animationZ64,
-    animationLength: 101014,
+    animationLength: 61020,
     description:
       'A Commodore 64 game database. Users can view, edit and add new games to the database.',
     githubLink: 'https://github.com/erynder-z/c64-game-database',
