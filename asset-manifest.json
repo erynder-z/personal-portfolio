@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/personal-portfolio/static/css/main.6f4e9a65.css",
-    "main.js": "/personal-portfolio/static/js/main.67b3a88a.js",
+    "main.js": "/personal-portfolio/static/js/main.18e09eef.js",
     "static/media/find_32885.webp": "/personal-portfolio/static/media/find_32885.dd51ab54e89fdba54be0.webp",
     "static/media/battleship_59534.webp": "/personal-portfolio/static/media/battleship_59534.6bc49abe49b1adcfce4b.webp",
     "static/media/eryngi_21048.webp": "/personal-portfolio/static/media/eryngi_21048.d06529dea00579bbc94e.webp",
@@ -11,7 +11,7 @@
     "static/media/profile.png": "/personal-portfolio/static/media/profile.48f4fb08adf213ad9965.png",
     "static/media/jstodo_103976.webp": "/personal-portfolio/static/media/jstodo_103976.70a7826cf2717105bbd2.webp",
     "static/media/justweather_29467.webp": "/personal-portfolio/static/media/justweather_29467.de107a83a98904d56a6b.webp",
-    "static/media/z64_101014.webp": "/personal-portfolio/static/media/z64_101014.78becac96378b9edd246.webp",
+    "static/media/z64_61020.webp": "/personal-portfolio/static/media/z64_61020.78becac96378b9edd246.webp",
     "static/media/find.png": "/personal-portfolio/static/media/find.d3ed7ef46f93830ab836.png",
     "static/media/leshop.png": "/personal-portfolio/static/media/leshop.077611f7fae60a54ec00.png",
     "static/media/cvcreator.png": "/personal-portfolio/static/media/cvcreator.9800a86ae16525161f28.png",
@@ -26,10 +26,10 @@
     "static/media/resumee.pdf": "/personal-portfolio/static/media/resumee.48418c63e8e52930a55b.pdf",
     "index.html": "/personal-portfolio/index.html",
     "main.6f4e9a65.css.map": "/personal-portfolio/static/css/main.6f4e9a65.css.map",
-    "main.67b3a88a.js.map": "/personal-portfolio/static/js/main.67b3a88a.js.map"
+    "main.18e09eef.js.map": "/personal-portfolio/static/js/main.18e09eef.js.map"
   },
   "entrypoints": [
     "static/css/main.6f4e9a65.css",
-    "static/js/main.67b3a88a.js"
+    "static/js/main.18e09eef.js"
   ]
 }
