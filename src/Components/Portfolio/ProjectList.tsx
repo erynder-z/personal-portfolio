@@ -1,5 +1,7 @@
 import imageRobin from '../../assets/images/robin.png';
 import animationRobin from '../../assets/webps/robin_58538.webp';
+import imageZ64 from '../../assets/images/z64.png';
+import animationZ64 from '../../assets/webps/z64_101014.webp';
 import imageChatpack from '../../assets/images/chatpack.png';
 import animationChatpack from '../../assets/webps/chatpack_27031.webp';
 import imageFind from '../../assets/images/find.png';
@@ -44,6 +46,19 @@ const ProjectList: {
   },
   {
     id: 2,
+    title: 'Z64',
+    imageURL: imageZ64,
+    animationURL: animationZ64,
+    animationLength: 101014,
+    description:
+      'A Commodore 64 game database. Users can view, edit and add new games to the database.',
+    githubLink: 'https://github.com/erynder-z/c64-game-database',
+    liveLink: 'https://c64-game-database.onrender.com/',
+    technologies: 'Node.js, Express, MongoDB, EJS',
+    year: 2022,
+  },
+  {
+    id: 3,
     title: 'Chatpack',
     imageURL: imageChatpack,
     animationURL: animationChatpack,
@@ -56,7 +71,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 3,
+    id: 4,
     title: '.find()',
     imageURL: imageFind,
     animationURL: animationFind,
@@ -69,7 +84,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 4,
+    id: 5,
     title: 'JS_Todo',
     imageURL: imageJstodo,
     animationURL: animationjstodo,
@@ -82,7 +97,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 5,
+    id: 6,
     title: 'Battleship',
     imageURL: imageBattleship,
     animationURL: animationBattleship,
@@ -95,7 +110,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 6,
+    id: 7,
     title: 'Eryngi-CSS',
     imageURL: imageEryngi,
     animationURL: animationEryngi,
@@ -108,7 +123,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 7,
+    id: 8,
     title: 'Le-shop',
     imageURL: imageLeshop,
     animationURL: animationLeshop,
@@ -121,7 +136,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 8,
+    id: 9,
     title: 'CV-Creator',
     imageURL: imageCvcreator,
     animationURL: animationCvcreator,
@@ -134,7 +149,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 9,
+    id: 10,
     title: 'Just the weather',
     imageURL: imageJustweather,
     animationURL: animationJustweather,

@@ -65,53 +65,60 @@ const Portfolio: FC<Props> = ({ active, shuffleText, setCurrentBgColor }) => {
         setCurrentBgColor('var(--project2)');
       }
     }
-    if (scrolled >= 20) {
+    if (scrolled >= 15) {
       if (element) {
         element.style.backgroundColor = 'var(--project3)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project3)');
       }
     }
-    if (scrolled >= 30) {
+    if (scrolled >= 25) {
       if (element) {
         element.style.backgroundColor = 'var(--project4)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project4)');
       }
     }
-    if (scrolled >= 40) {
+    if (scrolled >= 35) {
       if (element) {
         element.style.backgroundColor = 'var(--project5)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project5)');
       }
     }
-    if (scrolled >= 50) {
+    if (scrolled >= 45) {
       if (element) {
         element.style.backgroundColor = 'var(--project6)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project6)');
       }
     }
-    if (scrolled >= 60) {
+    if (scrolled >= 55) {
       if (element) {
         element.style.backgroundColor = 'var(--project7)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project7)');
       }
     }
-    if (scrolled >= 70) {
+    if (scrolled >= 65) {
       if (element) {
         element.style.backgroundColor = 'var(--project8)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project8)');
       }
     }
-    if (scrolled >= 80) {
+    if (scrolled >= 75) {
       if (element) {
         element.style.backgroundColor = 'var(--project9)';
         element.style.transition = 'background-color 1000ms';
         setCurrentBgColor('var(--project9)');
+      }
+    }
+    if (scrolled >= 85) {
+      if (element) {
+        element.style.backgroundColor = 'var(--project10)';
+        element.style.transition = 'background-color 1000ms';
+        setCurrentBgColor('var(--project10)');
       }
     }
   };
