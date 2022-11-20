@@ -23,7 +23,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 20% 5% 20% 5% 35%;
-  grid-template-rows: 6% 4% 20% 4% 4% 20% 4% 4% 25% 4% 4%;
+  grid-template-rows: 6% 4% 20% 4% 4% 30% 4% 4% 15% 4% 4%;
   grid-template-areas:
     'skills curlyOpen . . .'
     '. . langs bracketOpen1 .'

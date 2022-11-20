@@ -15,14 +15,15 @@
   --scrollbar: #33465c;
   --scrollbar-thumb: #c4c9d0;
   --project1: var(--background-dark);
-  --project2: #173255;
-  --project3: #0c3630;
-  --project4: #363530;
-  --project5: #2f3452;
-  --project6: #15243e;
-  --project7: #2a0820;
-  --project8: #3f1f2b;
-  --project9: var(--background-dark);
+  --project2: #3a2f83;
+  --project3: #173255;
+  --project4: #0c3630;
+  --project5: #363530;
+  --project6: #2f3452;
+  --project7: #15243e;
+  --project8: #2a0820;
+  --project9: #3f1f2b;
+  --project10: var(--background-dark);
 }
 
 .blue {

@@ -9,11 +9,10 @@ import {
   SiSass,
   SiNodedotjs,
   SiMongodb,
+  SiExpress,
   SiGit,
   SiGithub,
   SiJest,
-  SiWebpack,
-  SiStackoverflow,
 } from 'react-icons/si';
 import './Skills.css';
 
@@ -62,11 +61,13 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
     tech3: string;
     tech4: string;
     tech5: string;
+    tech6: string;
     tech1Icon: JSX.Element;
     tech2Icon: JSX.Element;
     tech3Icon: JSX.Element;
     tech4Icon: JSX.Element;
     tech5Icon: JSX.Element;
+    tech6Icon: JSX.Element;
   }>({
     header: 'Technologies:',
     tech1: 'React',
@@ -74,11 +75,13 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
     tech3: 'Sass',
     tech4: 'NodeJS',
     tech5: 'MongoDB',
+    tech6: 'Express',
     tech1Icon: <SiReact size="1.5rem" color="#61dbfb" />,
     tech2Icon: <SiFirebase size="1.5rem" color="#FFCB2B" />,
     tech3Icon: <SiSass size="1.5rem" color="#cd669a" />,
     tech4Icon: <SiNodedotjs size="1.5rem" color="#68a063" />,
     tech5Icon: <SiMongodb size="1.5rem" color="#589636" />,
+    tech6Icon: <SiExpress size="1.5rem" color="#589636" />,
   });
 
   const [tools, setTools] = useState<{
@@ -86,25 +89,17 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
     tool1: string;
     tool2: string;
     tool3: string;
-    tool4: string;
-    tool5: string;
     tool1Icon: JSX.Element;
     tool2Icon: JSX.Element;
     tool3Icon: JSX.Element;
-    tool4Icon: JSX.Element;
-    tool5Icon: JSX.Element;
   }>({
     header: 'Tools:',
     tool1: 'Git',
     tool2: 'GitHub',
     tool3: 'Jest',
-    tool4: 'Webpack',
-    tool5: 'StackOverflow',
     tool1Icon: <SiGit size="1.5rem" color="#f1502f" />,
     tool2Icon: <SiGithub size="1.5rem" color="#fffff" />,
     tool3Icon: <SiJest size="1.5rem" color="#18df16" />,
-    tool4Icon: <SiWebpack size="1.5rem" color="#84c6e8" />,
-    tool5Icon: <SiStackoverflow size="1.5rem" color="#f2740d" />,
   });
 
   const shuffleChars = (): void => {
@@ -148,11 +143,10 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
       <SiSass size="1.5rem" color="#cd669a" />,
       <SiNodedotjs size="1.5rem" color="#68a063" />,
       <SiMongodb size="1.5rem" color="#589636" />,
+      <SiExpress size="1.5rem" color="#589636" />,
       <SiGit size="1.5rem" color="#f1502f" />,
       <SiGithub size="1.5rem" color="#fffff" />,
       <SiJest size="1.5rem" color="#18df16" />,
-      <SiWebpack size="1.5rem" color="#84c6e8" />,
-      <SiStackoverflow size="1.5rem" color="#f2740d" />,
     ];
 
     return iconsArray[Math.floor(Math.random() * iconsArray.length)];
@@ -181,11 +175,13 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           tech3: shuffleText('Sass'),
           tech4: shuffleText('NodeJS'),
           tech5: shuffleText('mongoDB'),
+          tech6: shuffleText('Express'),
           tech1Icon: getRandomIcon(),
           tech2Icon: getRandomIcon(),
           tech3Icon: getRandomIcon(),
           tech4Icon: getRandomIcon(),
           tech5Icon: getRandomIcon(),
+          tech6Icon: getRandomIcon(),
         });
 
         setTools({
@@ -193,13 +189,9 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           tool1: shuffleText('Git'),
           tool2: shuffleText('GitHub'),
           tool3: shuffleText('Jest'),
-          tool4: shuffleText('Webpack'),
-          tool5: shuffleText('StackOverflow'),
           tool1Icon: getRandomIcon(),
           tool2Icon: getRandomIcon(),
           tool3Icon: getRandomIcon(),
-          tool4Icon: getRandomIcon(),
-          tool5Icon: getRandomIcon(),
         });
       }, 50);
 
@@ -236,11 +228,13 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           tech3: 'Sass',
           tech4: 'NodeJS',
           tech5: 'MongoDB',
+          tech6: 'Express',
           tech1Icon: <SiReact size="1.5rem" color="#61dbfb" />,
           tech2Icon: <SiFirebase size="1.5rem" color="#FFCB2B" />,
           tech3Icon: <SiSass size="1.5rem" color="#cd669a" />,
           tech4Icon: <SiNodedotjs size="1.5rem" color="#68a063" />,
           tech5Icon: <SiMongodb size="1.5rem" color="#589636" />,
+          tech6Icon: <SiExpress size="1.5rem" color="#589636" />,
         });
 
         setTools({
@@ -248,13 +242,9 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
           tool1: 'Git',
           tool2: 'GitHub',
           tool3: 'Jest',
-          tool4: 'Webpack',
-          tool5: 'StackOverflow',
           tool1Icon: <SiGit size="1.5rem" color="#f1502f" />,
           tool2Icon: <SiGithub size="1.5rem" color="#fffff" />,
           tool3Icon: <SiJest size="1.5rem" color="#18df16" />,
-          tool4Icon: <SiWebpack size="1.5rem" color="#84c6e8" />,
-          tool5Icon: <SiStackoverflow size="1.5rem" color="#f2740d" />,
         });
       }, 1000);
     };
@@ -331,6 +321,11 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
             {technologies.tech5Icon} {chars.colon} {technologies.tech5}
             <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
           </div>
+          <div className="item-wrapper">
+            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
+            {technologies.tech6Icon} {chars.colon} {technologies.tech6}
+            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
+          </div>
         </div>
         <div className="bracketClose2">
           {chars.bracketsClose} {chars.comma}
@@ -355,17 +350,6 @@ const Skills: FC<Props> = ({ active, shuffleText }) => {
             {tools.tool3Icon} {chars.colon} {tools.tool3}
             <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
             {chars.comma}
-          </div>
-          <div className="item-wrapper">
-            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
-            {tools.tool4Icon} {chars.colon} {tools.tool4}
-            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
-            {chars.comma}
-          </div>
-          <div className="item-wrapper">
-            <div className="curlyOpen-inner">{chars.curlyBracesOpen}</div>
-            {tools.tool5Icon} {chars.colon} {tools.tool5}
-            <div className="curlyClose-inner">{chars.curlyBracesClose}</div>
           </div>
         </div>
         <div className="bracketClose3">{chars.bracketsClose}</div>
