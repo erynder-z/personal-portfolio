@@ -6,7 +6,7 @@ import {
   MdKeyboardArrowRight,
 } from 'react-icons/md';
 import parseString from '../Parser/Parser';
-import randomIntFromInterval from '../RandomIntFromInverval/RandomIntFromInverval';
+import randomIntFromInterval from '../RandomIntFromInterval/RandomIntFromInterval';
 import './Intro.css';
 
 interface Props {
@@ -32,11 +32,11 @@ const Intro: FC<Props> = ({
   );
   const [heading, setHeading] = useState<string>(`he11o¡`);
   const [paragraph1, setParagraph1] = useState<string>(
-    `i'm Stefan and i'm a frontend web developer.`
+    `i'm Stefan and i'm a full-stack web developer.`
   );
-  const [paragraph2, setParagraph2] =
-    useState<string>(`Committed to never stop learning, I'm on my way to become a full-stack web developer.
-    I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`);
+  const [paragraph2, setParagraph2] = useState<string>(
+    `Committed to never stop learning, I enjoy creating easy-to-use applications. On this portfolio, you'll find a showcase of my past projects and a glimpse into my skills and experiences. Thank you for visiting!`
+  );
 
   const shuffleElements = () => {
     const random = randomIntFromInterval(1, 4);
@@ -75,10 +75,9 @@ const Intro: FC<Props> = ({
     setTimeout(() => {
       clearInterval(shuffle);
       setHeading('he11o¡');
-      setParagraph1(`i'm stefan and i'm a frontənd web deve1oper.`);
+      setParagraph1(`i'm stefan and i'm fu11-stack web deve1oper.`);
       setParagraph2(
-        `committed to never stop 1earning, i'm on my way to become a fu11-stack web deve1oper.
-        i enjoy creating easy-to-use app1ications with javascript and react and i 1ove adding new too1s to my ski11set every day!`
+        `Committed to never stop 1earning, i enjoy creating easy-to-use app1ications. On this portfo1io, you'll find a showcase of my past projects and a g1impse into my ski11s and experiences. thank you for visiting`
       );
       setIsFirstShuffleFinished(true);
     }, timeout());
@@ -96,10 +95,9 @@ const Intro: FC<Props> = ({
       setTimeout(() => {
         clearInterval(shuffleAgain);
         setHeading('Hello!');
-        setParagraph1(`I'm Stəfan and I'm a frontənd web developer.`);
+        setParagraph1(`I'm Stəfan and I'm a fullstack web developer.`);
         setParagraph2(
-          `Committed to never stop learning, I'm on my way to become a full-stack web developer.
-    I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
+          `Committed to never stop learning, I enjoy creating easy-to-use applications. On this portfolio, you'll find a showcase of my past projects and a glimpse into my ski11s and experiences. Thank you for visiting!`
         );
         setIsSecondShuffleFinished(true);
       }, 250);
@@ -120,10 +118,9 @@ const Intro: FC<Props> = ({
         setDownArrow(<MdKeyboardArrowDown className="downArrow bounce" />);
         setIsIntroFinished(true);
         setHeading('Hello!');
-        setParagraph1(`I'm Stefan and I'm a frontend web developer.`);
+        setParagraph1(`I'm Stefan and I'm a full-stack web developer.`);
         setParagraph2(
-          `Committed to never stop learning, I'm on my way to become a full-stack web developer.
-      I enjoy creating easy-to-use applications with JavaScript and React and I love adding new tools to my skillset every day!`
+          `Committed to never stop learning, I enjoy creating easy-to-use applications. On this portfolio, you'll find a showcase of my past projects and a glimpse into my skills and experiences. Thank you for visiting!`
         );
       }, 500);
     }, 500);

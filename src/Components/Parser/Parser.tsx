@@ -2,7 +2,7 @@ import parse from 'html-react-parser';
 
 const parseString = (text: string) => {
   const myName = /\b(Stefan)\b/g;
-  const myTitle = /\b(frontend web developer)\b/g;
+  const myTitle = /\b(full-stack web developer)\b/g;
 
   return parse(
     text
