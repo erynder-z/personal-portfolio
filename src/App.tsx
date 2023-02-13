@@ -14,33 +14,32 @@ const App: FC = () => {
     return shuffledArray;
   };
 
+  const getRandomInt = (n: number): number => {
+    return Math.floor(Math.random() * n);
+  };
+
+  const shuffleWord = (s: string): string => {
+    const arr: string[] = s.split('');
+    const n: number = arr.length;
+
+    // Shuffle the characters in the word
+    for (let i = 0; i < n - 1; ++i) {
+      const j: number = getRandomInt(n);
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+
+    return arr.join('');
+  };
+
   const shuffleText = (text: string): string => {
     const wordsArray: string[] = text.split(' ');
+
+    // Shuffle the characters in each word
     const shuffledArray: string[] = wordsArray.map((word) => {
       return shuffleWord(word);
     });
 
     return shuffledArray.join(' ');
-  };
-
-  const shuffleWord = (s: string): string => {
-    const getRandomInt = (n: number): number => {
-      return Math.floor(Math.random() * n);
-    };
-
-    const arr: string[] = s.split('');
-    const n: number = arr.length;
-
-    for (let i = 0; i < n - 1; ++i) {
-      const j: number = getRandomInt(n);
-
-      let temp: string = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-    }
-
-    s = arr.join('');
-    return s;
   };
 
   useEffect(() => {
