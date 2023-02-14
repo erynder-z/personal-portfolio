@@ -19,7 +19,7 @@
 }
 
 .contact-container > section {
-  width: 90%;
+  max-width: 70ch;
   height: 90%;
   color: var(--white);
 }
