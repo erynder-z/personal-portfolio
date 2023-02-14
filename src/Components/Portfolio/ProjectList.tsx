@@ -38,7 +38,7 @@ const ProjectList: {
     animationURL: animationRobin,
     animationLength: 58538,
     description:
-      'A fully-featured, twitter-like social network. Users can post, follow other users and customize their profile. The app uses Firebase as the backend.',
+      'A fully-featured, social network. Users can post, follow other users and customize their profile. The app uses Firebase as the backend.',
     githubLink: 'https://github.com/erynder-z/robin-sn',
     liveLink: 'https://erynder-z.github.io/robin-sn',
     technologies: 'React, JavaScript, Firebase',
@@ -116,7 +116,7 @@ const ProjectList: {
     animationURL: animationEryngi,
     animationLength: 21048,
     description:
-      'A bootstrap-like custom CSS-library build with SCSS. Library can be used to quickly style a simple webpage.',
+      'A bootstrap-like custom CSS library build with SCSS. Library can be used to quickly style a simple webpage.',
     githubLink: 'https://github.com/erynder-z/eryngi-css',
     liveLink: 'https://erynder-z.github.io/eryngi-css/',
     technologies: 'SASS',

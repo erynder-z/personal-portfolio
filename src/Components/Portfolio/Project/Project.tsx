@@ -31,7 +31,7 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
   } = project;
 
   const [shuffling, setShuffling] = useState<boolean>(false);
-  const [reavealImage, setRevealImage] = useState<boolean>(false);
+  const [revealImage, setRevealImage] = useState<boolean>(false);
   const [showImageEffect, setShowImageEffect] = useState<boolean>(false);
   const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
   const [projectImageURL, setProjectImageURL] = useState<string>(imageURL);
@@ -44,7 +44,7 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
   const [headingTitle, setHeadingTitle] = useState<string>('Summary');
   const [headingTechnologies, setHeadingTechnologies] =
     useState<string>('Technologies');
-  const [headingYear, setheadingYear] = useState<string>('Year');
+  const [headingYear, setHeadingYear] = useState<string>('Year');
   const [previewPlay, setPreviewPlay] = useState<string>('[Play preview]');
   const [previewSource, setPreviewSource] = useState<string>('[Source]');
   const [previewLive, setPreviewLive] = useState<string>('[Live]');
@@ -60,7 +60,7 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
       setProjectYear(shuffleText(projectYear));
       setHeadingTitle(shuffleText(headingTitle));
       setHeadingTechnologies(shuffleText(headingTechnologies));
-      setheadingYear(shuffleText(headingYear));
+      setHeadingYear(shuffleText(headingYear));
       setPreviewPlay(shuffleText(previewPlay));
       setPreviewSource(shuffleText(previewSource));
       setPreviewLive(shuffleText(previewLive));
@@ -76,7 +76,7 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
       setProjectYear(projectYear);
       setHeadingTitle(headingTitle);
       setHeadingTechnologies(headingTechnologies);
-      setheadingYear(headingYear);
+      setHeadingYear(headingYear);
       setPreviewPlay(previewPlay);
       setPreviewSource(previewSource);
       setPreviewLive(previewLive);
@@ -141,18 +141,18 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
             <img
               src={projectImageURL}
               alt="Project Screenshot"
-              className={`${reavealImage ? 'animate' : ''} ${
+              className={`${revealImage ? 'animate' : ''} ${
                 showImageEffect ? 'showFilter' : ''
               }`}
             />
             {
               <div
                 className={`placeholder-overlay ${
-                  reavealImage ? 'animate' : ''
+                  revealImage ? 'animate' : ''
                 }`}
               ></div>
             }
-            <div className={`overlay ${reavealImage ? 'animate' : ''}`}></div>
+            <div className={`overlay ${revealImage ? 'animate' : ''}`}></div>
           </div>
           <div className="project-icons-container">
             <button className="previewBtn" onClick={handlePlayPreview}>

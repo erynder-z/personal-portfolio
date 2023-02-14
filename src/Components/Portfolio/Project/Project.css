@@ -1,11 +1,11 @@
 .project-container {
   border-bottom: solid 1px grey;
-  width: 80vw;
+  max-width: 70ch;
   min-height: 55vh;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas:
-    'heading  .'
+    'heading heading'
     'image text';
 }
 
