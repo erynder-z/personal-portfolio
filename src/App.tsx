@@ -5,42 +5,9 @@ import Loading from './Components/Loading/Loading';
 import Navigation from './Components/Navigation/Navigation';
 
 const App: FC = () => {
+  const [activePanel, setActivePanel] = useState<string>('intro');
   const [showLoading, setShowLoading] = useState<boolean>(true);
   const [isInitial, setIsInitial] = useState<boolean>(true);
-  const shuffleNav = (categories: string[]): string[] => {
-    const shuffledArray: string[] = categories.map((word) => {
-      return shuffleWord(word);
-    });
-    return shuffledArray;
-  };
-
-  const getRandomInt = (n: number): number => {
-    return Math.floor(Math.random() * n);
-  };
-
-  const shuffleWord = (s: string): string => {
-    const arr: string[] = s.split('');
-    const n: number = arr.length;
-
-    // Shuffle the characters in the word
-    for (let i = 0; i < n - 1; ++i) {
-      const j: number = getRandomInt(n);
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-
-    return arr.join('');
-  };
-
-  const shuffleText = (text: string): string => {
-    const wordsArray: string[] = text.split(' ');
-
-    // Shuffle the characters in each word
-    const shuffledArray: string[] = wordsArray.map((word) => {
-      return shuffleWord(word);
-    });
-
-    return shuffledArray.join(' ');
-  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -52,13 +19,13 @@ const App: FC = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className={`App app-bg ${activePanel}`}>
       <Navigation
-        shuffleText={shuffleText}
-        shuffleNav={shuffleNav}
         isInitial={isInitial}
+        activePanel={activePanel}
+        setActivePanel={setActivePanel}
       />
-      {showLoading && <Loading shuffleText={shuffleText} />}
+      {showLoading && <Loading />}
     </div>
   );
 };

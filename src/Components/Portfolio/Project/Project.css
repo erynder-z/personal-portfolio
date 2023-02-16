@@ -1,7 +1,8 @@
 .project-container {
   border-bottom: solid 1px grey;
-  max-width: 70ch;
-  min-height: 55vh;
+  width: 70ch;
+  min-height: 60vh;
+  margin: 1rem 0;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas:
@@ -13,7 +14,8 @@
   grid-area: heading;
   font-size: 2.5rem;
   margin-top: 0;
-  height: 20%;
+  display: flex;
+  align-items: center;
 }
 
 .project-container > .preview-container {
@@ -77,10 +79,9 @@
 }
 
 .project-icons-container {
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 2rem;
   margin: 1rem 0;
 }
 
@@ -93,32 +94,61 @@
   color: rgb(255, 0, 166);
 }
 
-.project-description-heading {
-  color: var(--green);
-  margin-top: 0;
-}
-
-.project-technologies-heading {
-  color: var(--cyan);
-}
-
-.project-year-heading {
-  color: var(--red);
-}
-
 .text-container {
   height: 100%;
+  width: 100%;
   grid-area: text;
-  padding: 0 2rem;
+  margin-left: 2rem;
+  display: grid;
+  grid-template-areas:
+    'summary'
+    'technologies'
+    'year';
 }
 
 .text-container > h4 {
   margin-bottom: 0;
 }
 
-.text-container > p {
+.description-container {
+  grid-area: summary;
   margin-top: 0;
-  width: 100%;
+}
+
+.project-description {
+  margin-top: 0;
+}
+
+.project-description-heading {
+  color: var(--green);
+  margin: 0;
+}
+
+.technologies-container {
+  grid-area: technologies;
+  margin-top: 0;
+}
+.project-technologies-heading {
+  color: var(--cyan);
+  margin: 0;
+}
+
+.project-technologies {
+  margin-top: 0;
+}
+
+.year-container {
+  grid-area: year;
+  margin-top: 0;
+}
+
+.project-year-heading {
+  color: var(--red);
+  margin: 0;
+}
+
+.project-year {
+  margin-top: 0;
 }
 
 .project-icons-container > button {
@@ -126,7 +156,8 @@
   border: none;
   font-size: 1.3rem;
   font-weight: 500;
-  height: 3rem;
+  /*   height: 3rem; */
+  width: 33%;
   font-family: 'IBM Plex Mono', monospace;
 }
 

@@ -4,15 +4,14 @@ import resumee from '../../assets/resumee.pdf';
 import { FaEnvelope, FaGithub, FaLinkedin, FaFilePdf } from 'react-icons/fa';
 import Mailto from '../Mailto/Mailto';
 import './Contact.css';
+import { RandomReveal } from 'react-random-reveal';
 
 interface Props {
   active: boolean;
-  shuffleText: (text: string) => string;
 }
 
-const Contact: FC<Props> = ({ active, shuffleText }) => {
+const Contact: FC<Props> = ({ active }) => {
   const hoverElementRef = useRef<HTMLHeadingElement>(null);
-  const [currentIndex, setCurrentIndex] = useState<number[]>([0, 1, 2]);
   const [heading, setHeading] = useState<string>(`[contact]`);
   const [text, setText] = useState<string>(`Want to get in touch?`);
   const [scrollingText, setScrollingText] = useState<string>('Always');
@@ -33,28 +32,14 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
     '© 2022 | Stefan Bamberger'
   );
   const [hideScrollingText, setHideScrollingText] = useState<boolean>(true);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const revealCharacters = [...'░▒▓|'.split('')];
+  const ignoreCharacters = [...' '.split('')];
 
-  const shuffle = (): void => {
-    const shuffle = setInterval(() => {
-      setHeading(shuffleText(heading));
-      setText(shuffleText(text));
-      setScrollingText(shuffleText(scrollingText));
-      setScrollingTextMessages({
-        message1: shuffleText(scrollingTextMessages.message1),
-        message2: shuffleText(scrollingTextMessages.message2),
-        message3: shuffleText(scrollingTextMessages.message3),
-        message4: shuffleText(scrollingTextMessages.message4),
-        message5: shuffleText(scrollingTextMessages.message5),
-      });
-      setFooterText(shuffleText(footerText));
-      setHideScrollingText(true);
-      setCurrentIndex(getRandomIndex());
-    }, 50);
+  const animateScrollingText = (): void => {
+    setHideScrollingText(true);
 
     setTimeout(() => {
-      clearInterval(shuffle);
-      setHeading('[contact]');
-      setText(`Want to get in touch?`);
       setScrollingText('Always');
       setScrollingTextMessages({
         message1: 'create',
@@ -63,11 +48,22 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
         message4: 'grow',
         message5: 'create',
       });
-      setFooterText('© 2022 | Stefan Bamberger');
       setHideScrollingText(false);
-      setCurrentIndex([0, 1, 2, 3]);
     }, 1000);
   };
+
+  useEffect(() => {
+    if (active) {
+      animateScrollingText();
+
+      setIsAnimating(true);
+
+      return () => {
+        setIsAnimating(false);
+      };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
 
   const followImageCursor = (
     e: React.MouseEvent,
@@ -83,52 +79,19 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
     }
   };
 
-  const getRandomIndex = () => {
-    let unshuffled = [0, 1, 2, 3];
-
-    let shuffled = unshuffled
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
-
-    return shuffled;
-  };
-
-  const buttons = [
-    <Mailto email="stfn.bgr@gmail.com" subject="Contact from website" body="">
-      <FaEnvelope className="contact-btn" size="5rem" />
-    </Mailto>,
-    <a
-      href="https://github.com/erynder-z"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <FaGithub className="contact-btn" size="5rem" />
-    </a>,
-    <a
-      href="https://www.linkedin.com"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <FaLinkedin className="contact-btn" size="5rem" />
-    </a>,
-    <a href={resumee} target="_blank" rel="noreferrer">
-      <FaFilePdf className="contact-btn" size="5rem" />
-    </a>,
-  ];
-
-  useEffect(() => {
-    if (active) {
-      shuffle();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active]);
-
   return (
     <div className="contact-container">
       <section className={!active ? 'hide' : ''}>
         <h2 className="scrolling-text-container">
-          {scrollingText}
+          {isAnimating && (
+            <RandomReveal
+              isPlaying
+              duration={1}
+              characters={scrollingText}
+              characterSet={revealCharacters}
+              ignoreCharacterSet={ignoreCharacters}
+            />
+          )}
           <div
             className={`scrolling-text-content ${
               !hideScrollingText ? 'show' : ''
@@ -136,7 +99,15 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
           >
             <span>
               <span className="item1 pink">
-                {scrollingTextMessages.message1}
+                {isAnimating && (
+                  <RandomReveal
+                    isPlaying
+                    duration={1}
+                    characters={scrollingTextMessages.message1}
+                    characterSet={revealCharacters}
+                    ignoreCharacterSet={ignoreCharacters}
+                  />
+                )}
               </span>
               <br />
               <span className="item2 red">
@@ -159,7 +130,17 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
         </h2>
 
         <div className="contact-main">
-          <h2 className="contact-main-heading">{text}</h2>
+          <h2 className="contact-main-heading">
+            {isAnimating && (
+              <RandomReveal
+                isPlaying
+                duration={1}
+                characters={text}
+                characterSet={revealCharacters}
+                ignoreCharacterSet={ignoreCharacters}
+              />
+            )}
+          </h2>
         </div>
         <div className="lower-container">
           <h2
@@ -173,7 +154,15 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
               data-menu-item-text={heading}
               className="contact-hoverElement-title"
             >
-              {heading}
+              {isAnimating && (
+                <RandomReveal
+                  isPlaying
+                  duration={1}
+                  characters={heading}
+                  characterSet={revealCharacters}
+                  ignoreCharacterSet={ignoreCharacters}
+                />
+              )}
             </span>
             <span
               className="menu-item-hover-image"
@@ -183,13 +172,43 @@ const Contact: FC<Props> = ({ active, shuffleText }) => {
             ></span>
           </h2>
           <div className="contact-icons">
-            {buttons[currentIndex[0]]}
-            {buttons[currentIndex[1]]}
-            {buttons[currentIndex[2]]}
-            {buttons[currentIndex[3]]}
+            <Mailto
+              email="stfn.bgr@gmail.com"
+              subject="Contact from website"
+              body=""
+            >
+              <FaEnvelope className="contact-btn" size="5rem" />
+            </Mailto>
+            <a
+              href="https://github.com/erynder-z"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub className="contact-btn" size="5rem" />
+            </a>
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin className="contact-btn" size="5rem" />
+            </a>
+            <a href={resumee} target="_blank" rel="noreferrer">
+              <FaFilePdf className="contact-btn" size="5rem" />
+            </a>
           </div>
         </div>
-        <h3 className="contact-footer">{footerText}</h3>
+        <h3 className="contact-footer">
+          {isAnimating && (
+            <RandomReveal
+              isPlaying
+              duration={1}
+              characters={footerText}
+              characterSet={revealCharacters}
+              ignoreCharacterSet={ignoreCharacters}
+            />
+          )}
+        </h3>
       </section>
     </div>
   );

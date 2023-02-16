@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import { RandomReveal } from 'react-random-reveal';
 import VisibleSectionEffect from '../../VisibleSectionEffect/VisibleSectionEffect';
 import './Project.css';
 
@@ -14,10 +15,9 @@ interface Props {
     technologies: string;
     year: number;
   };
-  shuffleText: (text: string) => string;
 }
 
-const Project: FC<Props> = ({ project, shuffleText }) => {
+const Project: FC<Props> = ({ project }) => {
   const {
     title,
     imageURL,
@@ -35,48 +35,33 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
   const [showImageEffect, setShowImageEffect] = useState<boolean>(false);
   const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
   const [projectImageURL, setProjectImageURL] = useState<string>(imageURL);
-  const [projectTitle, setProjectTitle] = useState<string>(title);
-  const [projectDescription, setProjectDescription] =
-    useState<string>(description);
-  const [projectTechnologies, setProjectTechnologies] =
-    useState<string>(technologies);
-  const [projectYear, setProjectYear] = useState<string>(year.toString());
-  const [headingTitle, setHeadingTitle] = useState<string>('Summary');
-  const [headingTechnologies, setHeadingTechnologies] =
-    useState<string>('Technologies');
-  const [headingYear, setHeadingYear] = useState<string>('Year');
-  const [previewPlay, setPreviewPlay] = useState<string>('[Play preview]');
+  const [projectTitle] = useState<string>(title);
+  const [projectDescription] = useState<string>(description);
+  const [projectTechnologies] = useState<string>(technologies);
+  const [projectYear] = useState<string>(year.toString());
+  const [headingTitle] = useState<string>('Summary');
+  const [headingTechnologies] = useState<string>('Technologies');
+  const [headingYear] = useState<string>('Year');
+  const [previewPlay, setPreviewPlay] = useState<string>('[Preview]');
   const [previewSource, setPreviewSource] = useState<string>('[Source]');
   const [previewLive, setPreviewLive] = useState<string>('[Live]');
   const [currentlyVisible, setCurrentlyVisible] = useState<boolean>(false);
+  const [isTextRevealTriggered2, setIsTextRevealTriggered2] =
+    useState<boolean>(false);
+  const [isTextRevealTriggered1, setIsTextRevealTriggered1] =
+    useState<boolean>(true);
 
-  const shuffle = (): void => {
+  const revealCharacters = [...'░▒▓|'.split('')];
+  const ignoreCharacters = [...' '.split('')];
+
+  const animate = (): void => {
     setShuffling(true);
     setRevealImage(true);
-    const shuffle = setInterval(() => {
-      setProjectTitle(shuffleText(projectTitle));
-      setProjectDescription(shuffleText(projectDescription));
-      setProjectTechnologies(shuffleText(projectTechnologies));
-      setProjectYear(shuffleText(projectYear));
-      setHeadingTitle(shuffleText(headingTitle));
-      setHeadingTechnologies(shuffleText(headingTechnologies));
-      setHeadingYear(shuffleText(headingYear));
-      setPreviewPlay(shuffleText(previewPlay));
-      setPreviewSource(shuffleText(previewSource));
-      setPreviewLive(shuffleText(previewLive));
-    }, 50);
 
     setTimeout(() => {
       setShuffling(false);
       setRevealImage(false);
-      clearInterval(shuffle);
-      setProjectTitle(projectTitle);
-      setProjectDescription(projectDescription);
-      setProjectTechnologies(projectTechnologies);
-      setProjectYear(projectYear);
-      setHeadingTitle(headingTitle);
-      setHeadingTechnologies(headingTechnologies);
-      setHeadingYear(headingYear);
+
       setPreviewPlay(previewPlay);
       setPreviewSource(previewSource);
       setPreviewLive(previewLive);
@@ -85,39 +70,28 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
 
   const handlePlayPreview = (): void => {
     setPlayAnimatedGif(!playAnimatedGif);
+    setIsTextRevealTriggered1(!isTextRevealTriggered1);
+    setIsTextRevealTriggered2(!isTextRevealTriggered2);
     setTimeout(() => {
       setPlayAnimatedGif(false);
+      setIsTextRevealTriggered2(!isTextRevealTriggered2);
     }, animationLength);
   };
 
   useEffect(() => {
     if (playAnimatedGif) {
       setProjectImageURL(animationURL);
-      const shuffle = setInterval(() => {
-        setPreviewPlay(shuffleText('[Stop preview]'));
-      }, 50);
-
-      setTimeout(() => {
-        clearInterval(shuffle);
-        setPreviewPlay('[Stop preview]');
-      }, 500);
+      setPreviewPlay('[Stop]');
     } else {
       setProjectImageURL(imageURL);
-      const shuffle = setInterval(() => {
-        setPreviewPlay(shuffleText('[Play preview]'));
-      }, 50);
-
-      setTimeout(() => {
-        clearInterval(shuffle);
-        setPreviewPlay('[Play preview]');
-      }, 500);
+      setPreviewPlay('[Preview]');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playAnimatedGif]);
 
   useEffect(() => {
     if (!shuffling) {
-      shuffle();
+      animate();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -135,7 +109,17 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
   return (
     <VisibleSectionEffect setCurrentlyVisible={setCurrentlyVisible}>
       <div className="project-container">
-        <h4 className="project-title">{projectTitle}</h4>
+        <h4 className="project-title">
+          {currentlyVisible && (
+            <RandomReveal
+              isPlaying
+              duration={1}
+              characters={projectTitle}
+              characterSet={revealCharacters}
+              ignoreCharacterSet={ignoreCharacters}
+            />
+          )}
+        </h4>
         <div className="preview-container">
           <div className="image-container">
             <img
@@ -156,7 +140,28 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
           </div>
           <div className="project-icons-container">
             <button className="previewBtn" onClick={handlePlayPreview}>
-              <div className="previewBtn-wrapper">{previewPlay}</div>
+              <div className="previewBtn-wrapper">
+                {isTextRevealTriggered1 && currentlyVisible && (
+                  <RandomReveal
+                    isPlaying
+                    duration={1}
+                    characters={previewPlay}
+                    characterSet={revealCharacters}
+                    ignoreCharacterSet={ignoreCharacters}
+                  />
+                )}
+                {!isTextRevealTriggered1 &&
+                  isTextRevealTriggered2 &&
+                  currentlyVisible && (
+                    <RandomReveal
+                      isPlaying={isTextRevealTriggered2}
+                      duration={1}
+                      characters={previewPlay}
+                      characterSet={revealCharacters}
+                      ignoreCharacterSet={ignoreCharacters}
+                    />
+                  )}
+              </div>
             </button>
 
             <button className="github-link-button">
@@ -166,7 +171,15 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
                 rel="noopener noreferrer"
                 className="github-link"
               >
-                {previewSource}
+                {currentlyVisible && (
+                  <RandomReveal
+                    isPlaying
+                    duration={1}
+                    characters={previewSource}
+                    characterSet={revealCharacters}
+                    ignoreCharacterSet={ignoreCharacters}
+                  />
+                )}
               </a>
             </button>
 
@@ -177,20 +190,94 @@ const Project: FC<Props> = ({ project, shuffleText }) => {
                 rel="noopener noreferrer"
                 className="live-link"
               >
-                {previewLive}
+                {currentlyVisible && (
+                  <RandomReveal
+                    isPlaying
+                    duration={1}
+                    characters={previewLive}
+                    characterSet={revealCharacters}
+                    ignoreCharacterSet={ignoreCharacters}
+                  />
+                )}
               </a>
             </button>
           </div>
         </div>
         <div className="text-container">
-          <h4 className="project-description-heading">{headingTitle}</h4>
-          <p className="project-description">{projectDescription}</p>
-          <h4 className="project-technologies-heading">
-            {headingTechnologies}
-          </h4>
-          <p className="project-technologies">{projectTechnologies}</p>
-          <h4 className="project-year-heading">{headingYear}</h4>
-          <p className="project-year">{projectYear}</p>
+          <div className="description-container">
+            <h4 className="project-description-heading">
+              {currentlyVisible && (
+                <RandomReveal
+                  isPlaying
+                  duration={1}
+                  characters={headingTitle}
+                  characterSet={revealCharacters}
+                  ignoreCharacterSet={ignoreCharacters}
+                />
+              )}
+            </h4>
+            {
+              <p className="project-description">
+                {currentlyVisible && (
+                  <RandomReveal
+                    isPlaying
+                    duration={1}
+                    characters={projectDescription}
+                    characterSet={revealCharacters}
+                    ignoreCharacterSet={ignoreCharacters}
+                  />
+                )}
+              </p>
+            }
+          </div>
+          <div className="technologies-container">
+            <h4 className="project-technologies-heading">
+              {currentlyVisible && (
+                <RandomReveal
+                  isPlaying
+                  duration={1}
+                  characters={headingTechnologies}
+                  characterSet={revealCharacters}
+                  ignoreCharacterSet={ignoreCharacters}
+                />
+              )}
+            </h4>
+            <p className="project-technologies">
+              {currentlyVisible && (
+                <RandomReveal
+                  isPlaying
+                  duration={1}
+                  characters={projectTechnologies}
+                  characterSet={revealCharacters}
+                  ignoreCharacterSet={ignoreCharacters}
+                />
+              )}
+            </p>
+          </div>
+          <div className="year-container">
+            <h4 className="project-year-heading">
+              {currentlyVisible && (
+                <RandomReveal
+                  isPlaying
+                  duration={1}
+                  characters={headingYear}
+                  characterSet={revealCharacters}
+                  ignoreCharacterSet={ignoreCharacters}
+                />
+              )}
+            </h4>
+            <p className="project-year">
+              {currentlyVisible && (
+                <RandomReveal
+                  isPlaying
+                  duration={1}
+                  characters={projectYear}
+                  characterSet={revealCharacters}
+                  ignoreCharacterSet={ignoreCharacters}
+                />
+              )}
+            </p>
+          </div>
         </div>
       </div>
     </VisibleSectionEffect>

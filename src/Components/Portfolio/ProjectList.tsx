@@ -37,8 +37,7 @@ const ProjectList: {
     imageURL: imageRobin,
     animationURL: animationRobin,
     animationLength: 58538,
-    description:
-      'A fully-featured, social network. Users can post, follow other users and customize their profile. The app uses Firebase as the backend.',
+    description: 'A fully-featured social network.',
     githubLink: 'https://github.com/erynder-z/robin-sn',
     liveLink: 'https://erynder-z.github.io/robin-sn',
     technologies: 'React, JavaScript, Firebase',
@@ -50,8 +49,7 @@ const ProjectList: {
     imageURL: imageZ64,
     animationURL: animationZ64,
     animationLength: 61020,
-    description:
-      'A Commodore 64 game database. Users can view, edit and add new games to the database.',
+    description: 'A Commodore 64 game database.',
     githubLink: 'https://github.com/erynder-z/c64-game-database',
     liveLink: 'https://c64-game-database.onrender.com/',
     technologies: 'Node.js, Express, MongoDB, EJS',
@@ -63,8 +61,7 @@ const ProjectList: {
     imageURL: imageChatpack,
     animationURL: animationChatpack,
     animationLength: 27031,
-    description:
-      'A realtime chatroom application with a simple interface. Users can log on using a Google, GitHub, Twitter or Microsoft account.',
+    description: 'A realtime chatroom application with a simple interface.',
     githubLink: 'https://github.com/erynder-z/chatpack',
     liveLink: 'https://erynder-z.github.io/chatpack/',
     technologies: 'React, Typescript, Firebase',
@@ -77,7 +74,7 @@ const ProjectList: {
     animationURL: animationFind,
     animationLength: 32885,
     description:
-      'A hidden object game where users have to find certain characters in a huge image. The app features an online leaderboard for the 10 fastest players. ',
+      'A hidden object game where users have to find certain characters in a huge image.',
     githubLink: 'https://github.com/erynder-z/image-tagging-app',
     liveLink: 'https://erynder-z.github.io/image-tagging-app/',
     technologies: 'React, JavaScript, Firebase',
@@ -89,8 +86,7 @@ const ProjectList: {
     imageURL: imageJstodo,
     animationURL: animationjstodo,
     animationLength: 103976,
-    description:
-      'A task-/organizer application. Users can search, create and modify tasks, set priorities and deadlines. Tasks can be categorized in predefined or custom categories. Tasks can be stored locally or online via a Firebase backend.',
+    description: 'A task-/organizer application.',
     githubLink: 'https://github.com/erynder-z/JS_Todo',
     liveLink: 'https://erynder-z.github.io/JS_Todo/',
     technologies: 'JavaScript, Firebase',
@@ -102,8 +98,7 @@ const ProjectList: {
     imageURL: imageBattleship,
     animationURL: animationBattleship,
     animationLength: 59534,
-    description:
-      'A battleship game built via test-driven development. Game logic is tested using the Jest testing framework.',
+    description: 'A battleship game built via test-driven development.',
     githubLink: 'https://github.com/erynder-z/battleship',
     liveLink: 'https://erynder-z.github.io/battleship/',
     technologies: 'JavaScript, Jest, SASS',
@@ -115,8 +110,7 @@ const ProjectList: {
     imageURL: imageEryngi,
     animationURL: animationEryngi,
     animationLength: 21048,
-    description:
-      'A bootstrap-like custom CSS library build with SCSS. Library can be used to quickly style a simple webpage.',
+    description: 'A bootstrap-like custom CSS library build with SCSS.',
     githubLink: 'https://github.com/erynder-z/eryngi-css',
     liveLink: 'https://erynder-z.github.io/eryngi-css/',
     technologies: 'SASS',
@@ -128,8 +122,7 @@ const ProjectList: {
     imageURL: imageLeshop,
     animationURL: animationLeshop,
     animationLength: 37315,
-    description:
-      'Frontend for a fake online shop. Users can browse different product categories and add/remove items to/from the shopping cart. Shop items are fetched via an online API.',
+    description: 'Frontend for a fake online shop.',
     githubLink: 'https://github.com/erynder-z/le-shop',
     liveLink: 'https://erynder-z.github.io/le-shop/',
     technologies: 'React, JavaScript, Jest, Fake Store API',
@@ -141,8 +134,7 @@ const ProjectList: {
     imageURL: imageCvcreator,
     animationURL: animationCvcreator,
     animationLength: 49531,
-    description:
-      'WYSIWYG-editor to create and print your resumee/cv. Users can add/remove sections of the cv as needed and the final document is updated in real-time.',
+    description: 'WYSIWYG-editor to create and print your resumee/cv.',
     githubLink: 'https://github.com/erynder-z/cv-creator',
     liveLink: 'https://erynder-z.github.io/cv-creator/',
     technologies: 'React, JavaScript',
@@ -155,7 +147,7 @@ const ProjectList: {
     animationURL: animationJustweather,
     animationLength: 29467,
     description:
-      'A weather application using the OpenWeatherMap One Call API. Users can search for different cities and the app displays the current weather and optionally a 7-day forecast. Units can be shown in celsius or fahrenheit.',
+      'A weather application using the OpenWeatherMap One Call API. ',
     githubLink: 'https://github.com/erynder-z/just-the-weather',
     liveLink: 'https://erynder-z.github.io/just-the-weather/',
     technologies: 'JavaScript, OpenWeatherMap One Call API',
