@@ -1,13 +1,15 @@
 .project-container {
   border-bottom: solid 1px grey;
   width: 70ch;
-  min-height: 60vh;
+  min-height: 85vh;
   margin: 1rem 0;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas:
     'heading heading'
     'image text';
+  position: relative;
+  scroll-snap-align: start;
 }
 
 .project-title {
