@@ -1,0 +1,51 @@
+.contact-buttons-container {
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.contact-buttons-container > a > svg {
+  color: var(--white);
+  cursor: pointer;
+}
+
+.contact-footer {
+  text-align: center;
+  height: 5%;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.contact-button {
+  opacity: 0;
+}
+
+.contact-button-fadeIn {
+  animation: fadeIn 500ms 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .contact-hoverElement {
+    font-size: 2rem;
+  }
+
+  .contact-buttons-container {
+    gap: unset;
+  }
+
+  .contact-button {
+    height: 4rem;
+  }
+}
