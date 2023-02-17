@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { RandomReveal } from 'react-random-reveal';
 import VisibleSectionEffect from '../../VisibleSectionEffect/VisibleSectionEffect';
 import './Project.css';
+import { useGlitch, GlitchHandle } from 'react-powerglitch';
 
 interface Props {
   project: {
@@ -31,7 +32,6 @@ const Project: FC<Props> = ({ project }) => {
   } = project;
 
   const [shuffling, setShuffling] = useState<boolean>(false);
-  const [revealImage, setRevealImage] = useState<boolean>(false);
   const [showImageEffect, setShowImageEffect] = useState<boolean>(false);
   const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
   const [projectImageURL, setProjectImageURL] = useState<string>(imageURL);
@@ -51,16 +51,42 @@ const Project: FC<Props> = ({ project }) => {
   const [isTextRevealTriggered1, setIsTextRevealTriggered1] =
     useState<boolean>(true);
 
+  const glitch: GlitchHandle = useGlitch({
+    playMode: 'always',
+    createContainers: true,
+    hideOverflow: false,
+    timing: {
+      duration: 1000,
+      iterations: 1,
+      easing: 'ease-in-out',
+    },
+    glitchTimeSpan: {
+      start: 0,
+      end: 1,
+    },
+    shake: {
+      velocity: 5,
+      amplitudeX: 0.09,
+      amplitudeY: 0.1,
+    },
+    slice: {
+      count: 10,
+      velocity: 11,
+      minHeight: 0.15,
+      maxHeight: 0.05,
+      hueRotate: true,
+    },
+    pulse: false,
+  });
+
   const revealCharacters = [...'░▒▓|'.split('')];
   const ignoreCharacters = [...' '.split('')];
 
   const animate = (): void => {
     setShuffling(true);
-    setRevealImage(true);
 
     setTimeout(() => {
       setShuffling(false);
-      setRevealImage(false);
 
       setPreviewPlay(previewPlay);
       setPreviewSource(previewSource);
@@ -121,23 +147,17 @@ const Project: FC<Props> = ({ project }) => {
           )}
         </h4>
         <div className="preview-container">
-          <div className="image-container">
-            <img
-              src={projectImageURL}
-              alt="Project Screenshot"
-              className={`${revealImage ? 'animate' : ''} ${
-                showImageEffect ? 'showFilter' : ''
-              }`}
-            />
-            {
-              <div
-                className={`placeholder-overlay ${
-                  revealImage ? 'animate' : ''
-                }`}
-              ></div>
-            }
-            <div className={`overlay ${revealImage ? 'animate' : ''}`}></div>
-          </div>
+          {currentlyVisible && (
+            <div>
+              <div className="image-container" ref={glitch.ref}>
+                <img
+                  src={projectImageURL}
+                  alt="Project Screenshot"
+                  className={` ${showImageEffect ? 'showFilter' : ''}`}
+                />
+              </div>
+            </div>
+          )}
           <div className="project-icons-container">
             <button className="previewBtn" onClick={handlePlayPreview}>
               <div className="previewBtn-wrapper">
