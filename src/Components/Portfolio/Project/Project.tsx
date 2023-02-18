@@ -1,11 +1,14 @@
 import React, { FC, useEffect, useState } from 'react';
 import { RandomReveal } from 'react-random-reveal';
 import VisibleSectionEffect from '../../VisibleSectionEffect/VisibleSectionEffect';
+import { FaAngleUp, FaAngleDown, FaExternalLinkAlt } from 'react-icons/fa';
 import './Project.css';
 import { useGlitch, GlitchHandle } from 'react-powerglitch';
+import ProjectList from '../ProjectList';
 
 interface Props {
   project: {
+    id: number;
     title: string;
     imageURL: string;
     animationURL: string;
@@ -16,9 +19,10 @@ interface Props {
     technologies: string;
     year: number;
   };
+  scrollToProject: (projectId: number) => void;
 }
 
-const Project: FC<Props> = ({ project }) => {
+const Project: FC<Props> = ({ project, scrollToProject }) => {
   const {
     title,
     imageURL,
@@ -50,6 +54,8 @@ const Project: FC<Props> = ({ project }) => {
     useState<boolean>(false);
   const [isTextRevealTriggered1, setIsTextRevealTriggered1] =
     useState<boolean>(true);
+
+  const projectListLength = ProjectList.length;
 
   const glitch: GlitchHandle = useGlitch({
     playMode: 'always',
@@ -135,170 +141,200 @@ const Project: FC<Props> = ({ project }) => {
   return (
     <VisibleSectionEffect setCurrentlyVisible={setCurrentlyVisible}>
       <div className="project-container">
-        <h4 className="project-title">
-          {currentlyVisible && (
-            <RandomReveal
-              isPlaying
-              duration={1}
-              characters={projectTitle}
-              characterSet={revealCharacters}
-              ignoreCharacterSet={ignoreCharacters}
-            />
-          )}
-        </h4>
-        <div className="preview-container">
-          {currentlyVisible && (
-            <div>
-              <div className="image-container" ref={glitch.ref}>
-                <img
-                  src={projectImageURL}
-                  alt="Project Screenshot"
-                  className={` ${showImageEffect ? 'showFilter' : ''}`}
-                />
-              </div>
-            </div>
-          )}
-          <div className="project-icons-container">
-            <button className="previewBtn" onClick={handlePlayPreview}>
-              <div className="previewBtn-wrapper">
-                {isTextRevealTriggered1 && currentlyVisible && (
-                  <RandomReveal
-                    isPlaying
-                    duration={1}
-                    characters={previewPlay}
-                    characterSet={revealCharacters}
-                    ignoreCharacterSet={ignoreCharacters}
+        {project.id > 1 && (
+          <button
+            className="prev-project-button"
+            onClick={() => {
+              scrollToProject(project.id - 1);
+            }}
+          >
+            <FaAngleUp size="2.5rem" />
+          </button>
+        )}
+        <div className="project-card">
+          <h4 className="project-title">
+            {currentlyVisible && (
+              <RandomReveal
+                isPlaying
+                duration={1}
+                characters={projectTitle}
+                characterSet={revealCharacters}
+                ignoreCharacterSet={ignoreCharacters}
+              />
+            )}
+          </h4>
+          <div className="preview-container">
+            {currentlyVisible && (
+              <div>
+                <div className="image-container" ref={glitch.ref}>
+                  <img
+                    src={projectImageURL}
+                    alt="Project Screenshot"
+                    className={` ${showImageEffect ? 'showFilter' : ''}`}
                   />
-                )}
-                {!isTextRevealTriggered1 &&
-                  isTextRevealTriggered2 &&
-                  currentlyVisible && (
+                </div>
+              </div>
+            )}
+            <div className="project-icons-container">
+              <button className="previewBtn" onClick={handlePlayPreview}>
+                <div className="previewBtn-wrapper">
+                  {isTextRevealTriggered1 && currentlyVisible && (
                     <RandomReveal
-                      isPlaying={isTextRevealTriggered2}
+                      isPlaying
                       duration={1}
                       characters={previewPlay}
                       characterSet={revealCharacters}
                       ignoreCharacterSet={ignoreCharacters}
                     />
                   )}
-              </div>
-            </button>
+                  {!isTextRevealTriggered1 &&
+                    isTextRevealTriggered2 &&
+                    currentlyVisible && (
+                      <RandomReveal
+                        isPlaying={isTextRevealTriggered2}
+                        duration={1}
+                        characters={previewPlay}
+                        characterSet={revealCharacters}
+                        ignoreCharacterSet={ignoreCharacters}
+                      />
+                    )}
+                </div>
+              </button>
 
-            <button className="github-link-button">
-              <a
-                href={githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="github-link"
-              >
-                {currentlyVisible && (
-                  <RandomReveal
-                    isPlaying
-                    duration={1}
-                    characters={previewSource}
-                    characterSet={revealCharacters}
-                    ignoreCharacterSet={ignoreCharacters}
-                  />
-                )}
-              </a>
-            </button>
+              <button className="github-link-button">
+                <a
+                  href={githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="github-link"
+                >
+                  {currentlyVisible && (
+                    <RandomReveal
+                      isPlaying
+                      duration={1}
+                      characters={previewSource}
+                      characterSet={revealCharacters}
+                      ignoreCharacterSet={ignoreCharacters}
+                    />
+                  )}
+                </a>
+              </button>
 
-            <button className="live-link-button">
-              <a
-                href={liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="live-link"
-              >
-                {currentlyVisible && (
-                  <RandomReveal
-                    isPlaying
-                    duration={1}
-                    characters={previewLive}
-                    characterSet={revealCharacters}
-                    ignoreCharacterSet={ignoreCharacters}
-                  />
-                )}
-              </a>
-            </button>
+              <button className="live-link-button">
+                <a
+                  href={liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="live-link"
+                >
+                  {currentlyVisible && (
+                    <RandomReveal
+                      isPlaying
+                      duration={1}
+                      characters={previewLive}
+                      characterSet={revealCharacters}
+                      ignoreCharacterSet={ignoreCharacters}
+                    />
+                  )}
+                </a>
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="text-container">
-          <div className="description-container">
-            <h4 className="project-description-heading">
-              {currentlyVisible && (
-                <RandomReveal
-                  isPlaying
-                  duration={1}
-                  characters={headingTitle}
-                  characterSet={revealCharacters}
-                  ignoreCharacterSet={ignoreCharacters}
-                />
-              )}
-            </h4>
-            {
-              <p className="project-description">
+          <div className="text-container">
+            <div className="description-container">
+              <h4 className="project-description-heading">
                 {currentlyVisible && (
                   <RandomReveal
                     isPlaying
                     duration={1}
-                    characters={projectDescription}
+                    characters={headingTitle}
+                    characterSet={revealCharacters}
+                    ignoreCharacterSet={ignoreCharacters}
+                  />
+                )}
+              </h4>
+              {
+                <p className="project-description">
+                  {currentlyVisible && (
+                    <RandomReveal
+                      isPlaying
+                      duration={1}
+                      characters={projectDescription}
+                      characterSet={revealCharacters}
+                      ignoreCharacterSet={ignoreCharacters}
+                    />
+                  )}
+                </p>
+              }
+            </div>
+            <div className="technologies-container">
+              <h4 className="project-technologies-heading">
+                {currentlyVisible && (
+                  <RandomReveal
+                    isPlaying
+                    duration={1}
+                    characters={headingTechnologies}
+                    characterSet={revealCharacters}
+                    ignoreCharacterSet={ignoreCharacters}
+                  />
+                )}
+              </h4>
+              <p className="project-technologies">
+                {currentlyVisible && (
+                  <RandomReveal
+                    isPlaying
+                    duration={1}
+                    characters={projectTechnologies}
                     characterSet={revealCharacters}
                     ignoreCharacterSet={ignoreCharacters}
                   />
                 )}
               </p>
-            }
-          </div>
-          <div className="technologies-container">
-            <h4 className="project-technologies-heading">
-              {currentlyVisible && (
-                <RandomReveal
-                  isPlaying
-                  duration={1}
-                  characters={headingTechnologies}
-                  characterSet={revealCharacters}
-                  ignoreCharacterSet={ignoreCharacters}
-                />
-              )}
-            </h4>
-            <p className="project-technologies">
-              {currentlyVisible && (
-                <RandomReveal
-                  isPlaying
-                  duration={1}
-                  characters={projectTechnologies}
-                  characterSet={revealCharacters}
-                  ignoreCharacterSet={ignoreCharacters}
-                />
-              )}
-            </p>
-          </div>
-          <div className="year-container">
-            <h4 className="project-year-heading">
-              {currentlyVisible && (
-                <RandomReveal
-                  isPlaying
-                  duration={1}
-                  characters={headingYear}
-                  characterSet={revealCharacters}
-                  ignoreCharacterSet={ignoreCharacters}
-                />
-              )}
-            </h4>
-            <p className="project-year">
-              {currentlyVisible && (
-                <RandomReveal
-                  isPlaying
-                  duration={1}
-                  characters={projectYear}
-                  characterSet={revealCharacters}
-                  ignoreCharacterSet={ignoreCharacters}
-                />
-              )}
-            </p>
+            </div>
+            <div className="year-container">
+              <h4 className="project-year-heading">
+                {currentlyVisible && (
+                  <RandomReveal
+                    isPlaying
+                    duration={1}
+                    characters={headingYear}
+                    characterSet={revealCharacters}
+                    ignoreCharacterSet={ignoreCharacters}
+                  />
+                )}
+              </h4>
+              <p className="project-year">
+                {currentlyVisible && (
+                  <RandomReveal
+                    isPlaying
+                    duration={1}
+                    characters={projectYear}
+                    characterSet={revealCharacters}
+                    ignoreCharacterSet={ignoreCharacters}
+                  />
+                )}
+              </p>
+            </div>
           </div>
         </div>
+        {project.id < projectListLength && (
+          <button
+            className="next-project-button"
+            onClick={() => {
+              scrollToProject(project.id + 1);
+            }}
+          >
+            <FaAngleDown size="2.5rem" />
+          </button>
+        )}
+        {project.id === projectListLength && (
+          <a
+            className="repo-link"
+            href="https://github.com/erynder-z?tab=repositories"
+          >
+            View More <FaExternalLinkAlt size="1rem" />
+          </a>
+        )}
       </div>
     </VisibleSectionEffect>
   );

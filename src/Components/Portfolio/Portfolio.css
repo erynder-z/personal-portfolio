@@ -12,9 +12,8 @@
   height: 85vh;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar) var(--scrollbar-thumb);
-  scroll-snap-points-y: repeat(85vh);
-  scroll-snap-type: y mandatory;
   overflow-y: scroll;
+  scroll-snap-type: y mandatory;
   scroll-snap-stop: always;
 }
 
@@ -27,13 +26,8 @@
   left: 0;
   right: 0;
   font-size: 2.5rem;
-  /* margin: 5rem 0; */
   margin: 1rem 0;
   color: var(--green);
-  text-align: center;
-}
-
-.portfolio-container > .goto_next {
   text-align: center;
 }
 
@@ -46,10 +40,13 @@
 }
 
 .repo-link {
+  position: absolute;
+  bottom: 0;
+
   text-decoration: none;
   font-size: 2rem;
   color: var(--white);
-  margin-left: 5vw;
+
   margin-right: auto;
 }
 
