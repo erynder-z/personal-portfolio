@@ -1,6 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import Contact from '../Contact/Contact';
-import Intro from '../Intro/Intro';
+import Intro from '../about/About';
 import Portfolio from '../Portfolio/Portfolio';
 import Skills from '../Skills/Skills';
 import './Navigation.css';
@@ -12,80 +12,68 @@ interface Props {
 }
 
 const Navigation: FC<Props> = ({ isInitial, activePanel, setActivePanel }) => {
-  const categories = ['intro', 'projects', 'skills', 'contact'];
-  const [categoriesText, setCategoriesText] = useState<string[]>([
-    '[intro]',
-    '[projects]',
-    '[skills]',
-    '[contact]',
-  ]);
-
   return (
     <div className="panels">
       <div
-        className={`panel intro ${
-          activePanel === categories[0] ? 'open' : 'closed'
-        }`}
+        className={`panel about ${activePanel === 'about' ? 'open' : 'closed'}`}
         onClick={() => {
-          if (activePanel !== categories[0]) {
-            setActivePanel(categories[0]);
+          if (activePanel !== 'about') {
+            setActivePanel('about');
           }
         }}
       >
-        <h1 className="panel-heading-intro">
-          <span>{categoriesText[0]}</span>
+        <h1 className="panel-heading-about">
+          <span>[about]</span>
         </h1>
         <Intro
-          active={activePanel === categories[0] ? true : false}
+          active={activePanel === 'about' ? true : false}
           isInitial={isInitial}
         />
       </div>
       <div
         className={`panel projects ${
-          activePanel === categories[1] ? 'open' : 'closed'
+          activePanel === 'projects' ? 'open' : 'closed'
         }`}
         onClick={() => {
-          setActivePanel(categories[1]);
-          if (activePanel !== categories[1]) {
+          setActivePanel('projects');
+          if (activePanel !== 'projects') {
           }
         }}
       >
         <h1 className="panel-heading-projects">
-          <span>{categoriesText[1]}</span>
+          <span>[projects]</span>
         </h1>
-        <Portfolio active={activePanel === categories[1] ? true : false} />
+        <Portfolio active={activePanel === 'projects' ? true : false} />
       </div>
       <div
         className={`panel skills ${
-          activePanel === categories[2] ? 'open' : 'closed'
+          activePanel === 'skills' ? 'open' : 'closed'
         }`}
         onClick={() => {
-          setActivePanel(categories[2]);
-          if (activePanel !== categories[2]) {
+          setActivePanel('skills');
+          if (activePanel !== 'skills') {
           }
         }}
       >
         <h1 className="panel-heading-skills">
-          <span>{categoriesText[2]}</span>
+          <span>[skills]</span>
         </h1>
-        <Skills active={activePanel === categories[2] ? true : false} />
+        <Skills active={activePanel === 'skills' ? true : false} />
       </div>
       <div
         className={`panel contact ${
-          activePanel === categories[3] ? 'open' : 'closed'
+          activePanel === 'contact' ? 'open' : 'closed'
         }`}
         onClick={() => {
-          setActivePanel(categories[3]);
-          if (activePanel !== categories[3]) {
+          setActivePanel('contact');
+          if (activePanel !== 'contact') {
           }
         }}
       >
         <h1 className="panel-heading-contact">
-          <span>{categoriesText[3]}</span>
+          <span>[contact]</span>
         </h1>
-        <Contact
-          active={activePanel === categories[3] ? true : false}
-        ></Contact>
+        <Contact active={activePanel === 'contact' ? true : false}></Contact>
       </div>
     </div>
   );

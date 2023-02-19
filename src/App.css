@@ -17,8 +17,12 @@
   --scrollbar-thumb: #c4c9d0;
 }
 
-.intro {
-  --animationBackground: rgba(82, 29, 138, 0.1);
+.initial {
+  --animationBackground: rgba(95, 95, 95, 0.1);
+}
+
+.about {
+  --animationBackground: rgba(89, 26, 156, 0.1);
 }
 
 .projects {

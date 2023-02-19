@@ -64,7 +64,7 @@
   font-size: 1.5em;
 }
 
-.panel-heading-intro span {
+.panel-heading-about span {
   color: var(--yellow);
   padding: 0.25rem;
 }
@@ -84,7 +84,7 @@
   padding: 0.25rem;
 }
 
-.panel-heading-intro span:hover {
+.panel-heading-about span:hover {
   background-color: var(--yellow);
   color: var(--background-dark);
 }
@@ -104,7 +104,7 @@
   color: var(--background-dark);
 }
 
-.intro {
+.about {
   color: var(--yellow);
   transition: color 100ms;
 }
