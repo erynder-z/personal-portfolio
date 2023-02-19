@@ -1,28 +1,20 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import { FaEnvelope, FaGithub, FaLinkedin, FaFilePdf } from 'react-icons/fa';
 import Mailto from '../../Mailto/Mailto';
 import resumee from '../../../assets/resumee.pdf';
 import './ContactIcons.css';
 
 const ContactIcons: FC = () => {
-  const [lastIndex, setLastIndex] = useState<number>(-1);
-
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setLastIndex((lastIndex) => {
-        const nextIndex = lastIndex + 1;
-        const buttons = document.querySelectorAll('.contact-button');
-        if (nextIndex < buttons.length) {
-          const icon = buttons[nextIndex];
-          icon.classList.add('contact-button-fadeIn');
-        } else {
-          clearInterval(intervalId);
-        }
-        return nextIndex;
+    setTimeout(() => {
+      const contactButtons = document.querySelectorAll('.contact-button');
+
+      contactButtons.forEach((button, index) => {
+        setTimeout(() => {
+          button.classList.add('skill-item-fadeIn');
+        }, 200 * (index + 1));
       });
     }, 200);
-
-    return () => clearInterval(intervalId);
   }, []);
 
   return (
