@@ -1,6 +1,5 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import './Contact.css';
-import { RandomReveal } from 'react-random-reveal';
 import ContactIcons from './ContactIcons/ContactIcons';
 import ScrollingText from './ScrollingText/ScrollingText';
 import Greeting from './Greeting/Greeting';
