@@ -2,8 +2,6 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import './Portfolio.css';
 import ProjectList from './ProjectList';
 import Project from './Project/Project';
-import VisibleSectionEffect from '../VisibleSectionEffect/VisibleSectionEffect';
-import { RandomReveal } from 'react-random-reveal';
 
 interface Props {
   active: boolean;
@@ -29,9 +27,6 @@ const Portfolio: FC<Props> = ({ active }) => {
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(
     null
   );
-  const revealCharacters = [...'░▒▓|'.split('')];
-  const ignoreCharacters = [...' '.split('')];
-
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -53,16 +48,6 @@ const Portfolio: FC<Props> = ({ active }) => {
 
   return (
     <div className="portfolio-container">
-      <h2 className="portfolio-header">
-        <RandomReveal
-          isPlaying={active}
-          duration={1}
-          characters="[projects]"
-          characterSet={revealCharacters}
-          ignoreCharacterSet={ignoreCharacters}
-        />
-      </h2>
-
       <section>
         <div className={`projects-wrapper ${!active ? 'hide' : ''}`}>
           {projectList?.map((project) => (

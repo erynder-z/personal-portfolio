@@ -21,15 +21,12 @@
   margin-bottom: 5rem;
 }
 
-.portfolio-header {
-  position: absolute;
-  left: 0;
-  right: 0;
+/* .portfolio-header {
   font-size: 2.5rem;
   margin: 1rem 0;
   color: var(--green);
   text-align: center;
-}
+} */
 
 .projects-wrapper {
   display: flex;
@@ -39,33 +36,22 @@
   justify-content: center;
 }
 
-.repo-link {
+/* .repo-link {
   position: absolute;
   bottom: 0;
-
   text-decoration: none;
   font-size: 2rem;
   color: var(--white);
-
   margin-right: auto;
 }
 
 .repo-link:hover {
   color: var(--green);
-}
+} */
 
 @media only screen and (max-width: 821px) {
-  .portfolio-header {
-    margin: 1rem 0;
-  }
-
   .projects-wrapper {
     gap: 0px;
-  }
-
-  .repo-link {
-    padding: 0;
-    margin: 2rem auto;
   }
 }
 

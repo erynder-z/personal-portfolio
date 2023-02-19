@@ -72,11 +72,11 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
     },
     shake: {
       velocity: 5,
-      amplitudeX: 0.09,
+      amplitudeX: 0.05,
       amplitudeY: 0.1,
     },
     slice: {
-      count: 10,
+      count: 2,
       velocity: 11,
       minHeight: 0.15,
       maxHeight: 0.05,
@@ -141,6 +141,17 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
   return (
     <VisibleSectionEffect setCurrentlyVisible={setCurrentlyVisible}>
       <div className="project-container">
+        {project.id === 1 && currentlyVisible && (
+          <h2 className="portfolio-header">
+            <RandomReveal
+              isPlaying
+              duration={1}
+              characters="[projects]"
+              characterSet={revealCharacters}
+              ignoreCharacterSet={ignoreCharacters}
+            />
+          </h2>
+        )}
         {project.id > 1 && (
           <button
             className="prev-project-button"
