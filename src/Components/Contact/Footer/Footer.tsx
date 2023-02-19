@@ -5,7 +5,7 @@ import './Footer.css';
 
 const Footer: FC = () => {
   const [footerText, setFooterText] = useState<string>(
-    '© 2022 | Stefan Bamberger'
+    '2023 | Stefan Bamberger'
   );
   const revealCharacters = [...'░▒▓|'.split('')];
   const ignoreCharacters = [...' '.split('')];
