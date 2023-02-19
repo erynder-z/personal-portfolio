@@ -1,14 +1,15 @@
-.intro-container {
+.about-container {
   height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Poppins, sans-serif;
-  font-weight: 500;
+  /*   font-family: Poppins, sans-serif;
+  font-weight: 500; */
+  color: var(--yellow);
 }
 
-.intro-wrapper {
+.about-wrapper {
   max-width: 70ch;
 }
 
@@ -18,12 +19,12 @@
   animation-delay: 1s;
 }
 
-.intro-text {
+.about-text {
   padding: 0 5rem;
   text-align: justify;
 }
 
-.intro-content-upper {
+.about-content-upper {
   margin: 0;
 }
 
@@ -69,13 +70,13 @@
 }
 
 @media only screen and (max-width: 821px) {
-  .intro-text {
+  .about-text {
     padding: 0 5rem;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .intro-text {
+  .about-text {
     padding: 0 2rem;
   }
 }
