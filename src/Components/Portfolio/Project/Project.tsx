@@ -1,10 +1,21 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { RandomReveal } from 'react-random-reveal';
 import VisibleSectionEffect from '../../VisibleSectionEffect/VisibleSectionEffect';
 import { FaAngleUp, FaAngleDown, FaExternalLinkAlt } from 'react-icons/fa';
 import './Project.css';
 import { useGlitch, GlitchHandle } from 'react-powerglitch';
 import ProjectList from '../ProjectList';
+import LanguageContext from '../../../contexts/LanguageContext';
+import {
+  getDescriptionHeadingText,
+  getLiveButtonText,
+  getPortfolioHeaderText,
+  getPreviewButtonText,
+  getSourceButtonText,
+  getStopButtonText,
+  getTechnologiesHeadingText,
+  getYearHeadingText,
+} from './getProjectText';
 
 interface Props {
   project: {
@@ -13,7 +24,9 @@ interface Props {
     imageURL: string;
     animationURL: string;
     animationLength: number;
-    description: string;
+    description_EN: string;
+    description_DE: string;
+    description_JP: string;
     githubLink: string;
     liveLink: string;
     technologies: string;
@@ -28,27 +41,23 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
     imageURL,
     animationURL,
     animationLength,
-    description,
+    description_EN,
+    description_DE,
+    description_JP,
     githubLink,
     liveLink,
     technologies,
     year,
   } = project;
-
+  const { language } = useContext(LanguageContext);
   const [shuffling, setShuffling] = useState<boolean>(false);
   const [showImageEffect, setShowImageEffect] = useState<boolean>(false);
   const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
   const [projectImageURL, setProjectImageURL] = useState<string>(imageURL);
   const [projectTitle] = useState<string>(title);
-  const [projectDescription] = useState<string>(description);
-  const [projectTechnologies] = useState<string>(technologies);
-  const [projectYear] = useState<string>(year.toString());
-  const [headingTitle] = useState<string>('Summary');
-  const [headingTechnologies] = useState<string>('Technologies');
-  const [headingYear] = useState<string>('Year');
-  const [previewPlay, setPreviewPlay] = useState<string>('[Preview]');
-  const [previewSource, setPreviewSource] = useState<string>('[Source]');
-  const [previewLive, setPreviewLive] = useState<string>('[Live]');
+  const [previewPlay, setPreviewPlay] = useState<string>('');
+  const [previewSource, setPreviewSource] = useState<string>('');
+  const [previewLive, setPreviewLive] = useState<string>('');
   const [currentlyVisible, setCurrentlyVisible] = useState<boolean>(false);
   const [isTextRevealTriggered2, setIsTextRevealTriggered2] =
     useState<boolean>(false);
@@ -94,9 +103,9 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
     setTimeout(() => {
       setShuffling(false);
 
-      setPreviewPlay(previewPlay);
-      setPreviewSource(previewSource);
-      setPreviewLive(previewLive);
+      setPreviewPlay(getPreviewButtonText(language));
+      setPreviewSource(getSourceButtonText(language));
+      setPreviewLive(getLiveButtonText(language));
     }, 1000);
   };
 
@@ -113,10 +122,10 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
   useEffect(() => {
     if (playAnimatedGif) {
       setProjectImageURL(animationURL);
-      setPreviewPlay('[Stop]');
+      setPreviewPlay(getStopButtonText(language));
     } else {
       setProjectImageURL(imageURL);
-      setPreviewPlay('[Preview]');
+      setPreviewPlay(getPreviewButtonText(language));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playAnimatedGif]);
@@ -125,6 +134,10 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
     if (!shuffling) {
       animate();
     }
+
+    setPreviewPlay(getPreviewButtonText(language));
+    setPreviewSource(getSourceButtonText(language));
+    setPreviewLive(getLiveButtonText(language));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentlyVisible]);
@@ -146,7 +159,7 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
             <RandomReveal
               isPlaying
               duration={1}
-              characters="[projects]"
+              characters={getPortfolioHeaderText(language)}
               characterSet={revealCharacters}
               ignoreCharacterSet={ignoreCharacters}
             />
@@ -258,7 +271,7 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
                   <RandomReveal
                     isPlaying
                     duration={1}
-                    characters={headingTitle}
+                    characters={getDescriptionHeadingText(language)}
                     characterSet={revealCharacters}
                     ignoreCharacterSet={ignoreCharacters}
                   />
@@ -270,7 +283,13 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
                     <RandomReveal
                       isPlaying
                       duration={1}
-                      characters={projectDescription}
+                      characters={
+                        language === 'DE'
+                          ? description_DE
+                          : language === 'JP'
+                          ? description_JP
+                          : description_EN
+                      }
                       characterSet={revealCharacters}
                       ignoreCharacterSet={ignoreCharacters}
                     />
@@ -284,7 +303,7 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
                   <RandomReveal
                     isPlaying
                     duration={1}
-                    characters={headingTechnologies}
+                    characters={getTechnologiesHeadingText(language)}
                     characterSet={revealCharacters}
                     ignoreCharacterSet={ignoreCharacters}
                   />
@@ -295,7 +314,7 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
                   <RandomReveal
                     isPlaying
                     duration={1}
-                    characters={projectTechnologies}
+                    characters={technologies}
                     characterSet={revealCharacters}
                     ignoreCharacterSet={ignoreCharacters}
                   />
@@ -308,7 +327,7 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
                   <RandomReveal
                     isPlaying
                     duration={1}
-                    characters={headingYear}
+                    characters={getYearHeadingText(language)}
                     characterSet={revealCharacters}
                     ignoreCharacterSet={ignoreCharacters}
                   />
@@ -319,7 +338,7 @@ const Project: FC<Props> = ({ project, scrollToProject }) => {
                   <RandomReveal
                     isPlaying
                     duration={1}
-                    characters={projectYear}
+                    characters={year.toString()}
                     characterSet={revealCharacters}
                     ignoreCharacterSet={ignoreCharacters}
                   />

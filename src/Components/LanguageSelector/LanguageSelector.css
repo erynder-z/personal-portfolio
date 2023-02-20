@@ -1,0 +1,46 @@
+.language-selector {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 5rem;
+}
+
+.language-content {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+.language-selector:hover > .language-content {
+  display: flex;
+}
+
+.language-content button {
+  width: 5rem;
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: var(--white);
+  transition: color 150ms linear;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.language-content button:hover {
+  color: var(--red);
+}

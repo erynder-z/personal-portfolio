@@ -12,6 +12,10 @@ import {
   SiGit,
   SiGithub,
   SiJest,
+  SiLinux,
+  SiVite,
+  SiPassport,
+  SiJsonwebtokens,
 } from 'react-icons/si';
 
 const SkillList: {
@@ -44,6 +48,11 @@ const SkillList: {
   { name: 'Git', icon: <SiGit color="#f1502f" />, color: '#f1502f' },
   { name: 'GitHub', icon: <SiGithub color="#d5d4d4" />, color: '#d5d4d4' },
   { name: 'Jest', icon: <SiJest color="#18df16" />, color: '#18df16' },
+  { name: 'EJS', icon: '<%', color: '#b4ca65 ' },
+  { name: 'Vite', icon: <SiVite color="#646cff" />, color: '#646cff' },
+  { name: 'Passport', icon: <SiPassport color="#35df79" />, color: '#35df79' },
+  { name: 'JWT', icon: <SiJsonwebtokens color="#d63aff" />, color: '#d63aff' },
+  { name: 'Linux', icon: <SiLinux color="#d5d4d4" />, color: '#d5d4d4' },
 ];
 
 export default SkillList;

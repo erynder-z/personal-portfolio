@@ -15,7 +15,9 @@ const Portfolio: FC<Props> = ({ active }) => {
         imageURL: string;
         animationURL: string;
         animationLength: number;
-        description: string;
+        description_EN: string;
+        description_DE: string;
+        description_JP: string;
         githubLink: string;
         liveLink: string;
         technologies: string;

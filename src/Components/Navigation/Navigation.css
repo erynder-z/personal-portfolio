@@ -67,21 +67,25 @@
 .panel-heading-about span {
   color: var(--yellow);
   padding: 0.25rem;
+  transition: all 50ms linear;
 }
 
 .panel-heading-projects span {
   color: var(--green);
   padding: 0.25rem;
+  transition: all 50ms linear;
 }
 
 .panel-heading-skills span {
   color: var(--blue);
   padding: 0.25rem;
+  transition: all 50ms linear;
 }
 
 .panel-heading-contact span {
   color: var(--pink);
   padding: 0.25rem;
+  transition: all 50ms linear;
 }
 
 .panel-heading-about span:hover {

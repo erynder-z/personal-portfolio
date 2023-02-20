@@ -1,21 +1,20 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext } from 'react';
 import './About.css';
 import { RandomReveal } from 'react-random-reveal';
+import LanguageContext from '../../contexts/LanguageContext';
+import {
+  getAboutTextParagraph1,
+  getAboutTextParagraph2,
+  getAboutTextParagraph3,
+  getAboutTextParagraph4,
+} from './getAboutText';
 
 interface Props {
   active: boolean;
-  isInitial: boolean;
 }
 
-const Intro: FC<Props> = ({ active }) => {
-  const [aboutTextParagraph1] = useState<string>('Hello!');
-  const [aboutTextParagraph2] = useState<string>(
-    "I'm Stefan and I'm a full-stack web developer."
-  );
-  const [aboutTextParagraph3] = useState<string>(
-    "Committed to never stop learning, I enjoy creating easy-to-use applications. On this portfolio, you'll find a showcase of my past projects and a glimpse into my skills and experiences. Thank you for visiting!"
-  );
-
+const About: FC<Props> = ({ active }) => {
+  const { language } = useContext(LanguageContext);
   const revealCharacters = [...'░▒▓|'.split('')];
   const ignoreCharacters = [...' '.split('')];
 
@@ -28,25 +27,34 @@ const Intro: FC<Props> = ({ active }) => {
               <RandomReveal
                 isPlaying
                 duration={2}
-                characters={aboutTextParagraph1}
+                characters={getAboutTextParagraph1(language)}
                 characterSet={revealCharacters}
                 ignoreCharacterSet={ignoreCharacters}
               />
             </h2>
-            <p className={'about-content-upper'}>
+            <p className={'about-content'}>
               <RandomReveal
                 isPlaying
                 duration={2}
-                characters={aboutTextParagraph2}
+                characters={getAboutTextParagraph2(language)}
                 characterSet={revealCharacters}
                 ignoreCharacterSet={ignoreCharacters}
               />
             </p>
-            <p className={'about-content-lower'}>
+            <p className={'about-content'}>
               <RandomReveal
                 isPlaying
                 duration={2}
-                characters={aboutTextParagraph3}
+                characters={getAboutTextParagraph3(language)}
+                characterSet={revealCharacters}
+                ignoreCharacterSet={ignoreCharacters}
+              />
+            </p>
+            <p className={'about-content'}>
+              <RandomReveal
+                isPlaying
+                duration={2}
+                characters={getAboutTextParagraph4(language)}
                 characterSet={revealCharacters}
                 ignoreCharacterSet={ignoreCharacters}
               />
@@ -58,4 +66,4 @@ const Intro: FC<Props> = ({ active }) => {
   );
 };
 
-export default Intro;
+export default About;

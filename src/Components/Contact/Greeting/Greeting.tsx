@@ -1,10 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext } from 'react';
 import { RandomReveal } from 'react-random-reveal';
+import LanguageContext from '../../../contexts/LanguageContext';
+import { getGreetingText } from '../getContactText';
 
 import './Greeting.css';
 
 const Greeting: FC = () => {
-  const [greeting, setGreeting] = useState<string>(`Want to get in touch?`);
+  const { language } = useContext(LanguageContext);
   const revealCharacters = [...'░▒▓|'.split('')];
   const ignoreCharacters = [...' '.split('')];
   return (
@@ -12,7 +14,7 @@ const Greeting: FC = () => {
       <RandomReveal
         isPlaying
         duration={1}
-        characters={greeting}
+        characters={getGreetingText(language)}
         characterSet={revealCharacters}
         ignoreCharacterSet={ignoreCharacters}
       />

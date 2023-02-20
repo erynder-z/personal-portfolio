@@ -1,11 +1,13 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useContext, useRef } from 'react';
 import { RandomReveal } from 'react-random-reveal';
 import profilePic from '../../../assets/profile.png';
+import LanguageContext from '../../../contexts/LanguageContext';
+import { getContactHeaderText } from '../getContactText';
 import './HoverItemEffect.css';
 
 const HoverItemEffect: FC = () => {
+  const { language } = useContext(LanguageContext);
   const hoverElementRef = useRef<HTMLHeadingElement>(null);
-  const [heading, setHeading] = useState<string>(`[contact]`);
 
   const revealCharacters = [...'░▒▓|'.split('')];
   const ignoreCharacters = [...' '.split('')];
@@ -33,13 +35,13 @@ const HoverItemEffect: FC = () => {
       }}
     >
       <span
-        data-menu-item-text={heading}
+        data-menu-item-text={getContactHeaderText(language)}
         className="contact-hoverElement-title"
       >
         <RandomReveal
           isPlaying
           duration={1}
-          characters={heading}
+          characters={getContactHeaderText(language)}
           characterSet={revealCharacters}
           ignoreCharacterSet={ignoreCharacters}
         />

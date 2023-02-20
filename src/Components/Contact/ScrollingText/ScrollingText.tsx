@@ -1,40 +1,23 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { RandomReveal } from 'react-random-reveal';
+import LanguageContext from '../../../contexts/LanguageContext';
+import {
+  getScrollingTexMessages,
+  getScrollingTextHeading,
+} from './getScrollingText';
 
 import './ScrollingText.css';
 
 const ScrollingText: FC = () => {
-  const [scrollingText, setScrollingText] = useState<string>('Always');
-  const [scrollingTextMessages, setScrollingTextMessages] = useState<{
-    message1: string;
-    message2: string;
-    message3: string;
-    message4: string;
-    message5: string;
-  }>({
-    message1: 'create',
-    message2: 'learn',
-    message3: 'code',
-    message4: 'grow',
-    message5: 'create',
-  });
+  const { language } = useContext(LanguageContext);
+
   const [hideScrollingText, setHideScrollingText] = useState<boolean>(true);
 
   const revealCharacters = [...'░▒▓|'.split('')];
   const ignoreCharacters = [...' '.split('')];
 
   const animateScrollingText = (): void => {
-    setHideScrollingText(true);
-
     setTimeout(() => {
-      setScrollingText('Always');
-      setScrollingTextMessages({
-        message1: 'create',
-        message2: 'learn',
-        message3: 'code',
-        message4: 'grow',
-        message5: 'create',
-      });
       setHideScrollingText(false);
     }, 1000);
   };
@@ -48,7 +31,7 @@ const ScrollingText: FC = () => {
       <RandomReveal
         isPlaying
         duration={1}
-        characters={scrollingText}
+        characters={getScrollingTextHeading(language)}
         characterSet={revealCharacters}
         ignoreCharacterSet={ignoreCharacters}
       />
@@ -61,19 +44,27 @@ const ScrollingText: FC = () => {
             <RandomReveal
               isPlaying
               duration={1}
-              characters={scrollingTextMessages.message1}
+              characters={getScrollingTexMessages(language)[0]}
               characterSet={revealCharacters}
               ignoreCharacterSet={ignoreCharacters}
             />
           </span>
           <br />
-          <span className="item2 red">{scrollingTextMessages.message2}</span>
+          <span className="item2 red">
+            {getScrollingTexMessages(language)[1]}
+          </span>
           <br />
-          <span className="item3 orange">{scrollingTextMessages.message3}</span>
+          <span className="item3 orange">
+            {getScrollingTexMessages(language)[2]}
+          </span>
           <br />
-          <span className="item4 blue">{scrollingTextMessages.message4}</span>
+          <span className="item4 blue">
+            {getScrollingTexMessages(language)[3]}
+          </span>
           <br />
-          <span className="item5 pink">{scrollingTextMessages.message5}</span>
+          <span className="item5 pink">
+            {getScrollingTexMessages(language)[4]}
+          </span>
         </span>
       </div>
     </h2>

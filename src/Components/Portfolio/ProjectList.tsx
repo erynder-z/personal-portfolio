@@ -25,7 +25,9 @@ const ProjectList: {
   imageURL: string;
   animationURL: string;
   animationLength: number;
-  description: string;
+  description_EN: string;
+  description_DE: string;
+  description_JP: string;
   githubLink: string;
   liveLink: string;
   technologies: string;
@@ -37,7 +39,9 @@ const ProjectList: {
     imageURL: imageRobin,
     animationURL: animationRobin,
     animationLength: 58538,
-    description: 'A fully-featured social network.',
+    description_EN: 'A fully-featured social network.',
+    description_DE: 'Ein komplettes soziales Netzwerk.',
+    description_JP: 'フル機能のソーシャル ネットワーク。',
     githubLink: 'https://github.com/erynder-z/robin-sn',
     liveLink: 'https://erynder-z.github.io/robin-sn',
     technologies: 'React, JavaScript, Firebase',
@@ -49,7 +53,9 @@ const ProjectList: {
     imageURL: imageZ64,
     animationURL: animationZ64,
     animationLength: 61020,
-    description: 'A Commodore 64 game database.',
+    description_EN: 'A Commodore 64 game database.',
+    description_DE: 'Eine Commodore 64 Datenbank.',
+    description_JP: 'Commodore 64 ゲーム データベース。',
     githubLink: 'https://github.com/erynder-z/c64-game-database',
     liveLink: 'https://c64-game-database.onrender.com/',
     technologies: 'Node.js, Express, MongoDB, EJS',
@@ -61,7 +67,9 @@ const ProjectList: {
     imageURL: imageChatpack,
     animationURL: animationChatpack,
     animationLength: 27031,
-    description: 'A realtime chatroom application with a simple interface.',
+    description_EN: 'A realtime chatroom application with a simple interface.',
+    description_DE: 'Ein Echtzeit-Chat mit einem simplen Inferface.',
+    description_JP: 'シンプルなUIのリアルタイム チャットルーム。',
     githubLink: 'https://github.com/erynder-z/chatpack',
     liveLink: 'https://erynder-z.github.io/chatpack/',
     technologies: 'React, Typescript, Firebase',
@@ -73,8 +81,12 @@ const ProjectList: {
     imageURL: imageFind,
     animationURL: animationFind,
     animationLength: 32885,
-    description:
+    description_EN:
       'A hidden object game where users have to find certain characters in a huge image.',
+    description_DE:
+      'Ein Wimmelbild-Spiel bei dem bestimmte Charaktere in einem riesigen Bild gefunden werden müssen.',
+    description_JP:
+      '巨大な画像の中から特定のキャラクターを見つけ出さなければならないアイテム探しゲーム。',
     githubLink: 'https://github.com/erynder-z/image-tagging-app',
     liveLink: 'https://erynder-z.github.io/image-tagging-app/',
     technologies: 'React, JavaScript, Firebase',
@@ -86,7 +98,9 @@ const ProjectList: {
     imageURL: imageJstodo,
     animationURL: animationjstodo,
     animationLength: 103976,
-    description: 'A task-/organizer application.',
+    description_EN: 'A task-/organizer application.',
+    description_DE: 'Ein Task-Organizer.',
+    description_JP: 'タスク/オーガナイザー アプリケーション。',
     githubLink: 'https://github.com/erynder-z/JS_Todo',
     liveLink: 'https://erynder-z.github.io/JS_Todo/',
     technologies: 'JavaScript, Firebase',
@@ -98,7 +112,10 @@ const ProjectList: {
     imageURL: imageBattleship,
     animationURL: animationBattleship,
     animationLength: 59534,
-    description: 'A battleship game built via test-driven development.',
+    description_EN: 'A battleship game built via test-driven development.',
+    description_DE:
+      'Ein Schiffe-versenken-Spiel entwickelt via Test-Driven Development.',
+    description_JP: 'TDDで構築された戦艦ゲーム。',
     githubLink: 'https://github.com/erynder-z/battleship',
     liveLink: 'https://erynder-z.github.io/battleship/',
     technologies: 'JavaScript, Jest, SASS',
@@ -110,7 +127,11 @@ const ProjectList: {
     imageURL: imageEryngi,
     animationURL: animationEryngi,
     animationLength: 21048,
-    description: 'A bootstrap-like custom CSS library build with SCSS.',
+    description_EN: 'A bootstrap-like custom CSS library build with SCSS.',
+    description_DE:
+      'Ein mit SCSS erstelltes CSS framework für simpler Layouts.',
+    description_JP:
+      'SCSSで構築されたブートストラップのようなカスタム CSS ライブラリ。',
     githubLink: 'https://github.com/erynder-z/eryngi-css',
     liveLink: 'https://erynder-z.github.io/eryngi-css/',
     technologies: 'SASS',
@@ -122,7 +143,9 @@ const ProjectList: {
     imageURL: imageLeshop,
     animationURL: animationLeshop,
     animationLength: 37315,
-    description: 'Frontend for a fake online shop.',
+    description_EN: 'Frontend for a fake online shop.',
+    description_DE: 'Frontend for a einen fake Onlineshop.',
+    description_JP: '偽のオンライン ショップのフロントエンド。',
     githubLink: 'https://github.com/erynder-z/le-shop',
     liveLink: 'https://erynder-z.github.io/le-shop/',
     technologies: 'React, JavaScript, Jest, Fake Store API',
@@ -134,7 +157,10 @@ const ProjectList: {
     imageURL: imageCvcreator,
     animationURL: animationCvcreator,
     animationLength: 49531,
-    description: 'WYSIWYG-editor to create and print your resumee/cv.',
+    description_EN: 'WYSIWYG-editor to create and print your resumee/cv.',
+    description_DE:
+      'WYSIWYG-Editor zum Erstellen und Ausdrucken eines Lebenslaufes.',
+    description_JP: '履歴書を作成および印刷するための WYSIWYG エディター。',
     githubLink: 'https://github.com/erynder-z/cv-creator',
     liveLink: 'https://erynder-z.github.io/cv-creator/',
     technologies: 'React, JavaScript',
@@ -146,8 +172,12 @@ const ProjectList: {
     imageURL: imageJustweather,
     animationURL: animationJustweather,
     animationLength: 29467,
-    description:
-      'A weather application using the OpenWeatherMap One Call API. ',
+    description_EN:
+      'A weather application using the OpenWeatherMap One Call API.',
+    description_DE:
+      'Eine Wetter-App auf Basis der OpenWeatherMap One Call API.',
+    description_JP:
+      'OpenWeatherMap One Call API を使用した天気アプリケーション。',
     githubLink: 'https://github.com/erynder-z/just-the-weather',
     liveLink: 'https://erynder-z.github.io/just-the-weather/',
     technologies: 'JavaScript, OpenWeatherMap One Call API',

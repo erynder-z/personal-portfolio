@@ -1,4 +1,3 @@
-/* General Fade In Effect */
 .fade-in-section {
   display: flex;
   justify-content: center;
@@ -9,9 +8,20 @@
   will-change: opacity, visibility;
 }
 
-/* General Fade In Effect */
 .fade-in-section.is-visible {
   opacity: 1;
   transform: none;
   visibility: visible;
 }
+
+/* .fade-in-section {
+  position: relative;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: 500ms all ease;
+}
+
+.fade-in-section.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+} */

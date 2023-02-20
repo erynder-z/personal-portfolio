@@ -1,17 +1,25 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import Contact from '../Contact/Contact';
-import Intro from '../about/About';
+import About from '../about/About';
 import Portfolio from '../Portfolio/Portfolio';
 import Skills from '../Skills/Skills';
 import './Navigation.css';
+import LanguageContext from '../../contexts/LanguageContext';
+import {
+  getAboutPanelText,
+  getContactPanelText,
+  getProjectsPanelText,
+  getSkillsPanelText,
+} from './getPanelTexts';
 
 interface Props {
-  isInitial: boolean;
   activePanel: string;
   setActivePanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Navigation: FC<Props> = ({ isInitial, activePanel, setActivePanel }) => {
+const Navigation: FC<Props> = ({ activePanel, setActivePanel }) => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <div className="panels">
       <div
@@ -23,12 +31,9 @@ const Navigation: FC<Props> = ({ isInitial, activePanel, setActivePanel }) => {
         }}
       >
         <h1 className="panel-heading-about">
-          <span>[about]</span>
+          <span>{getAboutPanelText(language)}</span>
         </h1>
-        <Intro
-          active={activePanel === 'about' ? true : false}
-          isInitial={isInitial}
-        />
+        <About active={activePanel === 'about' ? true : false} />
       </div>
       <div
         className={`panel projects ${
@@ -41,7 +46,7 @@ const Navigation: FC<Props> = ({ isInitial, activePanel, setActivePanel }) => {
         }}
       >
         <h1 className="panel-heading-projects">
-          <span>[projects]</span>
+          <span>{getProjectsPanelText(language)}</span>
         </h1>
         <Portfolio active={activePanel === 'projects' ? true : false} />
       </div>
@@ -56,7 +61,7 @@ const Navigation: FC<Props> = ({ isInitial, activePanel, setActivePanel }) => {
         }}
       >
         <h1 className="panel-heading-skills">
-          <span>[skills]</span>
+          <span>{getSkillsPanelText(language)}</span>
         </h1>
         <Skills active={activePanel === 'skills' ? true : false} />
       </div>
@@ -71,7 +76,7 @@ const Navigation: FC<Props> = ({ isInitial, activePanel, setActivePanel }) => {
         }}
       >
         <h1 className="panel-heading-contact">
-          <span>[contact]</span>
+          <span>{getContactPanelText(language)}</span>
         </h1>
         <Contact active={activePanel === 'contact' ? true : false}></Contact>
       </div>

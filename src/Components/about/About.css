@@ -4,9 +4,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*   font-family: Poppins, sans-serif;
-  font-weight: 500; */
-  color: var(--yellow);
 }
 
 .about-wrapper {
@@ -22,16 +19,16 @@
 .about-text {
   padding: 0 5rem;
   text-align: justify;
-}
-
-.about-content-upper {
-  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  color: var(--yellow);
 }
 
 .myName,
 .myTitle {
   animation: color-change 1s ease-in-out forwards;
-  animation-delay: 1s;
+  animation-delay: 2s;
 }
 
 .red {
