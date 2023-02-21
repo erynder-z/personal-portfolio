@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
 import './App.css';
-import AppFooter from './Components/AppFooter/AppFooter';
-import LanguageSelector from './Components/LanguageSelector/LanguageSelector';
-import Loading from './Components/Loading/Loading';
-import Navigation from './Components/Navigation/Navigation';
+import AppFooter from './components/AppFooter/AppFooter';
+import LanguageSelector from './components/LanguageSelector/LanguageSelector';
+import Loading from './components/Loading/Loading';
+import Navigation from './components/Navigation/Navigation';
 
 const App: FC = () => {
   const [activePanel, setActivePanel] = useState<string>('initial');

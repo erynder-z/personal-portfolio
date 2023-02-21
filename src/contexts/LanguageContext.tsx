@@ -18,9 +18,7 @@ const LanguageContext = createContext<LanguageContextProps>({
 export function LanguageContextProvider({
   children,
 }: LanguageContextProviderProps) {
-  const [language, setLanguage] = useState<LanguageType>(
-    (localStorage.getItem('language') as LanguageType) || 'EN'
-  );
+  const [language, setLanguage] = useState<LanguageType>('EN');
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
