@@ -1,7 +1,7 @@
 import { LanguageType } from '../../interfaces/customTypes';
 
 export const getSkillsHeaderText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Fähigkeiten]';
 

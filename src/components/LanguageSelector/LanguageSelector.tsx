@@ -5,39 +5,39 @@ import './LanguageSelector.css';
 
 export default function LanguageSelector() {
   const { language, setLanguage } = useContext(LanguageContext);
+
+  const languageOptions = [
+    {
+      name: 'English',
+      code: 'EN',
+    },
+    {
+      name: 'Deutsch',
+      code: 'DE',
+    },
+    {
+      name: '日本語',
+      code: 'JP',
+    },
+  ];
   return (
     <div className="language-selector">
       <div className="dropdown-menu">
         <FaGlobeAmericas size="2rem" />
-        {language === 'EN' && 'EN'}
-        {language === 'DE' && 'DE'}
-        {language === 'JP' && 'JP'}
+        {language.code}
       </div>
       <div className="language-content">
-        <button
-          type="button"
-          onClick={() => {
-            setLanguage('EN');
-          }}
-        >
-          English
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setLanguage('DE');
-          }}
-        >
-          Deutsch
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setLanguage('JP');
-          }}
-        >
-          日本語
-        </button>
+        {languageOptions.map((language) => (
+          <button
+            key={language.code}
+            type="button"
+            onClick={() => {
+              setLanguage(language);
+            }}
+          >
+            {language.name}
+          </button>
+        ))}
       </div>
     </div>
   );

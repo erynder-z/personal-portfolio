@@ -1,7 +1,7 @@
 import { LanguageType } from '../../interfaces/customTypes';
 
 export const getContactHeaderText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Kontakt]';
 
@@ -14,7 +14,7 @@ export const getContactHeaderText = (language: LanguageType) => {
 };
 
 export const getGreetingText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Interesse an einer Zusammenarbeit?';
 

@@ -1,7 +1,7 @@
 import { LanguageType } from '../../../interfaces/customTypes';
 
 export const getScrollingTextHeading = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Stets';
 
@@ -14,7 +14,7 @@ export const getScrollingTextHeading = (language: LanguageType) => {
 };
 
 export const getScrollingTexMessages = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return [
         'Neues erschaffen',

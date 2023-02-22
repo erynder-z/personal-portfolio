@@ -260,9 +260,9 @@ const Project: FC<Props> = ({
                       isPlaying
                       duration={1}
                       characters={
-                        language === 'DE'
+                        language.code === 'DE'
                           ? description_DE
-                          : language === 'JP'
+                          : language.code === 'JP'
                           ? description_JP
                           : description_EN
                       }

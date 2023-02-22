@@ -1,7 +1,7 @@
 import { LanguageType } from '../../../interfaces/customTypes';
 
 export const getPortfolioHeaderText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Projekte]';
 
@@ -14,7 +14,7 @@ export const getPortfolioHeaderText = (language: LanguageType) => {
 };
 
 export const getDescriptionHeadingText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Beschreibung';
 
@@ -27,7 +27,7 @@ export const getDescriptionHeadingText = (language: LanguageType) => {
 };
 
 export const getTechnologiesHeadingText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Technologien';
 
@@ -40,7 +40,7 @@ export const getTechnologiesHeadingText = (language: LanguageType) => {
 };
 
 export const getYearHeadingText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Jahr';
 
@@ -53,7 +53,7 @@ export const getYearHeadingText = (language: LanguageType) => {
 };
 
 export const getPreviewButtonText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Preview]';
 
@@ -66,7 +66,7 @@ export const getPreviewButtonText = (language: LanguageType) => {
 };
 
 export const getSourceButtonText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Code]';
 
@@ -79,7 +79,7 @@ export const getSourceButtonText = (language: LanguageType) => {
 };
 
 export const getLiveButtonText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Live]';
 
@@ -92,7 +92,7 @@ export const getLiveButtonText = (language: LanguageType) => {
 };
 
 export const getStopButtonText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Stop]';
 

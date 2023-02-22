@@ -1,7 +1,7 @@
 import { LanguageType } from '../../interfaces/customTypes';
 
 export const getAboutTextParagraph1 = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Hallo!';
 
@@ -14,7 +14,7 @@ export const getAboutTextParagraph1 = (language: LanguageType) => {
 };
 
 export const getAboutTextParagraph2 = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Ich bin Stefan und ich bin Full-Stack Webentwickler!';
 
@@ -27,12 +27,12 @@ export const getAboutTextParagraph2 = (language: LanguageType) => {
 };
 
 export const getAboutTextParagraph3 = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Ich liebe es leicht-zu-bedienende Webanwendungen zu erstellen.';
 
     case 'JP':
-      return '使いやすい ウェブアプリケーションを作成することが好きです。';
+      return '使いやすいウェブアプリケーションを作成することが好きです。';
 
     default:
       return `I enjoy creating easy-to-use web applications.`;
@@ -40,7 +40,7 @@ export const getAboutTextParagraph3 = (language: LanguageType) => {
 };
 
 export const getAboutTextParagraph4 = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Auf dieser Webseite findest Du ein paar meiner vergangenen Projekte und einen Einblick in meine Fähigkeiten und Erfahrungen.';
 
@@ -53,7 +53,7 @@ export const getAboutTextParagraph4 = (language: LanguageType) => {
 };
 
 export const getAboutTextParagraph5 = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return 'Vielen Dank für Deinen Besuch!';
 

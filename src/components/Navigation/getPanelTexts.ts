@@ -1,7 +1,7 @@
 import { LanguageType } from '../../interfaces/customTypes';
 
 export const getAboutPanelText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Über_mich]';
 
@@ -14,7 +14,7 @@ export const getAboutPanelText = (language: LanguageType) => {
 };
 
 export const getProjectsPanelText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Projekte]';
 
@@ -27,7 +27,7 @@ export const getProjectsPanelText = (language: LanguageType) => {
 };
 
 export const getSkillsPanelText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Fähigkeiten]';
 
@@ -40,7 +40,7 @@ export const getSkillsPanelText = (language: LanguageType) => {
 };
 
 export const getContactPanelText = (language: LanguageType) => {
-  switch (language) {
+  switch (language.code) {
     case 'DE':
       return '[Kontakt]';
 

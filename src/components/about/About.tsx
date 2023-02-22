@@ -22,32 +22,30 @@ const About: FC<Props> = ({ active }) => {
 
   return (
     <div className={`about-container ${active ? 'active' : ''}`}>
-      <div className="about-wrapper">
-        {active && (
-          <section className="about-text">
-            <h2 className="about-heading">
+      {active && (
+        <section className="about-text">
+          <h2 className="about-heading">
+            <RandomReveal
+              isPlaying
+              duration={2}
+              characters={aboutTextArray[0]}
+              characterSet={revealCharacters}
+              ignoreCharacterSet={ignoreCharacters}
+            />
+          </h2>
+          {aboutTextArray.slice(1).map((paragraph: string, index: number) => (
+            <p className="about-content" key={index}>
               <RandomReveal
                 isPlaying
                 duration={2}
-                characters={aboutTextArray[0]}
+                characters={paragraph}
                 characterSet={revealCharacters}
                 ignoreCharacterSet={ignoreCharacters}
               />
-            </h2>
-            {aboutTextArray.slice(1).map((paragraph: string, index: number) => (
-              <p className="about-content" key={index}>
-                <RandomReveal
-                  isPlaying
-                  duration={2}
-                  characters={paragraph}
-                  characterSet={revealCharacters}
-                  ignoreCharacterSet={ignoreCharacters}
-                />
-              </p>
-            ))}
-          </section>
-        )}
-      </div>
+            </p>
+          ))}
+        </section>
+      )}
     </div>
   );
 };

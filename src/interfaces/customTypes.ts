@@ -1,1 +1,1 @@
-export type LanguageType = 'EN' | 'DE' | 'JP';
+export type LanguageType = { name: string; code: string };
