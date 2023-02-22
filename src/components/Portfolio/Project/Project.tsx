@@ -62,7 +62,7 @@ const Project: FC<Props> = ({
     projectText.getLiveButtonText(language)
   );
   const sourceButtonText: string = projectText.getSourceButtonText(language);
-  const liveButtonText: string = projectText.getPreviewButtonText(language);
+  const liveButtonText: string = projectText.getLiveButtonText(language);
   const projectListLength = ProjectList.length;
 
   // Project Text
