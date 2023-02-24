@@ -1,23 +1,25 @@
 import imageRobin from '../../assets/webp/robin.webp';
-import animationRobin from '../../assets/webm/robin_64.webm';
+import animationRobin from '../../assets/webm/robin.webm';
 import imageZ64 from '../../assets/webp/z64.webp';
-import animationZ64 from '../../assets/webm/z64_23.webm';
+import animationZ64 from '../../assets/webm/z64.webm';
+import imageCodeblog from '../../assets/webp/codeblog.webp';
+import animationCodeblog from '../../assets/webm/codeblog.webm';
 import imageChatpack from '../../assets/webp/chatpack.webp';
-import animationChatpack from '../../assets/webm/chatpack_16.webm';
+import animationChatpack from '../../assets/webm/chatpack.webm';
 import imageFind from '../../assets/webp/find.webp';
-import animationFind from '../../assets/webm/find_23.webm';
+import animationFind from '../../assets/webm/find.webm';
 import imageJstodo from '../../assets/webp/jstodo.webp';
-import animationjstodo from '../../assets/webm/jstodo_28.webm';
+import animationjstodo from '../../assets/webm/jstodo.webm';
 import imageBattleship from '../../assets/webp/battleship.webp';
-import animationBattleship from '../../assets/webm/battleship_70.webm';
+import animationBattleship from '../../assets/webm/battleship.webm';
 import imageEryngi from '../../assets/webp/eryngicss.webp';
-import animationEryngi from '../../assets/webm/eryngicss_13.webm';
+import animationEryngi from '../../assets/webm/eryngicss.webm';
 import imageLeshop from '../../assets/webp/leshop.webp';
-import animationLeshop from '../../assets/webm/leshop_24.webm';
+import animationLeshop from '../../assets/webm/leshop.webm';
 import imageCvcreator from '../../assets/webp/cvcreator.webp';
-import animationCvcreator from '../../assets/webm/cvcreator_18.webm';
+import animationCvcreator from '../../assets/webm/cvcreator.webm';
 import imageJustweather from '../../assets/webp/justweather.webp';
-import animationJustweather from '../../assets/webm/justweather_19.webm';
+import animationJustweather from '../../assets/webm/justweather.webm';
 
 const ProjectList: {
   id: number;
@@ -47,6 +49,22 @@ const ProjectList: {
   },
   {
     id: 2,
+    title: './code/blog',
+    previewImageURL: imageCodeblog,
+    previewVideoURL: animationCodeblog,
+    description_EN:
+      'A blog, complete with client, CMS and RESTful API backend.',
+    description_DE:
+      'Ein Blog, komplett mit Client, CMS und einer RESTful API im backend ',
+    description_JP:
+      'クライアント、CMS、RESTful API バックエンドを備えたブログ。',
+    githubLink: 'https://github.com/erynder-z/code-blog',
+    liveLink: 'https://erynder-z.github.io/code-blog/',
+    technologies: 'React, TypeScript, Node.js, Express, MongoDB, JWT',
+    year: 2023,
+  },
+  {
+    id: 3,
     title: 'Z64',
     previewImageURL: imageZ64,
     previewVideoURL: animationZ64,
@@ -59,7 +77,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 3,
+    id: 4,
     title: 'Chatpack',
     previewImageURL: imageChatpack,
     previewVideoURL: animationChatpack,
@@ -72,7 +90,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 4,
+    id: 5,
     title: '.find()',
     previewImageURL: imageFind,
     previewVideoURL: animationFind,
@@ -88,7 +106,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 5,
+    id: 6,
     title: 'JS_Todo',
     previewImageURL: imageJstodo,
     previewVideoURL: animationjstodo,
@@ -101,7 +119,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 6,
+    id: 7,
     title: 'Battleship',
     previewImageURL: imageBattleship,
     previewVideoURL: animationBattleship,
@@ -115,7 +133,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 7,
+    id: 8,
     title: 'Eryngi-CSS',
     previewImageURL: imageEryngi,
     previewVideoURL: animationEryngi,
@@ -130,7 +148,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 8,
+    id: 9,
     title: 'Le-shop',
     previewImageURL: imageLeshop,
     previewVideoURL: animationLeshop,
@@ -143,7 +161,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 9,
+    id: 10,
     title: 'CV-Creator',
     previewImageURL: imageCvcreator,
     previewVideoURL: animationCvcreator,
@@ -157,7 +175,7 @@ const ProjectList: {
     year: 2022,
   },
   {
-    id: 10,
+    id: 11,
     title: 'Just the weather',
     previewImageURL: imageJustweather,
     previewVideoURL: animationJustweather,
