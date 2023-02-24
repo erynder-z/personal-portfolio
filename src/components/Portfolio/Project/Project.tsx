@@ -1,21 +1,19 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { RandomReveal } from 'react-random-reveal';
 import VisibleSectionEffect from '../../VisibleSectionEffect/VisibleSectionEffect';
 import { FaAngleUp, FaAngleDown, FaExternalLinkAlt } from 'react-icons/fa';
 import './Project.css';
-import { useGlitch, GlitchHandle } from 'react-powerglitch';
 import ProjectList from '../ProjectList';
 import LanguageContext from '../../../contexts/LanguageContext';
 import * as projectText from './getProjectText';
 import { revealCharacters, ignoreCharacters } from '../../../utils/utils';
+import Preview from './Preview/Preview';
 
 interface Props {
   project: {
     id: number;
     title: string;
-    imageURL: string;
-    animationURL: string;
-    animationLength: number;
+    previewVideoURL: string;
     description_EN: string;
     description_DE: string;
     description_JP: string;
@@ -31,9 +29,7 @@ const Project: FC<Props> = ({
   project: {
     id,
     title,
-    imageURL,
-    animationURL,
-    animationLength,
+    previewVideoURL,
     description_EN,
     description_DE,
     description_JP,
@@ -46,86 +42,20 @@ const Project: FC<Props> = ({
 }) => {
   // Component Logic
   const { language } = useContext(LanguageContext);
-  const [showPreviewImageEffect, setShowPreviewImageEffect] =
-    useState<boolean>(false);
-  const [playAnimatedGif, setPlayAnimatedGif] = useState<boolean>(false);
   const [currentlyVisible, setCurrentlyVisible] = useState<boolean>(false);
-  const [isTextRevealTriggered2, setIsTextRevealTriggered2] =
-    useState<boolean>(false);
-  const [isTextRevealTriggered1, setIsTextRevealTriggered1] =
-    useState<boolean>(true);
 
   // UI Elements
   const portfolioHeaderText: string =
     projectText.getPortfolioHeaderText(language);
-  const [previewPlayButtonText, setPreviewPlayButtonText] = useState<string>(
-    projectText.getLiveButtonText(language)
-  );
-  const sourceButtonText: string = projectText.getSourceButtonText(language);
-  const liveButtonText: string = projectText.getLiveButtonText(language);
   const projectListLength = ProjectList.length;
 
   // Project Text
   const projectTitle: string = title;
-  const [projectImageURL, setProjectImageURL] = useState<string>(imageURL);
   const projectDescriptionText: string =
     projectText.getDescriptionHeadingText(language);
   const projectTechnologiesText: string =
     projectText.getTechnologiesHeadingText(language);
   const projectYearText: string = projectText.getYearHeadingText(language);
-
-  const glitch: GlitchHandle = useGlitch({
-    playMode: 'always',
-    createContainers: true,
-    hideOverflow: false,
-    timing: {
-      duration: 1000,
-      iterations: 1,
-      easing: 'ease-in-out',
-    },
-    glitchTimeSpan: {
-      start: 0,
-      end: 1,
-    },
-    shake: {
-      velocity: 5,
-      amplitudeX: 0.05,
-      amplitudeY: 0.1,
-    },
-    slice: {
-      count: 2,
-      velocity: 11,
-      minHeight: 0.15,
-      maxHeight: 0.05,
-      hueRotate: true,
-    },
-    pulse: false,
-  });
-
-  const handlePlayPreview = (): void => {
-    setPlayAnimatedGif(!playAnimatedGif);
-    setIsTextRevealTriggered1(!isTextRevealTriggered1);
-    setIsTextRevealTriggered2(!isTextRevealTriggered2);
-    setTimeout(() => {
-      setPlayAnimatedGif(false);
-      setIsTextRevealTriggered2(!isTextRevealTriggered2);
-    }, animationLength);
-  };
-
-  useEffect(() => {
-    setShowPreviewImageEffect(true);
-    setTimeout(() => {
-      setShowPreviewImageEffect(false);
-    }, 500);
-    if (playAnimatedGif) {
-      setProjectImageURL(animationURL);
-      setPreviewPlayButtonText(projectText.getStopButtonText(language));
-    } else {
-      setProjectImageURL(imageURL);
-      setPreviewPlayButtonText(projectText.getPreviewButtonText(language));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playAnimatedGif]);
 
   return (
     <VisibleSectionEffect setCurrentlyVisible={setCurrentlyVisible}>
@@ -165,80 +95,12 @@ const Project: FC<Props> = ({
           </h4>
           <div className="preview-container">
             {currentlyVisible && (
-              <div>
-                <div className="image-container" ref={glitch.ref}>
-                  <img
-                    src={projectImageURL}
-                    alt="Project Screenshot"
-                    className={` ${showPreviewImageEffect ? 'showFilter' : ''}`}
-                  />
-                </div>
-              </div>
+              <Preview
+                previewVideoURL={previewVideoURL}
+                githubLink={githubLink}
+                liveLink={liveLink}
+              />
             )}
-            <div className="project-icons-container">
-              <button className="previewBtn" onClick={handlePlayPreview}>
-                <div className="previewBtn-wrapper">
-                  {isTextRevealTriggered1 && currentlyVisible && (
-                    <RandomReveal
-                      isPlaying
-                      duration={1}
-                      characters={previewPlayButtonText}
-                      characterSet={revealCharacters}
-                      ignoreCharacterSet={ignoreCharacters}
-                    />
-                  )}
-                  {!isTextRevealTriggered1 &&
-                    isTextRevealTriggered2 &&
-                    currentlyVisible && (
-                      <RandomReveal
-                        isPlaying={isTextRevealTriggered2}
-                        duration={1}
-                        characters={previewPlayButtonText}
-                        characterSet={revealCharacters}
-                        ignoreCharacterSet={ignoreCharacters}
-                      />
-                    )}
-                </div>
-              </button>
-
-              <button className="github-link-button">
-                <a
-                  href={githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="github-link"
-                >
-                  {currentlyVisible && (
-                    <RandomReveal
-                      isPlaying
-                      duration={1}
-                      characters={sourceButtonText}
-                      characterSet={revealCharacters}
-                      ignoreCharacterSet={ignoreCharacters}
-                    />
-                  )}
-                </a>
-              </button>
-
-              <button className="live-link-button">
-                <a
-                  href={liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="live-link"
-                >
-                  {currentlyVisible && (
-                    <RandomReveal
-                      isPlaying
-                      duration={1}
-                      characters={liveButtonText}
-                      characterSet={revealCharacters}
-                      ignoreCharacterSet={ignoreCharacters}
-                    />
-                  )}
-                </a>
-              </button>
-            </div>
           </div>
           <div className="text-container">
             <div className="description-container">

@@ -1,30 +1,18 @@
-import imageRobin from '../../assets/images/robin.png';
-import animationRobin from '../../assets/webps/robin_58538.webp';
-import imageZ64 from '../../assets/images/z64.png';
-import animationZ64 from '../../assets/webps/z64_61020.webp';
-import imageChatpack from '../../assets/images/chatpack.png';
-import animationChatpack from '../../assets/webps/chatpack_27031.webp';
-import imageFind from '../../assets/images/find.png';
-import animationFind from '../../assets/webps/find_32885.webp';
-import imageJstodo from '../../assets/images/jstodo.png';
-import animationjstodo from '../../assets/webps/jstodo_103976.webp';
-import imageBattleship from '../../assets/images/battleship.png';
-import animationBattleship from '../../assets/webps/battleship_59534.webp';
-import imageEryngi from '../../assets/images/eryngi.png';
-import animationEryngi from '../../assets/webps/eryngi_21048.webp';
-import imageLeshop from '../../assets/images/leshop.png';
-import animationLeshop from '../../assets/webps/leshop_37315.webp';
-import imageCvcreator from '../../assets/images/cvcreator.png';
-import animationCvcreator from '../../assets/webps/cvcreator_49531.webp';
-import imageJustweather from '../../assets/images/justweather.png';
-import animationJustweather from '../../assets/webps/justweather_29467.webp';
+import animationRobin from '../../assets/webm/robin_64.webm';
+import animationZ64 from '../../assets/webm/z64_23.webm';
+import animationChatpack from '../../assets/webm/chatpack_16.webm';
+import animationFind from '../../assets/webm/find_23.webm';
+import animationjstodo from '../../assets/webm/jstodo_28.webm';
+import animationBattleship from '../../assets/webm/battleship_70.webm';
+import animationEryngi from '../../assets/webm/eryngicss_13.webm';
+import animationLeshop from '../../assets/webm/leshop_24.webm';
+import animationCvcreator from '../../assets/webm/cvcreator_18.webm';
+import animationJustweather from '../../assets/webm/justweather_19.webm';
 
 const ProjectList: {
   id: number;
   title: string;
-  imageURL: string;
-  animationURL: string;
-  animationLength: number;
+  previewVideoURL: string;
   description_EN: string;
   description_DE: string;
   description_JP: string;
@@ -36,9 +24,7 @@ const ProjectList: {
   {
     id: 1,
     title: 'Robin Social Network',
-    imageURL: imageRobin,
-    animationURL: animationRobin,
-    animationLength: 58538,
+    previewVideoURL: animationRobin,
     description_EN: 'A fully-featured social network.',
     description_DE: 'Ein komplettes soziales Netzwerk.',
     description_JP: 'フル機能のソーシャル ネットワーク。',
@@ -50,9 +36,7 @@ const ProjectList: {
   {
     id: 2,
     title: 'Z64',
-    imageURL: imageZ64,
-    animationURL: animationZ64,
-    animationLength: 61020,
+    previewVideoURL: animationZ64,
     description_EN: 'A Commodore 64 game database.',
     description_DE: 'Eine Commodore 64 Datenbank.',
     description_JP: 'Commodore 64 ゲーム データベース。',
@@ -64,9 +48,7 @@ const ProjectList: {
   {
     id: 3,
     title: 'Chatpack',
-    imageURL: imageChatpack,
-    animationURL: animationChatpack,
-    animationLength: 27031,
+    previewVideoURL: animationChatpack,
     description_EN: 'A realtime chatroom application with a simple interface.',
     description_DE: 'Ein Echtzeit-Chat mit einem simplen Inferface.',
     description_JP: 'シンプルなUIのリアルタイム チャットルーム。',
@@ -78,9 +60,7 @@ const ProjectList: {
   {
     id: 4,
     title: '.find()',
-    imageURL: imageFind,
-    animationURL: animationFind,
-    animationLength: 32885,
+    previewVideoURL: animationFind,
     description_EN:
       'A hidden object game where users have to find certain characters in a huge image.',
     description_DE:
@@ -95,9 +75,7 @@ const ProjectList: {
   {
     id: 5,
     title: 'JS_Todo',
-    imageURL: imageJstodo,
-    animationURL: animationjstodo,
-    animationLength: 103976,
+    previewVideoURL: animationjstodo,
     description_EN: 'A task-/organizer application.',
     description_DE: 'Ein Task-Organizer.',
     description_JP: 'タスク/オーガナイザー アプリケーション。',
@@ -109,9 +87,7 @@ const ProjectList: {
   {
     id: 6,
     title: 'Battleship',
-    imageURL: imageBattleship,
-    animationURL: animationBattleship,
-    animationLength: 59534,
+    previewVideoURL: animationBattleship,
     description_EN: 'A battleship game built via test-driven development.',
     description_DE:
       'Ein Schiffe-versenken-Spiel entwickelt via Test-Driven Development.',
@@ -124,9 +100,7 @@ const ProjectList: {
   {
     id: 7,
     title: 'Eryngi-CSS',
-    imageURL: imageEryngi,
-    animationURL: animationEryngi,
-    animationLength: 21048,
+    previewVideoURL: animationEryngi,
     description_EN: 'A bootstrap-like custom CSS library build with SCSS.',
     description_DE:
       'Ein mit SCSS erstelltes CSS framework für simpler Layouts.',
@@ -140,9 +114,7 @@ const ProjectList: {
   {
     id: 8,
     title: 'Le-shop',
-    imageURL: imageLeshop,
-    animationURL: animationLeshop,
-    animationLength: 37315,
+    previewVideoURL: animationLeshop,
     description_EN: 'Frontend for a fake online shop.',
     description_DE: 'Frontend for a einen fake Onlineshop.',
     description_JP: '偽のオンライン ショップのフロントエンド。',
@@ -154,9 +126,7 @@ const ProjectList: {
   {
     id: 9,
     title: 'CV-Creator',
-    imageURL: imageCvcreator,
-    animationURL: animationCvcreator,
-    animationLength: 49531,
+    previewVideoURL: animationCvcreator,
     description_EN: 'WYSIWYG-editor to create and print your resumee/cv.',
     description_DE:
       'WYSIWYG-Editor zum Erstellen und Ausdrucken eines Lebenslaufes.',
@@ -169,9 +139,7 @@ const ProjectList: {
   {
     id: 10,
     title: 'Just the weather',
-    imageURL: imageJustweather,
-    animationURL: animationJustweather,
-    animationLength: 29467,
+    previewVideoURL: animationJustweather,
     description_EN:
       'A weather application using the OpenWeatherMap One Call API.',
     description_DE:
