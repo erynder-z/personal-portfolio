@@ -1,13 +1,14 @@
-.image-container {
+.preview-container {
   position: relative;
 }
 
-.image-container > video {
+.preview-container > video,
+.preview-container > img {
   width: 100%;
   height: auto;
 }
 
-.image-container > video.showFilter {
+.preview-container > video.showFilter {
   animation: filterImage 500ms;
   animation-fill-mode: forwards;
 }
@@ -73,6 +74,10 @@
   color: unset;
 }
 
+.hidden {
+  display: none;
+}
+
 @keyframes filterImage {
   0% {
     filter: grayscale(0) invert(0);
@@ -93,8 +98,9 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .image-container {
+  .preview-container {
     min-height: 25vh;
+    overflow: hidden;
   }
 
   .project-icons-container {

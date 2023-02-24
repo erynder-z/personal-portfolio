@@ -1,17 +1,28 @@
+import imageRobin from '../../assets/webp/robin.webp';
 import animationRobin from '../../assets/webm/robin_64.webm';
+import imageZ64 from '../../assets/webp/z64.webp';
 import animationZ64 from '../../assets/webm/z64_23.webm';
+import imageChatpack from '../../assets/webp/chatpack.webp';
 import animationChatpack from '../../assets/webm/chatpack_16.webm';
+import imageFind from '../../assets/webp/find.webp';
 import animationFind from '../../assets/webm/find_23.webm';
+import imageJstodo from '../../assets/webp/jstodo.webp';
 import animationjstodo from '../../assets/webm/jstodo_28.webm';
+import imageBattleship from '../../assets/webp/battleship.webp';
 import animationBattleship from '../../assets/webm/battleship_70.webm';
+import imageEryngi from '../../assets/webp/eryngicss.webp';
 import animationEryngi from '../../assets/webm/eryngicss_13.webm';
+import imageLeshop from '../../assets/webp/leshop.webp';
 import animationLeshop from '../../assets/webm/leshop_24.webm';
+import imageCvcreator from '../../assets/webp/cvcreator.webp';
 import animationCvcreator from '../../assets/webm/cvcreator_18.webm';
+import imageJustweather from '../../assets/webp/justweather.webp';
 import animationJustweather from '../../assets/webm/justweather_19.webm';
 
 const ProjectList: {
   id: number;
   title: string;
+  previewImageURL: string;
   previewVideoURL: string;
   description_EN: string;
   description_DE: string;
@@ -24,6 +35,7 @@ const ProjectList: {
   {
     id: 1,
     title: 'Robin Social Network',
+    previewImageURL: imageRobin,
     previewVideoURL: animationRobin,
     description_EN: 'A fully-featured social network.',
     description_DE: 'Ein komplettes soziales Netzwerk.',
@@ -36,6 +48,7 @@ const ProjectList: {
   {
     id: 2,
     title: 'Z64',
+    previewImageURL: imageZ64,
     previewVideoURL: animationZ64,
     description_EN: 'A Commodore 64 game database.',
     description_DE: 'Eine Commodore 64 Datenbank.',
@@ -48,6 +61,7 @@ const ProjectList: {
   {
     id: 3,
     title: 'Chatpack',
+    previewImageURL: imageChatpack,
     previewVideoURL: animationChatpack,
     description_EN: 'A realtime chatroom application with a simple interface.',
     description_DE: 'Ein Echtzeit-Chat mit einem simplen Inferface.',
@@ -60,6 +74,7 @@ const ProjectList: {
   {
     id: 4,
     title: '.find()',
+    previewImageURL: imageFind,
     previewVideoURL: animationFind,
     description_EN:
       'A hidden object game where users have to find certain characters in a huge image.',
@@ -75,6 +90,7 @@ const ProjectList: {
   {
     id: 5,
     title: 'JS_Todo',
+    previewImageURL: imageJstodo,
     previewVideoURL: animationjstodo,
     description_EN: 'A task-/organizer application.',
     description_DE: 'Ein Task-Organizer.',
@@ -87,6 +103,7 @@ const ProjectList: {
   {
     id: 6,
     title: 'Battleship',
+    previewImageURL: imageBattleship,
     previewVideoURL: animationBattleship,
     description_EN: 'A battleship game built via test-driven development.',
     description_DE:
@@ -100,6 +117,7 @@ const ProjectList: {
   {
     id: 7,
     title: 'Eryngi-CSS',
+    previewImageURL: imageEryngi,
     previewVideoURL: animationEryngi,
     description_EN: 'A bootstrap-like custom CSS library build with SCSS.',
     description_DE:
@@ -114,6 +132,7 @@ const ProjectList: {
   {
     id: 8,
     title: 'Le-shop',
+    previewImageURL: imageLeshop,
     previewVideoURL: animationLeshop,
     description_EN: 'Frontend for a fake online shop.',
     description_DE: 'Frontend for a einen fake Onlineshop.',
@@ -126,6 +145,7 @@ const ProjectList: {
   {
     id: 9,
     title: 'CV-Creator',
+    previewImageURL: imageCvcreator,
     previewVideoURL: animationCvcreator,
     description_EN: 'WYSIWYG-editor to create and print your resumee/cv.',
     description_DE:
@@ -139,6 +159,7 @@ const ProjectList: {
   {
     id: 10,
     title: 'Just the weather',
+    previewImageURL: imageJustweather,
     previewVideoURL: animationJustweather,
     description_EN:
       'A weather application using the OpenWeatherMap One Call API.',

@@ -7,18 +7,21 @@ import { revealCharacters, ignoreCharacters } from '../../../../utils/utils';
 import './Preview.css';
 
 interface Props {
+  previewImageURL: string;
   previewVideoURL: string;
   githubLink: string;
   liveLink: string;
 }
 
 export default function Preview({
+  previewImageURL,
   previewVideoURL,
   githubLink,
   liveLink,
 }: Props) {
   const { language } = useContext(LanguageContext);
   const vidRef = useRef<HTMLVideoElement>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
   const [showPreviewImageEffect, setShowPreviewImageEffect] =
     useState<boolean>(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
@@ -101,12 +104,20 @@ export default function Preview({
   }, [isVideoPlaying]);
   return (
     <div>
-      <div className="image-container" ref={glitch.ref}>
+      <div className="preview-container" ref={glitch.ref}>
+        <img
+          src={previewImageURL}
+          alt="preview-placeholder"
+          className={`preview-image ${isVideoLoaded ? 'hidden' : ''}`}
+        />
         <video
           ref={vidRef}
           muted
           onEnded={handlePreviewStop}
-          className={` ${showPreviewImageEffect ? 'showFilter' : ''}`}
+          className={` ${showPreviewImageEffect ? 'showFilter' : ''} ${
+            isVideoLoaded ? '' : 'hidden'
+          }`}
+          onLoadedData={() => setIsVideoLoaded(true)}
         >
           <source src={previewVideoURL} type="video/webm" />
           Your browser does not support the video tag.

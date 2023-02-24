@@ -16,6 +16,7 @@ interface Props {
   project: {
     id: number;
     title: string;
+    previewImageURL: string;
     previewVideoURL: string;
     description_EN: string;
     description_DE: string;
@@ -32,6 +33,7 @@ const Project: FC<Props> = ({
   project: {
     id,
     title,
+    previewImageURL,
     previewVideoURL,
     description_EN,
     description_DE,
@@ -94,6 +96,7 @@ const Project: FC<Props> = ({
           <div className="preview-container">
             {currentlyVisible && (
               <Preview
+                previewImageURL={previewImageURL}
                 previewVideoURL={previewVideoURL}
                 githubLink={githubLink}
                 liveLink={liveLink}

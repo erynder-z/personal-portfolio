@@ -12,6 +12,7 @@ const Portfolio: FC<Props> = ({ active }) => {
     [] as {
       id: number;
       title: string;
+      previewImageURL: string;
       previewVideoURL: string;
       description_EN: string;
       description_DE: string;
