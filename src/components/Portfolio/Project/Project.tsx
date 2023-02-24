@@ -8,6 +8,9 @@ import LanguageContext from '../../../contexts/LanguageContext';
 import * as projectText from './getProjectText';
 import { revealCharacters, ignoreCharacters } from '../../../utils/utils';
 import Preview from './Preview/Preview';
+import Description from './Description/Description';
+import Technologies from './Technologies/Technologies';
+import Year from './Year/Year';
 
 interface Props {
   project: {
@@ -51,11 +54,6 @@ const Project: FC<Props> = ({
 
   // Project Text
   const projectTitle: string = title;
-  const projectDescriptionText: string =
-    projectText.getDescriptionHeadingText(language);
-  const projectTechnologiesText: string =
-    projectText.getTechnologiesHeadingText(language);
-  const projectYearText: string = projectText.getYearHeadingText(language);
 
   return (
     <VisibleSectionEffect setCurrentlyVisible={setCurrentlyVisible}>
@@ -103,86 +101,17 @@ const Project: FC<Props> = ({
             )}
           </div>
           <div className="text-container">
-            <div className="description-container">
-              <h4 className="project-description-heading">
-                {currentlyVisible && (
-                  <RandomReveal
-                    isPlaying
-                    duration={1}
-                    characters={projectDescriptionText}
-                    characterSet={revealCharacters}
-                    ignoreCharacterSet={ignoreCharacters}
-                  />
-                )}
-              </h4>
-              {
-                <p className="project-description">
-                  {currentlyVisible && (
-                    <RandomReveal
-                      isPlaying
-                      duration={1}
-                      characters={
-                        language.code === 'DE'
-                          ? description_DE
-                          : language.code === 'JP'
-                          ? description_JP
-                          : description_EN
-                      }
-                      characterSet={revealCharacters}
-                      ignoreCharacterSet={ignoreCharacters}
-                    />
-                  )}
-                </p>
-              }
-            </div>
-            <div className="technologies-container">
-              <h4 className="project-technologies-heading">
-                {currentlyVisible && (
-                  <RandomReveal
-                    isPlaying
-                    duration={1}
-                    characters={projectTechnologiesText}
-                    characterSet={revealCharacters}
-                    ignoreCharacterSet={ignoreCharacters}
-                  />
-                )}
-              </h4>
-              <p className="project-technologies">
-                {currentlyVisible && (
-                  <RandomReveal
-                    isPlaying
-                    duration={1}
-                    characters={technologies}
-                    characterSet={revealCharacters}
-                    ignoreCharacterSet={ignoreCharacters}
-                  />
-                )}
-              </p>
-            </div>
-            <div className="year-container">
-              <h4 className="project-year-heading">
-                {currentlyVisible && (
-                  <RandomReveal
-                    isPlaying
-                    duration={1}
-                    characters={projectYearText}
-                    characterSet={revealCharacters}
-                    ignoreCharacterSet={ignoreCharacters}
-                  />
-                )}
-              </h4>
-              <p className="project-year">
-                {currentlyVisible && (
-                  <RandomReveal
-                    isPlaying
-                    duration={1}
-                    characters={year.toString()}
-                    characterSet={revealCharacters}
-                    ignoreCharacterSet={ignoreCharacters}
-                  />
-                )}
-              </p>
-            </div>
+            {currentlyVisible && (
+              <>
+                <Description
+                  description_EN={description_EN}
+                  description_DE={description_DE}
+                  description_JP={description_JP}
+                />
+                <Technologies technologies={technologies} />
+                <Year year={year} />
+              </>
+            )}
           </div>
         </div>
         {id < projectListLength && (
