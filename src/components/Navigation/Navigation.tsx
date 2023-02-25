@@ -1,6 +1,6 @@
 import React, { FC, useContext } from 'react';
 import Contact from '../Contact/Contact';
-import About from '../about/About';
+import About from '../About/About';
 import Portfolio from '../Portfolio/Portfolio';
 import Skills from '../Skills/Skills';
 import './Navigation.css';
