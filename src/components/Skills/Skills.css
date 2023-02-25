@@ -10,8 +10,8 @@
 .skills-container {
   display: flex;
   flex-direction: column;
-  max-height: 85vh;
-  max-height: calc(var(--vh, 1vh) * 85);
+  min-height: 85vh;
+  min-height: calc(var(--vh, 1vh) * 85);
   width: 70ch;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar) var(--scrollbar-thumb);
