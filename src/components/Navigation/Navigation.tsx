@@ -21,6 +21,10 @@ interface Props {
 const Navigation: FC<Props> = ({ activePanel, setActivePanel }) => {
   const { language } = useContext(LanguageContext);
 
+  // Set vh for Chrome 100vh fix
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
   const panels: Panel[] = [
     {
       id: 'about',

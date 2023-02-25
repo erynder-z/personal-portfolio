@@ -10,6 +10,7 @@
 .contact-container {
   width: 100%;
   height: 85vh;
+  height: calc(var(--vh, 1vh) * 85);
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar) var(--scrollbar-thumb);

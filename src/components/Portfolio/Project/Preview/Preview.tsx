@@ -102,6 +102,7 @@ export default function Preview({
     setIsTextRevealTriggered2(!isTextRevealTriggered2);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVideoPlaying]);
+
   return (
     <div>
       <div className="preview-container" ref={glitch.ref}>
@@ -112,7 +113,10 @@ export default function Preview({
         />
         <video
           ref={vidRef}
+          poster={previewImageURL}
           muted
+          playsInline
+          preload="auto"
           onEnded={handlePreviewStop}
           className={` ${showPreviewImageEffect ? 'showFilter' : ''} ${
             isVideoLoaded ? '' : 'hidden'
@@ -123,7 +127,10 @@ export default function Preview({
           Your browser does not support the video tag.
         </video>
         <div className="project-icons-container">
-          <button className="previewBtn" onClick={handlePreviewButtonClick}>
+          <button
+            className={`previewBtn ${!isVideoLoaded ? 'disabled' : ''}`}
+            onClick={handlePreviewButtonClick}
+          >
             <div className="previewBtn-wrapper">
               {isTextRevealTriggered1 && (
                 <RandomReveal

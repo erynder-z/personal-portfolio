@@ -57,6 +57,10 @@ const Project: FC<Props> = ({
   // Project Text
   const projectTitle: string = title;
 
+  // Set vh for Chrome 100vh fix
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
   return (
     <VisibleSectionEffect setCurrentlyVisible={setCurrentlyVisible}>
       <div className="project-container">

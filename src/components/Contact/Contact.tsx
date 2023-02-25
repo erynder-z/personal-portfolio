@@ -11,6 +11,9 @@ interface Props {
 }
 
 const Contact: FC<Props> = ({ active }) => {
+  // Set vh for Chrome 100vh fix
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
   return (
     <div className="contact-container">
       <section className={!active ? 'hide' : ''}>

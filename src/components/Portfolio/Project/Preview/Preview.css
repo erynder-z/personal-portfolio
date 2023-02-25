@@ -78,6 +78,14 @@
   display: none;
 }
 
+.disabled {
+  pointer-events: none;
+}
+
+.disabled > div {
+  color: grey;
+}
+
 @keyframes filterImage {
   0% {
     filter: grayscale(0) invert(0);

@@ -23,6 +23,10 @@ const Skills: FC<Props> = ({ active }) => {
 
   const skillsHeaderText: string = skillsText.getSkillsHeaderText(language);
 
+  // Set vh for Chrome 100vh fix
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
   useEffect(() => {
     const skillItems = document.querySelectorAll('.skill-item-wrapper');
 

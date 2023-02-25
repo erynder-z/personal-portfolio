@@ -12,6 +12,10 @@ interface Props {
 const About: FC<Props> = ({ active }) => {
   const { language } = useContext(LanguageContext);
 
+  // Set vh for Chrome 100vh fix
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
   const aboutTextArray: string[] = [
     aboutText.getAboutTextParagraph1(language),
     aboutText.getAboutTextParagraph2(language),

@@ -29,6 +29,10 @@ const Portfolio: FC<Props> = ({ active }) => {
   );
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Set vh for Chrome 100vh fix
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
   useEffect(() => {
     setProjectList(ProjectList);
   }, []);

@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
   overflow: hidden;
   font-family: IBM Plex Mono, monospace;
   font-weight: 500;
