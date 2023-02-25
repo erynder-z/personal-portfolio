@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/personal-portfolio/static/css/main.2d06c863.css",
-    "main.js": "/personal-portfolio/static/js/main.8c7450d2.js",
-    "static/media/find.webm": "/personal-portfolio/static/media/find.6ca2c77c30b973363ed1.webm",
-    "static/media/codeblog.webm": "/personal-portfolio/static/media/codeblog.cca1bc9f35fd417f3657.webm",
-    "static/media/robin.webm": "/personal-portfolio/static/media/robin.d42cd33581e86781bca2.webm",
-    "static/media/battleship.webm": "/personal-portfolio/static/media/battleship.f6018cb42e7975625c05.webm",
-    "static/media/eryngicss.webm": "/personal-portfolio/static/media/eryngicss.ca4486000590ef5ab3c2.webm",
-    "static/media/cvcreator.webm": "/personal-portfolio/static/media/cvcreator.bc2ab15225d3830ff3f5.webm",
+    "main.css": "/personal-portfolio/static/css/main.9e219b5f.css",
+    "main.js": "/personal-portfolio/static/js/main.7f2a832d.js",
+    "static/media/find.webm": "/personal-portfolio/static/media/find.05516b028f8440016b78.webm",
     "static/media/profile.png": "/personal-portfolio/static/media/profile.48f4fb08adf213ad9965.png",
-    "static/media/leshop.webm": "/personal-portfolio/static/media/leshop.c08f58051825da588267.webm",
-    "static/media/justweather.webm": "/personal-portfolio/static/media/justweather.afae4a331c37f9f87dfe.webm",
-    "static/media/jstodo.webm": "/personal-portfolio/static/media/jstodo.62c63062649a7f1e5429.webm",
-    "static/media/chatpack.webm": "/personal-portfolio/static/media/chatpack.692393caa5af65bc8655.webm",
-    "static/media/z64.webm": "/personal-portfolio/static/media/z64.2fd579b8517c964811f3.webm",
+    "static/media/robin.webm": "/personal-portfolio/static/media/robin.fb6e85f3cbad55f5bc87.webm",
+    "static/media/codeblog.webm": "/personal-portfolio/static/media/codeblog.5168a9b9f88ded93f2e9.webm",
+    "static/media/cvcreator.webm": "/personal-portfolio/static/media/cvcreator.6b36b59eeae544592781.webm",
+    "static/media/battleship.webm": "/personal-portfolio/static/media/battleship.2b83e582f1534eb5fb9f.webm",
+    "static/media/eryngicss.webm": "/personal-portfolio/static/media/eryngicss.6023486a3e71886d4a2e.webm",
+    "static/media/leshop.webm": "/personal-portfolio/static/media/leshop.fa4d8156c43888062950.webm",
+    "static/media/justweather.webm": "/personal-portfolio/static/media/justweather.e060dd392f7063a984ad.webm",
+    "static/media/jstodo.webm": "/personal-portfolio/static/media/jstodo.00bf8d98031aa1d54008.webm",
+    "static/media/chatpack.webm": "/personal-portfolio/static/media/chatpack.3c4d50ab20c7a5bd88ca.webm",
+    "static/media/z64.webm": "/personal-portfolio/static/media/z64.381723e23819e9267c8f.webm",
     "static/media/cvcreator.webp": "/personal-portfolio/static/media/cvcreator.2c944a106c8e02966031.webp",
     "static/media/codeblog.webp": "/personal-portfolio/static/media/codeblog.2ebbfa5fc232d9491c58.webp",
     "static/media/eryngicss.webp": "/personal-portfolio/static/media/eryngicss.f4429f8332f4ac664ab0.webp",
@@ -27,11 +27,11 @@
     "static/media/z64.webp": "/personal-portfolio/static/media/z64.049ec760bb1cec378477.webp",
     "static/media/resumee.pdf": "/personal-portfolio/static/media/resumee.48418c63e8e52930a55b.pdf",
     "index.html": "/personal-portfolio/index.html",
-    "main.2d06c863.css.map": "/personal-portfolio/static/css/main.2d06c863.css.map",
-    "main.8c7450d2.js.map": "/personal-portfolio/static/js/main.8c7450d2.js.map"
+    "main.9e219b5f.css.map": "/personal-portfolio/static/css/main.9e219b5f.css.map",
+    "main.7f2a832d.js.map": "/personal-portfolio/static/js/main.7f2a832d.js.map"
   },
   "entrypoints": [
-    "static/css/main.2d06c863.css",
-    "static/js/main.8c7450d2.js"
+    "static/css/main.9e219b5f.css",
+    "static/js/main.7f2a832d.js"
   ]
 }
