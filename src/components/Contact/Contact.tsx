@@ -5,6 +5,7 @@ import ScrollingText from './ScrollingText/ScrollingText';
 import Greeting from './Greeting/Greeting';
 import HoverItemEffect from './HoverItemEffect/HoverItemEffect';
 import Footer from './Footer/Footer';
+import { ContactForm } from './ContactForm/ContactForm';
 
 interface Props {
   active: boolean;
@@ -23,6 +24,7 @@ const Contact: FC<Props> = ({ active }) => {
           {active && <HoverItemEffect />}
           {active && <ContactIcons />}
         </div>
+        <ContactForm />
         <h3 className="contact-footer">{active && <Footer />}</h3>
       </section>
     </div>
