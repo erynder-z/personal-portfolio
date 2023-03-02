@@ -1,11 +1,11 @@
 .contact-hoverElement {
-  /*  height: 40%; */
   position: relative;
   cursor: pointer;
   font-size: 4rem;
   text-align: center;
   width: max-content;
-  margin: 0 auto;
+  margin: 2rem auto;
+  color: var(--pink);
 }
 
 .contact-hoverElement:hover .contact-hoverElement-title {
@@ -20,7 +20,7 @@
   left: 0;
   right: 0;
   font-weight: 900;
-  -webkit-text-stroke: 0.012em var(--white);
+  -webkit-text-stroke: 0.012em var(--pink);
   color: transparent;
   opacity: 0;
   transition: opacity 0.5s ease;

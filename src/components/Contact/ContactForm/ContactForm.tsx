@@ -2,9 +2,9 @@ import React, { useContext, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { RandomReveal } from 'react-random-reveal';
 import { ignoreCharacters, revealCharacters } from '../../../utils/utils';
-import './ContactForm.css';
 import LanguageContext from '../../../contexts/LanguageContext';
 import { getContactFormText } from '../getContactText';
+import './ContactForm.css';
 
 interface Props {
   setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
@@ -63,7 +63,7 @@ export const ContactForm: React.FC<Props> = ({
           ignoreCharacterSet={ignoreCharacters}
         />
       </label>
-      <input type="text" name="user_name" required />
+      <input type="text" name="from_name" required />
       <label>
         <RandomReveal
           isPlaying
@@ -73,7 +73,7 @@ export const ContactForm: React.FC<Props> = ({
           ignoreCharacterSet={ignoreCharacters}
         />
       </label>
-      <input type="email" name="user_email" required />
+      <input type="email" name="from_email" required />
       <label>
         <RandomReveal
           isPlaying

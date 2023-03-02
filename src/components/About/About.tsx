@@ -38,7 +38,7 @@ const About: FC<Props> = ({ active }) => {
             />
           </h2>
           {aboutTextArray.slice(1).map((paragraph: string, index: number) => (
-            <p className="about-content" key={index}>
+            <p className={`about-content paragraph` + (index + 1)} key={index}>
               <RandomReveal
                 isPlaying
                 duration={2}

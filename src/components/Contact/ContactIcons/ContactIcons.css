@@ -1,9 +1,11 @@
 .contact-buttons-container {
   height: 40%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
 .contact-buttons-container > a > svg {
@@ -11,15 +13,13 @@
   cursor: pointer;
 }
 
-.contact-footer {
-  text-align: center;
-  height: 5%;
-  margin: 0;
-  font-size: 1rem;
-}
-
 .contact-button {
   opacity: 0;
+  transition: color 100ms ease-in-out;
+}
+
+.contact-button:hover {
+  color: var(--pink);
 }
 
 .contact-button-fadeIn {
@@ -39,13 +39,5 @@
 @media only screen and (max-width: 480px) {
   .contact-hoverElement {
     font-size: 2rem;
-  }
-
-  .contact-buttons-container {
-    gap: unset;
-  }
-
-  .contact-button {
-    height: 4rem;
   }
 }

@@ -8,16 +8,26 @@
 }
 
 .about-text {
+  font-weight: 600;
+  font-size: 1.5rem;
   box-sizing: border-box;
   width: 50%;
   color: var(--yellow);
-  line-height: 1.5;
-  text-align: justify;
+  line-height: 1.2;
 }
 
 .about-content {
   min-height: 2rem;
   overflow: hidden;
+  margin: 0;
+}
+
+.paragraph1 {
+  margin-bottom: 2rem;
+}
+
+.paragraph4 {
+  margin-top: 2rem;
 }
 
 .red {

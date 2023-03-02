@@ -1,13 +1,11 @@
 .contact-main-greeting {
   text-align: center;
   margin: 0;
-  /*  padding: 2rem 0 */
-  margin: 2rem 0;
 }
 
 @media only screen and (max-width: 480px) {
   .contact-main-greeting {
     text-align: center;
-    padding: 2rem;
+    font-size: 1.2rem;
   }
 }

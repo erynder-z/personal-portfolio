@@ -3,7 +3,7 @@ import { LanguageType } from '../../interfaces/customTypes';
 export const getAboutTextParagraph1 = (language: LanguageType) => {
   switch (language.code) {
     case 'DE':
-      return 'Hallo!';
+      return `Hallo!`;
 
     case 'JP':
       return 'こんにちは!';

@@ -22,7 +22,7 @@
 }
 
 .about {
-  --animationBackground: rgba(89, 26, 156, 0.1);
+  --animationBackground: rgba(156, 76, 19, 0.1);
 }
 
 .projects {
@@ -30,11 +30,11 @@
 }
 
 .skills {
-  --animationBackground: rgba(171, 22, 22, 0.1);
+  --animationBackground: rgba(29, 99, 174, 0.1);
 }
 
 .contact {
-  --animationBackground: rgba(29, 99, 174, 0.1);
+  --animationBackground: rgba(171, 22, 22, 0.1);
 }
 
 .blue {

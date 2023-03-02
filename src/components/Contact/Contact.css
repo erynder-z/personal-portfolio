@@ -27,13 +27,20 @@
 }
 
 .lower-container {
-  height: 65%;
+  min-height: 65%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
-.contact-main {
-  height: 10%;
+@media only screen and (max-width: 480px) {
+  .contact-container > section {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .lower-container {
+    align-items: unset;
+  }
 }

@@ -25,24 +25,24 @@ const ContactIcons: FC = () => {
           subject="Contact from website"
           body=""
         >
-          <FaEnvelope className="contact-button" size="5rem" />
+          <FaEnvelope className="contact-button" size="3rem" />
         </Mailto>
         <a
           href="https://github.com/erynder-z"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaGithub className="contact-button" size="5rem" />
+          <FaGithub className="contact-button" size="3rem" />
         </a>
         <a
           href="https://www.linkedin.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaLinkedin className="contact-button" size="5rem" />
+          <FaLinkedin className="contact-button" size="3rem" />
         </a>
         <a href={resumee} target="_blank" rel="noreferrer">
-          <FaFilePdf className="contact-button" size="5rem" />
+          <FaFilePdf className="contact-button" size="3rem" />
         </a>
       </div>
     </>

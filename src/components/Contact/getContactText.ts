@@ -25,3 +25,16 @@ export const getGreetingText = (language: LanguageType) => {
       return 'Want to get in touch?';
   }
 };
+
+export const getContactFormText = (language: LanguageType) => {
+  switch (language.code) {
+    case 'DE':
+      return { name: 'Name', email: 'Email', message: 'Nachricht' };
+
+    case 'JP':
+      return { name: 'お名前', email: 'メールアドレス', message: 'メッセージ' };
+
+    default:
+      return { name: 'Name', email: 'Email', message: 'Message' };
+  }
+};
