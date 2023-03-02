@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser';
 import { RandomReveal } from 'react-random-reveal';
 import { ignoreCharacters, revealCharacters } from '../../../utils/utils';
 import LanguageContext from '../../../contexts/LanguageContext';
-import { getContactFormText } from '../getContactText';
+import { getContactFormText, getSendButtonText } from '../getContactText';
 import './ContactForm.css';
 
 interface Props {
@@ -17,7 +17,8 @@ export const ContactForm: React.FC<Props> = ({
 }: Props) => {
   const form = useRef<HTMLFormElement>(null);
   const { language } = useContext(LanguageContext);
-  const { name, email, message } = getContactFormText(language);
+  const { nameText, emailText, messageText } = getContactFormText(language);
+  const sendButtonText = getSendButtonText(language);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -58,7 +59,7 @@ export const ContactForm: React.FC<Props> = ({
         <RandomReveal
           isPlaying
           duration={1}
-          characters={name}
+          characters={nameText}
           characterSet={revealCharacters}
           ignoreCharacterSet={ignoreCharacters}
         />
@@ -68,7 +69,7 @@ export const ContactForm: React.FC<Props> = ({
         <RandomReveal
           isPlaying
           duration={1}
-          characters={email}
+          characters={emailText}
           characterSet={revealCharacters}
           ignoreCharacterSet={ignoreCharacters}
         />
@@ -78,7 +79,7 @@ export const ContactForm: React.FC<Props> = ({
         <RandomReveal
           isPlaying
           duration={1}
-          characters={message}
+          characters={messageText}
           characterSet={revealCharacters}
           ignoreCharacterSet={ignoreCharacters}
         />
@@ -88,7 +89,7 @@ export const ContactForm: React.FC<Props> = ({
         <RandomReveal
           isPlaying
           duration={1}
-          characters="Send"
+          characters={sendButtonText}
           characterSet={revealCharacters}
           ignoreCharacterSet={ignoreCharacters}
         />

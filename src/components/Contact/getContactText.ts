@@ -29,12 +29,29 @@ export const getGreetingText = (language: LanguageType) => {
 export const getContactFormText = (language: LanguageType) => {
   switch (language.code) {
     case 'DE':
-      return { name: 'Name', email: 'Email', message: 'Nachricht' };
+      return { nameText: 'Name', emailText: 'Email', messageText: 'Nachricht' };
 
     case 'JP':
-      return { name: 'お名前', email: 'メールアドレス', message: 'メッセージ' };
+      return {
+        nameText: 'お名前',
+        emailText: 'メールアドレス',
+        messageText: 'メッセージ',
+      };
 
     default:
-      return { name: 'Name', email: 'Email', message: 'Message' };
+      return { nameText: 'Name', emailText: 'Email', messageText: 'Message' };
+  }
+};
+
+export const getSendButtonText = (language: LanguageType) => {
+  switch (language.code) {
+    case 'DE':
+      return 'Abschicken';
+
+    case 'JP':
+      return ' 送信 ';
+
+    default:
+      return 'Send';
   }
 };
