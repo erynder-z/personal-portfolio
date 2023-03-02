@@ -9,9 +9,11 @@ import { ContactForm } from './ContactForm/ContactForm';
 
 interface Props {
   active: boolean;
+  setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
+  setPopupMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Contact: FC<Props> = ({ active }) => {
+const Contact: FC<Props> = ({ active, setShowPopup, setPopupMessage }) => {
   // Set vh for Chrome 100vh fix
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -23,8 +25,14 @@ const Contact: FC<Props> = ({ active }) => {
         <div className="lower-container">
           {active && <HoverItemEffect />}
           {active && <ContactIcons />}
+          {active && (
+            <ContactForm
+              setShowPopup={setShowPopup}
+              setPopupMessage={setPopupMessage}
+            />
+          )}
         </div>
-        <ContactForm />
+
         <h3 className="contact-footer">{active && <Footer />}</h3>
       </section>
     </div>

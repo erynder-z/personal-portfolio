@@ -16,9 +16,16 @@ interface Panel {
 interface Props {
   activePanel: string;
   setActivePanel: React.Dispatch<React.SetStateAction<string>>;
+  setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
+  setPopupMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Navigation: FC<Props> = ({ activePanel, setActivePanel }) => {
+const Navigation: FC<Props> = ({
+  activePanel,
+  setActivePanel,
+  setShowPopup,
+  setPopupMessage,
+}) => {
   const { language } = useContext(LanguageContext);
 
   // Set vh for Chrome 100vh fix
@@ -46,7 +53,13 @@ const Navigation: FC<Props> = ({ activePanel, setActivePanel }) => {
     {
       id: 'contact',
       title: 'getContactPanelText',
-      component: <Contact active={activePanel === 'contact' ? true : false} />,
+      component: (
+        <Contact
+          active={activePanel === 'contact' ? true : false}
+          setShowPopup={setShowPopup}
+          setPopupMessage={setPopupMessage}
+        />
+      ),
     },
   ];
 
