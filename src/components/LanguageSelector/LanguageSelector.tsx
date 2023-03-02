@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import LanguageContext from '../../contexts/LanguageContext';
-import { FaGlobeAmericas } from 'react-icons/fa';
+import { FaGlobeAmericas, FaGlobeEurope, FaGlobeAsia } from 'react-icons/fa';
 import './LanguageSelector.css';
 
 export default function LanguageSelector() {
@@ -10,20 +10,23 @@ export default function LanguageSelector() {
     {
       name: 'English',
       code: 'EN',
+      icon: <FaGlobeAmericas size="2rem" />,
     },
     {
       name: 'Deutsch',
       code: 'DE',
+      icon: <FaGlobeEurope size="2rem" />,
     },
     {
       name: '日本語',
       code: 'JP',
+      icon: <FaGlobeAsia size="2rem" />,
     },
   ];
   return (
     <div className="language-selector">
       <div className="dropdown-menu">
-        <FaGlobeAmericas size="2rem" />
+        {language.icon}
         {language.code}
       </div>
       <div className="language-content">

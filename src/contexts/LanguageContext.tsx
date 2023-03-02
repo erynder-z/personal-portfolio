@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 import { LanguageType } from '../interfaces/customTypes';
+import { FaGlobeAmericas } from 'react-icons/fa';
 
 interface LanguageContextProviderProps {
   children: React.ReactElement;
@@ -11,7 +12,11 @@ interface LanguageContextProps {
 }
 
 const LanguageContext = createContext<LanguageContextProps>({
-  language: { name: 'English', code: 'EN' },
+  language: {
+    name: 'English',
+    code: 'EN',
+    icon: <FaGlobeAmericas size="2rem" />,
+  },
   setLanguage: () => {},
 });
 
@@ -21,6 +26,7 @@ export function LanguageContextProvider({
   const [language, setLanguage] = useState<LanguageType>({
     name: 'English',
     code: 'EN',
+    icon: <FaGlobeAmericas size="2rem" />,
   });
 
   return (
