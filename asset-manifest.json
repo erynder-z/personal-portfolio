@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/personal-portfolio/static/css/main.d18bd829.css",
-    "main.js": "/personal-portfolio/static/js/main.c5b280d3.js",
+    "main.css": "/personal-portfolio/static/css/main.49b3a8e3.css",
+    "main.js": "/personal-portfolio/static/js/main.882640fa.js",
     "static/media/find.webm": "/personal-portfolio/static/media/find.05516b028f8440016b78.webm",
     "static/media/profile.png": "/personal-portfolio/static/media/profile.48f4fb08adf213ad9965.png",
     "static/media/robin.webm": "/personal-portfolio/static/media/robin.fb6e85f3cbad55f5bc87.webm",
@@ -27,11 +27,11 @@
     "static/media/z64.webp": "/personal-portfolio/static/media/z64.049ec760bb1cec378477.webp",
     "static/media/resumee.pdf": "/personal-portfolio/static/media/resumee.48418c63e8e52930a55b.pdf",
     "index.html": "/personal-portfolio/index.html",
-    "main.d18bd829.css.map": "/personal-portfolio/static/css/main.d18bd829.css.map",
-    "main.c5b280d3.js.map": "/personal-portfolio/static/js/main.c5b280d3.js.map"
+    "main.49b3a8e3.css.map": "/personal-portfolio/static/css/main.49b3a8e3.css.map",
+    "main.882640fa.js.map": "/personal-portfolio/static/js/main.882640fa.js.map"
   },
   "entrypoints": [
-    "static/css/main.d18bd829.css",
-    "static/js/main.c5b280d3.js"
+    "static/css/main.49b3a8e3.css",
+    "static/js/main.882640fa.js"
   ]
 }
