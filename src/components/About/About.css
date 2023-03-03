@@ -13,7 +13,7 @@
   box-sizing: border-box;
   width: 50%;
   color: var(--yellow);
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .about-content {
@@ -60,7 +60,8 @@
   .about-text {
     width: 100%;
     padding: 0 2rem;
-    line-height: 1.2;
+    font-size: 1.2rem;
+    line-height: 1.25;
   }
 
   .about-content {

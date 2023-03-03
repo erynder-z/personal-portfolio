@@ -136,4 +136,8 @@
   .panel {
     font-size: 0.7rem;
   }
+
+  .panel.open {
+    max-height: unset;
+  }
 }

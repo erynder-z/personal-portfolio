@@ -60,3 +60,10 @@
     opacity: 1;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .contact-form-container input,
+  .contact-form-container textarea {
+    border: solid 1px var(--white);
+  }
+}
