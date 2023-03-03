@@ -2,6 +2,7 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import './Portfolio.css';
 import ProjectList from './ProjectList';
 import Project from './Project/Project';
+import { fix100vhInChrome } from '../../utils/utils';
 
 interface Props {
   active: boolean;
@@ -29,11 +30,8 @@ const Portfolio: FC<Props> = ({ active }) => {
   );
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Set vh for Chrome 100vh fix
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-
   useEffect(() => {
+    fix100vhInChrome();
     setProjectList(ProjectList);
   }, []);
 

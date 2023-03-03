@@ -1,10 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { RandomReveal } from 'react-random-reveal';
 import './Loading.css';
-import { revealCharacters } from '../../utils/utils';
+import { fix100vhInChrome, revealCharacters } from '../../utils/utils';
 
 const Loading: FC = () => {
   const message: string = 'loading';
+
+  useEffect(() => {
+    fix100vhInChrome();
+  }, []);
 
   return (
     <div className="loading-container">

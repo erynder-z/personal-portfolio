@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import Contact from '../Contact/Contact';
 import About from '../About/About';
 import Portfolio from '../Portfolio/Portfolio';
@@ -6,6 +6,7 @@ import Skills from '../Skills/Skills';
 import './Navigation.css';
 import LanguageContext from '../../contexts/LanguageContext';
 import * as panelText from './getPanelTexts';
+import { fix100vhInChrome } from '../../utils/utils';
 
 interface Panel {
   id: string;
@@ -27,10 +28,6 @@ const Navigation: FC<Props> = ({
   setPopupMessage,
 }) => {
   const { language } = useContext(LanguageContext);
-
-  // Set vh for Chrome 100vh fix
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
 
   const panels: Panel[] = [
     {
@@ -62,6 +59,10 @@ const Navigation: FC<Props> = ({
       ),
     },
   ];
+
+  useEffect(() => {
+    fix100vhInChrome();
+  }, []);
 
   return (
     <div className="panels">

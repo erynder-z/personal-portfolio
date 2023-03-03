@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RandomReveal } from 'react-random-reveal';
-import { ignoreCharacters, revealCharacters } from '../../utils/utils';
+import {
+  fix100vhInChrome,
+  ignoreCharacters,
+  revealCharacters,
+} from '../../utils/utils';
 import './Popup.css';
 
 interface Props {
@@ -8,9 +12,10 @@ interface Props {
 }
 
 export const Popup: React.FC<Props> = ({ popupMessage }: Props) => {
-  // Set vh for Chrome 100vh fix
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  useEffect(() => {
+    fix100vhInChrome();
+  }, []);
+
   return (
     <div className="popup-overlay">
       <RandomReveal

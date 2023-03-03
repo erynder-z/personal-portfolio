@@ -1,9 +1,13 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import './About.css';
 import { RandomReveal } from 'react-random-reveal';
 import LanguageContext from '../../contexts/LanguageContext';
 import * as aboutText from './getAboutText';
-import { revealCharacters, ignoreCharacters } from '../../utils/utils';
+import {
+  revealCharacters,
+  ignoreCharacters,
+  fix100vhInChrome,
+} from '../../utils/utils';
 
 interface Props {
   active: boolean;
@@ -12,10 +16,6 @@ interface Props {
 const About: FC<Props> = ({ active }) => {
   const { language } = useContext(LanguageContext);
 
-  // Set vh for Chrome 100vh fix
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-
   const aboutTextArray: string[] = [
     aboutText.getAboutTextParagraph1(language),
     aboutText.getAboutTextParagraph2(language),
@@ -23,6 +23,10 @@ const About: FC<Props> = ({ active }) => {
     aboutText.getAboutTextParagraph4(language),
     aboutText.getAboutTextParagraph5(language),
   ];
+
+  useEffect(() => {
+    fix100vhInChrome();
+  }, []);
 
   return (
     <div className={`about-container ${active ? 'active' : ''}`}>
